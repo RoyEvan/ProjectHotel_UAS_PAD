@@ -7,3 +7,4 @@ C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.csproj.CoreCompileInputs.cache
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.exe
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.pdb
+C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.Form1.resources
