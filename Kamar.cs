@@ -8,5 +8,6 @@ namespace ProjectHotel_UAS_PAD
 {
     internal class Kamar
     {
+
     }
 }
