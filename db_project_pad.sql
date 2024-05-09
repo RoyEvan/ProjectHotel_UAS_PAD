@@ -4,20 +4,20 @@
 /*==============================================================*/
 
 
-alter table BILLS
-   drop primary key;
+ALTER TABLE BILLS
+   DROP PRIMARY KEY;
 
-drop table if exists BILLS;
+DROP TABLE IF EXISTS BILLS;
 
-alter table BILL_FINES
-   drop primary key;
+ALTER TABLE BILL_FINES
+   DROP PRIMARY KEY;
 
-drop table if exists BILL_FINES;
+DROP TABLE IF EXISTS BILL_FINES;
 
-alter table CATEGORIES
-   drop primary key;
+ALTER TABLE CATEGORIES
+   DROP PRIMARY KEY;
 
-drop table if exists CATEGORIES;
+DROP TABLE IF EXISTS CATEGORIES;
 
 alter table CUSTOMERS
    drop primary key;
