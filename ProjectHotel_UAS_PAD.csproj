@@ -53,10 +53,28 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Kamar.cs" />
+    <Compile Include="MasterCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterCustomer.Designer.cs">
+      <DependentUpon>MasterCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterKamar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterKamar.Designer.cs">
+      <DependentUpon>MasterKamar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterCustomer.resx">
+      <DependentUpon>MasterCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MasterKamar.resx">
+      <DependentUpon>MasterKamar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

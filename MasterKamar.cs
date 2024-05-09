@@ -10,21 +10,15 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class Form1 : Form
+    public partial class MasterKamar : Form
     {
-        public Form1()
+        public MasterKamar()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(textBox1.Text);
-        }
-
-        private void kamarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
 
         }
     }
