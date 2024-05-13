@@ -1,250 +1,296 @@
-/*==============================================================*/
-/* DBMS name:      MySQL 5.0                                    */
-/* Created on:     9/05/2024 12:42:39 PM                        */
-/*==============================================================*/
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 13, 2024 at 09:59 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-ALTER TABLE BILLS
-   DROP PRIMARY KEY;
+DROP DATABASE db_project_pad;
+CREATE DATABASE db_project_pad;
 
-DROP TABLE IF EXISTS BILLS;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-ALTER TABLE BILL_FINES
-   DROP PRIMARY KEY;
+--
+-- Database: `db_project_pad`
+--
 
-DROP TABLE IF EXISTS BILL_FINES;
+-- --------------------------------------------------------
 
-ALTER TABLE CATEGORIES
-   DROP PRIMARY KEY;
+--
+-- Table structure for table `bills`
+--
 
-DROP TABLE IF EXISTS CATEGORIES;
+CREATE TABLE `bills` (
+  `BILL_ID` varchar(16) NOT NULL,
+  `ROOM_ID` varchar(5) NOT NULL,
+  `VOUCHER_ID` varchar(12) DEFAULT NULL,
+  `STAFF_ID` varchar(10) NOT NULL,
+  `CUSTOMER_ID` varchar(12) NOT NULL,
+  `CHECKIN_DATE` date NOT NULL,
+  `CHECKOUT_DATE` date NOT NULL,
+  `BILL_TOTAL` bigint(20) NOT NULL,
+  `BILL_GRANDTOTAL` bigint(20) NOT NULL,
+  `BILL_STATUS` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-alter table CUSTOMERS
-   drop primary key;
+-- --------------------------------------------------------
 
-drop table if exists CUSTOMERS;
+--
+-- Table structure for table `bill_fines`
+--
 
-alter table D_BILLS
-   drop primary key;
+CREATE TABLE `bill_fines` (
+  `FINE_ID` varchar(8) NOT NULL,
+  `BILL_ID` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-drop table if exists D_BILLS;
+-- --------------------------------------------------------
 
-alter table FACILITIES
-   drop primary key;
+--
+-- Table structure for table `categories`
+--
 
-drop table if exists FACILITIES;
+CREATE TABLE `categories` (
+  `CATEGORY_ID` varchar(3) NOT NULL,
+  `CATEGORY_NAME` varchar(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-alter table FINES
-   drop primary key;
+-- --------------------------------------------------------
 
-drop table if exists FINES;
+--
+-- Table structure for table `customers`
+--
 
-alter table ROOMS
-   drop primary key;
+CREATE TABLE `customers` (
+  `CUSTOMER_ID` varchar(12) NOT NULL,
+  `CUSTOMER_NAME` varchar(64) NOT NULL,
+  `CUSTOMER_ADDRESS` varchar(64) NOT NULL,
+  `CUSTOMER_PHONE` varchar(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-drop table if exists ROOMS;
+-- --------------------------------------------------------
 
-alter table ROOM_INVENTORY
-   drop primary key;
+--
+-- Table structure for table `d_bills`
+--
 
-drop table if exists ROOM_INVENTORY;
+CREATE TABLE `d_bills` (
+  `FACILITIES_ID` varchar(5) NOT NULL,
+  `BILL_ID` varchar(16) NOT NULL,
+  `USE_QTY` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-alter table STAFFS
-   drop primary key;
+-- --------------------------------------------------------
 
-drop table if exists STAFFS;
+--
+-- Table structure for table `facilities`
+--
 
-alter table VOUCHERS
-   drop primary key;
+CREATE TABLE `facilities` (
+  `FACILITIES_ID` varchar(5) NOT NULL,
+  `FACILITIES_NAME` varchar(32) NOT NULL,
+  `PRICE` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-drop table if exists VOUCHERS;
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: BILLS                                                 */
-/*==============================================================*/
-create table BILLS
-(
-   BILL_ID              varchar(16) not null,
-   ROOM_ID              varchar(5) not null,
-   VOUCHER_ID           varchar(12),
-   STAFF_ID             varchar(10) not null,
-   CUSTOMER_ID          varchar(12) not null,
-   CHECKIN_DATE         date not null,
-   CHECKOUT_DATE        date not null,
-   BILL_TOTAL           bigint not null,
-   BILL_GRANDTOTAL      bigint not null,
-   BILL_STATUS          bool not null
-);
+--
+-- Table structure for table `fines`
+--
 
-alter table BILLS
-   add primary key (BILL_ID);
+CREATE TABLE `fines` (
+  `FINE_ID` varchar(8) NOT NULL,
+  `FINE_NAME` varchar(32) NOT NULL,
+  `FINE` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*==============================================================*/
-/* Table: BILL_FINES                                            */
-/*==============================================================*/
-create table BILL_FINES
-(
-   FINE_ID              varchar(8) not null,
-   BILL_ID              varchar(16) not null
-);
+-- --------------------------------------------------------
 
-alter table BILL_FINES
-   add primary key (FINE_ID, BILL_ID);
+--
+-- Table structure for table `rooms`
+--
 
-/*==============================================================*/
-/* Table: CATEGORIES                                            */
-/*==============================================================*/
-create table CATEGORIES
-(
-   CATEGORY_ID          varchar(3) not null,
-   CATEGORY_NAME        varchar(16) not null
-);
+CREATE TABLE `rooms` (
+  `ROOM_ID` varchar(5) NOT NULL,
+  `CATEGORY_ID` varchar(3) NOT NULL,
+  `ROOM_PRICE` bigint(20) NOT NULL,
+  `IS_USABLE` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-alter table CATEGORIES
-   add primary key (CATEGORY_ID);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: CUSTOMERS                                             */
-/*==============================================================*/
-create table CUSTOMERS
-(
-   CUSTOMER_ID          varchar(12) not null,
-   CUSTOMER_NAME        varchar(64) not null,
-   CUSTOMER_ADDRESS     varchar(64) not null,
-   CUSTOMER_PHONE       varchar(13) not null
-);
+--
+-- Table structure for table `room_inventory`
+--
 
-alter table CUSTOMERS
-   add primary key (CUSTOMER_ID);
+CREATE TABLE `room_inventory` (
+  `ROOM_INVENTORY_ID` int(11) NOT NULL,
+  `FINE_ID` varchar(8) NOT NULL,
+  `ROOM_ID` varchar(5) NOT NULL,
+  `ROOM_INVENTORY_NAME` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*==============================================================*/
-/* Table: D_BILLS                                               */
-/*==============================================================*/
-create table D_BILLS
-(
-   FACILITIES_ID        varchar(5) not null,
-   BILL_ID              varchar(16) not null,
-   USE_QTY              integer(2) not null
-);
+-- --------------------------------------------------------
 
-alter table D_BILLS
-   add primary key (FACILITIES_ID, BILL_ID);
+--
+-- Table structure for table `staffs`
+--
 
-/*==============================================================*/
-/* Table: FACILITIES                                            */
-/*==============================================================*/
-create table FACILITIES
-(
-   FACILITIES_ID        varchar(5) not null,
-   FACILITIES_NAME      varchar(32) not null,
-   PRICE                bigint not null
-);
+CREATE TABLE `staffs` (
+  `STAFF_ID` varchar(10) NOT NULL,
+  `STAFF_USERNAME` varchar(32) NOT NULL,
+  `STAFF_PASSWORD` varchar(255) NOT NULL,
+  `STAFF_NAME` varchar(64) NOT NULL,
+  `STAFF_EMAIL` varchar(64) NOT NULL,
+  `STAFF_PHONE` varchar(13) NOT NULL,
+  `STAFF_BIRTHDAY` date NOT NULL,
+  `STAFF_IS_ACTIVE` tinyint(1) NOT NULL,
+  `STAFF_IS_MANAGER` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-alter table FACILITIES
-   add primary key (FACILITIES_ID);
+-- --------------------------------------------------------
 
-/*==============================================================*/
-/* Table: FINES                                                 */
-/*==============================================================*/
-create table FINES
-(
-   FINE_ID              varchar(8) not null,
-   FINE_NAME            varchar(32) not null,
-   FINE                 bigint not null
-);
+--
+-- Table structure for table `vouchers`
+--
 
-alter table FINES
-   add primary key (FINE_ID);
+CREATE TABLE `vouchers` (
+  `VOUCHER_ID` varchar(12) NOT NULL,
+  `VOUCHER_NAME` varchar(64) NOT NULL,
+  `VOUCHER` bigint(20) NOT NULL,
+  `DATE_START` date NOT NULL,
+  `DATE_END` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-/*==============================================================*/
-/* Table: ROOMS                                                 */
-/*==============================================================*/
-create table ROOMS
-(
-   ROOM_ID              varchar(5) not null,
-   CATEGORY_ID          varchar(3) not null,
-   ROOM_PRICE           bigint not null,
-   IS_USABLE            bool not null
-);
+--
+-- Indexes for dumped tables
+--
 
-alter table ROOMS
-   add primary key (ROOM_ID);
+--
+-- Indexes for table `bills`
+--
+ALTER TABLE `bills`
+  ADD PRIMARY KEY (`BILL_ID`),
+  ADD KEY `FK_RELATIONSHIP_1` (`CUSTOMER_ID`),
+  ADD KEY `FK_RELATIONSHIP_2` (`ROOM_ID`),
+  ADD KEY `FK_RELATIONSHIP_5` (`STAFF_ID`),
+  ADD KEY `FK_RELATIONSHIP_6` (`VOUCHER_ID`);
 
-/*==============================================================*/
-/* Table: ROOM_INVENTORY                                        */
-/*==============================================================*/
-create table ROOM_INVENTORY
-(
-   ROOM_INVENTORY_ID    int not null,
-   FINE_ID              varchar(8) not null,
-   ROOM_ID              varchar(5) not null,
-   ROOM_INVENTORY_NAME  varchar(32) not null
-);
+--
+-- Indexes for table `bill_fines`
+--
+ALTER TABLE `bill_fines`
+  ADD PRIMARY KEY (`FINE_ID`,`BILL_ID`),
+  ADD KEY `FK_RELATIONSHIP_4` (`BILL_ID`);
 
-alter table ROOM_INVENTORY
-   add primary key (ROOM_INVENTORY_ID);
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`CATEGORY_ID`);
 
-/*==============================================================*/
-/* Table: STAFFS                                                */
-/*==============================================================*/
-create table STAFFS
-(
-   STAFF_ID             varchar(10) not null,
-   STAFF_NAME           varchar(64) not null,
-   STAFF_EMAIL          varchar(64) not null,
-   STAFF_PHONE          varchar(13) not null,
-   STAFF_BIRTHDAY       date not null,
-   STAFF_IS_ACTIVE      bool not null
-);
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`CUSTOMER_ID`);
 
-alter table STAFFS
-   add primary key (STAFF_ID);
+--
+-- Indexes for table `d_bills`
+--
+ALTER TABLE `d_bills`
+  ADD PRIMARY KEY (`FACILITIES_ID`,`BILL_ID`),
+  ADD KEY `FK_RELATIONSHIP_8` (`BILL_ID`);
 
-/*==============================================================*/
-/* Table: VOUCHERS                                              */
-/*==============================================================*/
-create table VOUCHERS
-(
-   VOUCHER_ID           varchar(12) not null,
-   VOUCHER_NAME         varchar(64) not null,
-   VOUCHER              bigint not null,
-   DATE_START           date not null,
-   DATE_END             date not null
-);
+--
+-- Indexes for table `facilities`
+--
+ALTER TABLE `facilities`
+  ADD PRIMARY KEY (`FACILITIES_ID`);
 
-alter table VOUCHERS
-   add primary key (VOUCHER_ID);
+--
+-- Indexes for table `fines`
+--
+ALTER TABLE `fines`
+  ADD PRIMARY KEY (`FINE_ID`);
 
-alter table BILLS add constraint FK_RELATIONSHIP_1 foreign key (CUSTOMER_ID)
-      references CUSTOMERS (CUSTOMER_ID) on delete restrict on update restrict;
+--
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`ROOM_ID`),
+  ADD KEY `FK_RELATIONSHIP_9` (`CATEGORY_ID`);
 
-alter table BILLS add constraint FK_RELATIONSHIP_2 foreign key (ROOM_ID)
-      references ROOMS (ROOM_ID) on delete restrict on update restrict;
+--
+-- Indexes for table `room_inventory`
+--
+ALTER TABLE `room_inventory`
+  ADD PRIMARY KEY (`ROOM_INVENTORY_ID`),
+  ADD KEY `FK_RELATIONSHIP_10` (`ROOM_ID`),
+  ADD KEY `FK_RELATIONSHIP_11` (`FINE_ID`);
 
-alter table BILLS add constraint FK_RELATIONSHIP_5 foreign key (STAFF_ID)
-      references STAFFS (STAFF_ID) on delete restrict on update restrict;
+--
+-- Indexes for table `staffs`
+--
+ALTER TABLE `staffs`
+  ADD PRIMARY KEY (`STAFF_ID`);
 
-alter table BILLS add constraint FK_RELATIONSHIP_6 foreign key (VOUCHER_ID)
-      references VOUCHERS (VOUCHER_ID) on delete restrict on update restrict;
+--
+-- Indexes for table `vouchers`
+--
+ALTER TABLE `vouchers`
+  ADD PRIMARY KEY (`VOUCHER_ID`);
 
-alter table BILL_FINES add constraint FK_RELATIONSHIP_3 foreign key (FINE_ID)
-      references FINES (FINE_ID) on delete restrict on update restrict;
+--
+-- Constraints for dumped tables
+--
 
-alter table BILL_FINES add constraint FK_RELATIONSHIP_4 foreign key (BILL_ID)
-      references BILLS (BILL_ID) on delete restrict on update restrict;
+--
+-- Constraints for table `bills`
+--
+ALTER TABLE `bills`
+  ADD CONSTRAINT `FK_RELATIONSHIP_1` FOREIGN KEY (`CUSTOMER_ID`) REFERENCES `customers` (`CUSTOMER_ID`),
+  ADD CONSTRAINT `FK_RELATIONSHIP_2` FOREIGN KEY (`ROOM_ID`) REFERENCES `rooms` (`ROOM_ID`),
+  ADD CONSTRAINT `FK_RELATIONSHIP_5` FOREIGN KEY (`STAFF_ID`) REFERENCES `staffs` (`STAFF_ID`),
+  ADD CONSTRAINT `FK_RELATIONSHIP_6` FOREIGN KEY (`VOUCHER_ID`) REFERENCES `vouchers` (`VOUCHER_ID`);
 
-alter table D_BILLS add constraint FK_RELATIONSHIP_7 foreign key (FACILITIES_ID)
-      references FACILITIES (FACILITIES_ID) on delete restrict on update restrict;
+--
+-- Constraints for table `bill_fines`
+--
+ALTER TABLE `bill_fines`
+  ADD CONSTRAINT `FK_RELATIONSHIP_3` FOREIGN KEY (`FINE_ID`) REFERENCES `fines` (`FINE_ID`),
+  ADD CONSTRAINT `FK_RELATIONSHIP_4` FOREIGN KEY (`BILL_ID`) REFERENCES `bills` (`BILL_ID`);
 
-alter table D_BILLS add constraint FK_RELATIONSHIP_8 foreign key (BILL_ID)
-      references BILLS (BILL_ID) on delete restrict on update restrict;
+--
+-- Constraints for table `d_bills`
+--
+ALTER TABLE `d_bills`
+  ADD CONSTRAINT `FK_RELATIONSHIP_7` FOREIGN KEY (`FACILITIES_ID`) REFERENCES `facilities` (`FACILITIES_ID`),
+  ADD CONSTRAINT `FK_RELATIONSHIP_8` FOREIGN KEY (`BILL_ID`) REFERENCES `bills` (`BILL_ID`);
 
-alter table ROOMS add constraint FK_RELATIONSHIP_9 foreign key (CATEGORY_ID)
-      references CATEGORIES (CATEGORY_ID) on delete restrict on update restrict;
+--
+-- Constraints for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD CONSTRAINT `FK_RELATIONSHIP_9` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `categories` (`CATEGORY_ID`);
 
-alter table ROOM_INVENTORY add constraint FK_RELATIONSHIP_10 foreign key (ROOM_ID)
-      references ROOMS (ROOM_ID) on delete restrict on update restrict;
+--
+-- Constraints for table `room_inventory`
+--
+ALTER TABLE `room_inventory`
+  ADD CONSTRAINT `FK_RELATIONSHIP_10` FOREIGN KEY (`ROOM_ID`) REFERENCES `rooms` (`ROOM_ID`),
+  ADD CONSTRAINT `FK_RELATIONSHIP_11` FOREIGN KEY (`FINE_ID`) REFERENCES `fines` (`FINE_ID`);
+COMMIT;
 
-alter table ROOM_INVENTORY add constraint FK_RELATIONSHIP_11 foreign key (FINE_ID)
-      references FINES (FINE_ID) on delete restrict on update restrict;
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
