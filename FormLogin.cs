@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace ProjectHotel_UAS_PAD
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(textBox1.Text);
+            
         }
     }
 }
