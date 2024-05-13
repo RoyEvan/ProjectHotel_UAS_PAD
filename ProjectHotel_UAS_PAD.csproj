@@ -46,29 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormAddCustomer.Designer.cs">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMenuStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenuStaff.Designer.cs">
+      <DependentUpon>FormMenuStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Kamar.cs" />
-    <Compile Include="MasterCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MasterCustomer.Designer.cs">
-      <DependentUpon>MasterCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MasterKamar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MasterKamar.Designer.cs">
-      <DependentUpon>MasterKamar.cs</DependentUpon>
-    </Compile>
+    <Compile Include="koneksi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormAddCustomer.resx">
+      <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenuStaff.resx">
+      <DependentUpon>FormMenuStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MasterCustomer.resx">
       <DependentUpon>MasterCustomer.cs</DependentUpon>

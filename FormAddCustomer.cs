@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class Form1 : Form
+    public partial class FormAddCustomer : Form
     {
-        public Form1()
+        public FormAddCustomer()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(textBox1.Text);
-        }
-
-        private void kamarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
         }
     }
 }
