@@ -18,7 +18,7 @@ namespace ProjectHotel_UAS_PAD
         public static void setConn()
         {
             conn = new MySqlConnection(
-                $"server=localhost;user=root;database=db_projecthotel_pad;"
+                $"server=localhost;user=root;database=db_project_pad;"
                 );
             conn.Open();
         }
