@@ -88,7 +88,11 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
+<<<<<<< Updated upstream
             this.button1.Click += new System.EventHandler(this.button1_Click);
+=======
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+>>>>>>> Stashed changes
             // 
             // FormLogin
             // 
@@ -102,6 +106,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FormLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
