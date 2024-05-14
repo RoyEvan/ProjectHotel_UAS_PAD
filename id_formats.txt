@@ -12,12 +12,10 @@ Rooms :
 
 
 Categories :
-[KodeLorong] [3_digit_NoUrut]
+[KodeLorong] [2_digit_NoUrut]
   CONTOH = C40 --> Kategori Kamar dengan kode C40
 
-Facilities :
-F [4_digitNoUrutFasilitas]
-  CONTOH = F1010 --> Fasilitas dengan kode F1010
+Facilities : AUTO_INCREMENT
 
 
 Discounts :
@@ -26,13 +24,12 @@ DSC [5_digit_KodeFasilitas][4_digitNoUrutDiskon]
 
 
 Customers :
-CU [8_digit_TanggalNginap_PertamaKali] [2_digitNoUrut]
-  CONTOH = C1107200499 --> Customer ke 99 dengan tanggal nginap pertama kali pada 11 Juli 2004
+16 digit NIK
 
 
 Staffs :
-S [8_digitTanggalGabung] [1_digitNoUrut]
-  CONTOH = S110720049 --> Staff ke 9 yang bergabung pada tanggal 11 Juli 2004
+S [3_digit_no_urut]
+  CONTOH = S101 --> Staff ke 101
 
 
 Fines :

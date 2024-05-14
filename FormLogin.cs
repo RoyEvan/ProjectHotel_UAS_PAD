@@ -16,16 +16,49 @@ namespace ProjectHotel_UAS_PAD
         public FormLogin()
         {
             InitializeComponent();
+            koneksi.setConn();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-        }
+            string username = textUsername.Text;
+            string password = textPassword.Text;
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("SELECT staff_is_manager FROM staffs WHERE staff_username = @Username " +
+                    "AND staff_password = @Password", koneksi.getConn());
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Password", password);
 
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    bool isManager = reader.GetBoolean("staff_is_manager");
+
+                    if (isManager)
+                    {
+                        FormMenuManager fmm = new FormMenuManager();
+                        fmm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        FormMenuStaff fms = new FormMenuStaff();
+                        fms.Show();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Username atau password salah.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
