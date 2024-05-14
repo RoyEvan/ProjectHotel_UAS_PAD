@@ -15,9 +15,7 @@ Categories :
 [KodeLorong] [3_digit_NoUrut]
   CONTOH = C40 --> Kategori Kamar dengan kode C40
 
-Facilities :
-F [4_digitNoUrutFasilitas]
-  CONTOH = F1010 --> Fasilitas dengan kode F1010
+Facilities : AUTO_INCREMENT
 
 
 Discounts :
