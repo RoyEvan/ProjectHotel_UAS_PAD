@@ -92,6 +92,9 @@
     <EmbeddedResource Include="FormAddCustomer.resx">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEditStaff.resx">
+      <DependentUpon>FormEditStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,12 +103,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenuStaff.resx">
       <DependentUpon>FormMenuStaff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MasterCustomer.resx">
-      <DependentUpon>MasterCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MasterKamar.resx">
-      <DependentUpon>MasterKamar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
