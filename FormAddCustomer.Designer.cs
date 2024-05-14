@@ -38,7 +38,7 @@
             this.textName = new System.Windows.Forms.TextBox();
             this.textAddress = new System.Windows.Forms.TextBox();
             this.textPhone = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_submit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -132,22 +132,22 @@
             this.textPhone.Size = new System.Drawing.Size(139, 22);
             this.textPhone.TabIndex = 12;
             // 
-            // button1
+            // btn_submit
             // 
-            this.button1.Location = new System.Drawing.Point(17, 137);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(259, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_submit.Location = new System.Drawing.Point(17, 137);
+            this.btn_submit.Name = "btn_submit";
+            this.btn_submit.Size = new System.Drawing.Size(259, 23);
+            this.btn_submit.TabIndex = 13;
+            this.btn_submit.Text = "Submit";
+            this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // FormAddCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 188);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.textPhone);
             this.Controls.Add(this.textAddress);
             this.Controls.Add(this.textName);
@@ -177,6 +177,6 @@
         private System.Windows.Forms.TextBox textName;
         private System.Windows.Forms.TextBox textAddress;
         private System.Windows.Forms.TextBox textPhone;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_submit;
     }
 }

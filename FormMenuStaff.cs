@@ -19,9 +19,10 @@ namespace ProjectHotel_UAS_PAD
 
         private void checkinToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAddCustomer fa = new FormAddCustomer();
-            fa.Show();
+            FormPesanKamar form = new FormPesanKamar();
             this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
     }
 }
