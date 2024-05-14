@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class FormMenuManager : Form
+    public partial class FormEditStaff : Form
     {
-        public FormMenuManager()
+        public FormEditStaff()
         {
             InitializeComponent();
-        }
-
-        private void staffToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

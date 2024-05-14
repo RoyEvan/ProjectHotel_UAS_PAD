@@ -24,3 +24,4 @@ C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.
 C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.csproj.CopyComplete
 C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.exe
 C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.pdb
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.FormMenuManager.resources
