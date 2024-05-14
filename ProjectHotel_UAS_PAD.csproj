@@ -61,11 +61,23 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMenuManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenuManager.Designer.cs">
+      <DependentUpon>FormMenuManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMenuStaff.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMenuStaff.Designer.cs">
       <DependentUpon>FormMenuStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPesanKamar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPesanKamar.Designer.cs">
+      <DependentUpon>FormPesanKamar.cs</DependentUpon>
     </Compile>
     <Compile Include="Kamar.cs" />
     <Compile Include="koneksi.cs" />

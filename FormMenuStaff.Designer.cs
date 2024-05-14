@@ -44,7 +44,7 @@
             this.logTransactionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(349, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(372, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -54,6 +54,7 @@
             this.checkinToolStripMenuItem.Name = "checkinToolStripMenuItem";
             this.checkinToolStripMenuItem.Size = new System.Drawing.Size(84, 27);
             this.checkinToolStripMenuItem.Text = "Checkin";
+            this.checkinToolStripMenuItem.Click += new System.EventHandler(this.checkinToolStripMenuItem_Click);
             // 
             // checkoutToolStripMenuItem
             // 
@@ -73,7 +74,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 39);
+            this.ClientSize = new System.Drawing.Size(372, 101);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMenuStaff";

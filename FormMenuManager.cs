@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class FormMenuStaff : Form
+    public partial class FormMenuManager : Form
     {
-        public FormMenuStaff()
+        public FormMenuManager()
         {
             InitializeComponent();
-        }
-
-        private void checkinToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAddCustomer fa = new FormAddCustomer();
-            fa.Show();
-            this.Hide();
         }
     }
 }

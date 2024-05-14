@@ -8,3 +8,19 @@ C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.exe
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.pdb
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.Form1.resources
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\bin\Debug\ProjectHotel_UAS_PAD.exe.config
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\bin\Debug\ProjectHotel_UAS_PAD.exe
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\bin\Debug\ProjectHotel_UAS_PAD.pdb
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\bin\Debug\MySql.Data.dll
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.csproj.AssemblyReference.cache
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.FormAddCustomer.resources
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.FormLogin.resources
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.FormMenuStaff.resources
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.MasterCustomer.resources
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.MasterKamar.resources
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.Properties.Resources.resources
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.csproj.GenerateResource.cache
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.csproj.CopyComplete
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.exe
+C:\Users\Lenovo\OneDrive\Dokumen\Project UAS PAD\obj\Debug\ProjectHotel_UAS_PAD.pdb
