@@ -79,14 +79,19 @@
     <Compile Include="FormMenuStaff.Designer.cs">
       <DependentUpon>FormMenuStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPesanKamar.cs">
+    <Compile Include="FormCheckin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPesanKamar.Designer.cs">
-      <DependentUpon>FormPesanKamar.cs</DependentUpon>
+    <Compile Include="FormCheckin.Designer.cs">
+      <DependentUpon>FormCheckin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Kamar.cs" />
     <Compile Include="koneksi.cs" />
+    <Compile Include="FormAddRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddRoom.Designer.cs">
+      <DependentUpon>FormAddRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAddCustomer.resx">

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class MasterKamar : Form
+    public partial class FormAddRoom : Form
     {
-        public MasterKamar()
+        public FormAddRoom()
         {
             InitializeComponent();
         }

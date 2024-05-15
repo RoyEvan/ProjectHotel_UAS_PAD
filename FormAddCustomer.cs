@@ -23,7 +23,7 @@ namespace ProjectHotel_UAS_PAD
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-            //c.InsertCustomer(textNIK.Text, textName.Text, textAddress.Text, textPhone.Text);
+            c.InsertCustomer(textNIK.Text, textName.Text, textAddress.Text, textPhone.Text);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ProjectHotel_UAS_PAD
 {
-    partial class MasterKamar
+    partial class FormAddRoom
     {
         /// <summary>
         /// Required designer variable.

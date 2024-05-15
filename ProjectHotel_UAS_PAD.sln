@@ -5,6 +5,11 @@ VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectHotel_UAS_PAD", "ProjectHotel_UAS_PAD.csproj", "{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{433CD2E3-3CAB-4AF5-A965-7F0C01E9AE0A}"
+	ProjectSection(SolutionItems) = preProject
+		Customer.cs = Customer.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
