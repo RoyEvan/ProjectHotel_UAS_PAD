@@ -19,7 +19,7 @@ namespace ProjectHotel_UAS_PAD
 
         private void checkinToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCheckin form = new FormCheckin();
+            F form = new FormCheckin();
             this.Hide();
             form.ShowDialog();
             this.Show();
