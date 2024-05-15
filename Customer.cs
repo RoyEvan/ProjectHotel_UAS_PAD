@@ -1,10 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
@@ -23,7 +19,7 @@ namespace ProjectHotel_UAS_PAD
             return dt;
         }
 
-        public DataTable GetCustomer() 
+        public DataTable GetCustomer()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT " +
                 "customer_id AS NIK, " +
@@ -62,6 +58,6 @@ namespace ProjectHotel_UAS_PAD
             }
         }
 
-        
+
     }
 }

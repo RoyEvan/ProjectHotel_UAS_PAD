@@ -30,7 +30,6 @@ C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\bin\Debug\
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.FormAddCustomer.resources
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.FormLogin.resources
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.FormMenuStaff.resources
-C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.MasterCustomer.resources
-C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.MasterKamar.resources
 C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectH.55BE6CF0.Up2Date
-C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.FormPesanKamar.resources
+C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.FormEditStaff.resources
+C:\Users\xteam\OneDrive\Documents\kuliah\PAD\UAS\ProjectHotel_UAS_PAD\obj\Debug\ProjectHotel_UAS_PAD.FormMenuManager.resources

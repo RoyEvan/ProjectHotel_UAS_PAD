@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
@@ -16,8 +13,8 @@ namespace ProjectHotel_UAS_PAD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
-            //Application.Run(new FormPesanKamar());
+            //Application.Run(new FormLogin());
+            Application.Run(new FormEditStaff());
         }
     }
 }
