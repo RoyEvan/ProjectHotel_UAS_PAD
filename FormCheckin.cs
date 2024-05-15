@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class FormPesanKamar : Form
+    public partial class FormCheckin : Form
     {
 
         Customer c = new Customer();
         Room r = new Room();
-        public FormPesanKamar()
+        public FormCheckin()
         {
             InitializeComponent();
             koneksi.setConn();

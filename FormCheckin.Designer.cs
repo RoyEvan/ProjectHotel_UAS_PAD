@@ -1,6 +1,6 @@
 ﻿namespace ProjectHotel_UAS_PAD
 {
-    partial class FormPesanKamar
+    partial class FormCheckin
     {
         /// <summary>
         /// Required designer variable.

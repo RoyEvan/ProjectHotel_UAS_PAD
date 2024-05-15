@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer.cs" />
     <Compile Include="FormAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +95,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Room.cs" />
     <EmbeddedResource Include="FormAddCustomer.resx">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
     </EmbeddedResource>

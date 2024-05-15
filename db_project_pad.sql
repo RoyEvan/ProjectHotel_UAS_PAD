@@ -1,23 +1,22 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     14/05/2024 7:07:34 PM                        */
+/* Created on:     15/05/2024 12:07:07 PM                       */
 /*==============================================================*/
-DROP DATABASE db_project_pad;
-CREATE DATABASE db_project_pad;
 
-DROP TABLE IF EXISTS BILLS;
 
-DROP TABLE IF EXISTS CATEGORIES;
+drop table if exists BILLS;
 
-DROP TABLE IF EXISTS CUSTOMERS;
+drop table if exists CATEGORIES;
 
-DROP TABLE IF EXISTS D_BILLS;
+drop table if exists CUSTOMERS;
 
-DROP TABLE IF EXISTS D_FINES;
+drop table if exists FACILITIES;
 
-DROP TABLE IF EXISTS FACILITIES;
+drop table if exists FINES;
 
-DROP TABLE IF EXISTS FINES;
+drop table if exists RELATIONSHIP_3;
+
+drop table if exists RELATIONSHIP_6;
 
 drop table if exists ROOMS;
 
@@ -68,34 +67,14 @@ create table CUSTOMERS
 );
 
 /*==============================================================*/
-/* Table: D_BILLS                                               */
-/*==============================================================*/
-create table D_BILLS
-(
-   FACILITIES_ID        varchar(5) not null,
-   BILL_ID              varchar(16) not null,
-   primary key (FACILITIES_ID, BILL_ID)
-);
-
-/*==============================================================*/
-/* Table: D_FINES                                               */
-/*==============================================================*/
-create table D_FINES
-(
-   FINE_ID              varchar(8) not null,
-   BILL_ID              varchar(16) not null,
-   primary key (FINE_ID, BILL_ID)
-);
-
-/*==============================================================*/
 /* Table: FACILITIES                                            */
 /*==============================================================*/
 create table FACILITIES
 (
-   FACILITIES_ID        varchar(5) not null,
-   FACILITIES_NAME      varchar(32) not null,
+   FACILITY_ID          bigint not null,
+   FACILITY_NAME        varchar(32) not null,
    PRICE                bigint not null,
-   primary key (FACILITIES_ID)
+   primary key (FACILITY_ID)
 );
 
 /*==============================================================*/
@@ -107,6 +86,26 @@ create table FINES
    FINE_NAME            varchar(32) not null,
    FINE                 bigint not null,
    primary key (FINE_ID)
+);
+
+/*==============================================================*/
+/* Table: RELATIONSHIP_3                                        */
+/*==============================================================*/
+create table RELATIONSHIP_3
+(
+   FINE_ID              varchar(8) not null,
+   BILL_ID              varchar(16) not null,
+   primary key (FINE_ID, BILL_ID)
+);
+
+/*==============================================================*/
+/* Table: RELATIONSHIP_6                                        */
+/*==============================================================*/
+create table RELATIONSHIP_6
+(
+   FACILITY_ID          bigint not null,
+   BILL_ID              varchar(16) not null,
+   primary key (FACILITY_ID, BILL_ID)
 );
 
 /*==============================================================*/
@@ -174,16 +173,16 @@ alter table BILLS add constraint FK_RELATIONSHIP_5 foreign key (STAFF_ID)
 alter table BILLS add constraint FK_RELATIONSHIP_6 foreign key (VOUCHER_ID)
       references VOUCHERS (VOUCHER_ID) on delete restrict on update restrict;
 
-alter table D_BILLS add constraint FK_RELATIONSHIP_7 foreign key (FACILITIES_ID)
-      references FACILITIES (FACILITIES_ID) on delete restrict on update restrict;
-
-alter table D_BILLS add constraint FK_RELATIONSHIP_8 foreign key (BILL_ID)
-      references BILLS (BILL_ID) on delete restrict on update restrict;
-
-alter table D_FINES add constraint FK_RELATIONSHIP_3 foreign key (FINE_ID)
+alter table RELATIONSHIP_3 add constraint FK_RELATIONSHIP_3 foreign key (FINE_ID)
       references FINES (FINE_ID) on delete restrict on update restrict;
 
-alter table D_FINES add constraint FK_RELATIONSHIP_4 foreign key (BILL_ID)
+alter table RELATIONSHIP_3 add constraint FK_RELATIONSHIP_4 foreign key (BILL_ID)
+      references BILLS (BILL_ID) on delete restrict on update restrict;
+
+alter table RELATIONSHIP_6 add constraint FK_RELATIONSHIP_7 foreign key (FACILITY_ID)
+      references FACILITIES (FACILITY_ID) on delete restrict on update restrict;
+
+alter table RELATIONSHIP_6 add constraint FK_RELATIONSHIP_8 foreign key (BILL_ID)
       references BILLS (BILL_ID) on delete restrict on update restrict;
 
 alter table ROOMS add constraint FK_RELATIONSHIP_9 foreign key (CATEGORY_ID)
