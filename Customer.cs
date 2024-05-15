@@ -7,10 +7,16 @@ namespace ProjectHotel_UAS_PAD
 {
     internal class Customer
     {
-        public DataTable GetCustomerByPhone(string customer_phone)
+        public DataTable GetCustomerByPhone(string customer_phone = "8")
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM customers WHERE customer_phone = @customer_phone;", koneksi.getConn());
-            cmd.Parameters.AddWithValue("phone_number", customer_phone);
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                    "customer_id AS NIK, " +
+                    "customer_name AS Name, " +
+                    "customer_address AS Address, " +
+                    "customer_phone AS Phone " +
+                "FROM customers " +
+                "WHERE customer_phone LIKE @customer_phone;", koneksi.getConn());
+            cmd.Parameters.AddWithValue("customer_phone", "%" + customer_phone + "%");
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             DataTable dt = new DataTable();
@@ -25,7 +31,7 @@ namespace ProjectHotel_UAS_PAD
                 "customer_id AS NIK, " +
                 "customer_name AS Name, " +
                 "customer_address AS Address, " +
-                "customer_address AS Phone " +
+                "customer_phone AS Phone " +
             "FROM customers;", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 

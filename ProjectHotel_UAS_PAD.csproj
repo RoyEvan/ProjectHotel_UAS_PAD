@@ -56,6 +56,12 @@
     <Compile Include="FormAddCustomer.Designer.cs">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCheckout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCheckout.Designer.cs">
+      <DependentUpon>FormCheckout.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditStaff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,12 @@
     <Compile Include="FormCheckin.Designer.cs">
       <DependentUpon>FormCheckin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTransactionLogs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransactionLogs.Designer.cs">
+      <DependentUpon>FormTransactionLogs.cs</DependentUpon>
+    </Compile>
     <Compile Include="koneksi.cs" />
     <Compile Include="FormAddRoom.cs">
       <SubType>Form</SubType>
@@ -98,6 +110,9 @@
     <Compile Include="Room.cs" />
     <EmbeddedResource Include="FormAddCustomer.resx">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCheckin.resx">
+      <DependentUpon>FormCheckin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditStaff.resx">
       <DependentUpon>FormEditStaff.cs</DependentUpon>

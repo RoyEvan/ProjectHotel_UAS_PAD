@@ -8,7 +8,12 @@ namespace ProjectHotel_UAS_PAD
     {
         public DataTable GetRooms()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM rooms;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                "r.room_id AS ID, " +
+                "c.category_name AS Category, " +
+                "CONCAT(\"Rp. \", FORMAT(r.room_price, 0)) AS Price, " +
+                "r.is_usable AS Available " +
+            "FROM rooms r LEFT OUTER JOIN categories c ON r.category_id = c.category_id;", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             DataTable dt = new DataTable();
@@ -18,6 +23,11 @@ namespace ProjectHotel_UAS_PAD
         }
 
         public void InsertRoom()
+        {
+
+        }
+
+        public void UpdateRoom()
         {
 
         }
@@ -36,7 +46,7 @@ namespace ProjectHotel_UAS_PAD
 
         public DataTable GetAllFcilities()
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT facility_id AS ID, facility_name AS Name, facility_price AS Price FROM facilities;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT facility_id AS ID, facility_name AS Name, price AS Price FROM facilities;", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             DataTable dt = new DataTable();
@@ -44,5 +54,7 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
+
+        
     }
 }

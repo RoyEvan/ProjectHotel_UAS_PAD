@@ -36,26 +36,45 @@
             this.dgv_cust = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.dgv_rooms = new System.Windows.Forms.DataGridView();
-            this.dtp_checkout = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtp_checkout = new System.Windows.Forms.DateTimePicker();
             this.btn_checkin = new System.Windows.Forms.Button();
             this.lbl_staffName = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dgv_facility = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.summary_days = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.summary_custName = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.summary_custNIK = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.summary_roomID = new System.Windows.Forms.Label();
+            this.summary_roomLocation = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.summary_roomCategory = new System.Windows.Forms.Label();
+            this.dgv_addedFacilities = new System.Windows.Forms.DataGridView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.summary_totalFacPrice = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.summary_facilitiesAdded = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cust)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rooms)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_facility)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_addedFacilities)).BeginInit();
             this.SuspendLayout();
             // 
             // tbox_custPhone
@@ -123,6 +142,7 @@
             this.dgv_cust.RowTemplate.Height = 24;
             this.dgv_cust.Size = new System.Drawing.Size(764, 228);
             this.dgv_cust.TabIndex = 5;
+            this.dgv_cust.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cust_CellContentClick);
             // 
             // panel1
             // 
@@ -147,16 +167,6 @@
             this.panel2.Size = new System.Drawing.Size(770, 312);
             this.panel2.TabIndex = 8;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 53);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 18);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Check Out Date";
-            // 
             // dgv_rooms
             // 
             this.dgv_rooms.AllowUserToAddRows = false;
@@ -172,14 +182,7 @@
             this.dgv_rooms.RowTemplate.Height = 24;
             this.dgv_rooms.Size = new System.Drawing.Size(764, 228);
             this.dgv_rooms.TabIndex = 3;
-            // 
-            // dtp_checkout
-            // 
-            this.dtp_checkout.Location = new System.Drawing.Point(132, 53);
-            this.dtp_checkout.Name = "dtp_checkout";
-            this.dtp_checkout.Size = new System.Drawing.Size(213, 22);
-            this.dtp_checkout.TabIndex = 11;
-            this.dtp_checkout.Value = new System.DateTime(2024, 5, 14, 0, 0, 0, 0);
+            this.dgv_rooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_rooms_CellContentClick);
             // 
             // label3
             // 
@@ -201,11 +204,30 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Room";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(26, 53);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 18);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Check Out Date";
+            // 
+            // dtp_checkout
+            // 
+            this.dtp_checkout.Location = new System.Drawing.Point(164, 52);
+            this.dtp_checkout.Name = "dtp_checkout";
+            this.dtp_checkout.Size = new System.Drawing.Size(213, 22);
+            this.dtp_checkout.TabIndex = 11;
+            this.dtp_checkout.Value = new System.DateTime(2024, 5, 15, 22, 53, 11, 0);
+            this.dtp_checkout.ValueChanged += new System.EventHandler(this.dtp_checkout_ValueChanged);
+            // 
             // btn_checkin
             // 
             this.btn_checkin.Location = new System.Drawing.Point(3, 908);
             this.btn_checkin.Name = "btn_checkin";
-            this.btn_checkin.Size = new System.Drawing.Size(668, 35);
+            this.btn_checkin.Size = new System.Drawing.Size(531, 35);
             this.btn_checkin.TabIndex = 9;
             this.btn_checkin.Text = "Check In";
             this.btn_checkin.UseVisualStyleBackColor = true;
@@ -224,35 +246,115 @@
             // 
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.dataGridView1);
+            this.panel3.Controls.Add(this.dgv_facility);
             this.panel3.Location = new System.Drawing.Point(12, 699);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(770, 311);
             this.panel3.TabIndex = 11;
             // 
-            // dataGridView1
+            // button1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 53);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(764, 214);
-            this.dataGridView1.TabIndex = 0;
+            this.button1.Location = new System.Drawing.Point(621, 273);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(146, 35);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Add Facility";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 32);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Facilities";
+            // 
+            // dgv_facility
+            // 
+            this.dgv_facility.AllowUserToAddRows = false;
+            this.dgv_facility.AllowUserToDeleteRows = false;
+            this.dgv_facility.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_facility.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_facility.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgv_facility.Location = new System.Drawing.Point(3, 53);
+            this.dgv_facility.Name = "dgv_facility";
+            this.dgv_facility.ReadOnly = true;
+            this.dgv_facility.RowHeadersVisible = false;
+            this.dgv_facility.RowHeadersWidth = 51;
+            this.dgv_facility.RowTemplate.Height = 24;
+            this.dgv_facility.Size = new System.Drawing.Size(764, 214);
+            this.dgv_facility.TabIndex = 0;
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.summary_facilitiesAdded);
+            this.panel4.Controls.Add(this.label17);
+            this.panel4.Controls.Add(this.summary_totalFacPrice);
+            this.panel4.Controls.Add(this.label16);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.dgv_addedFacilities);
+            this.panel4.Controls.Add(this.summary_roomCategory);
+            this.panel4.Controls.Add(this.label12);
+            this.panel4.Controls.Add(this.label14);
+            this.panel4.Controls.Add(this.summary_roomLocation);
+            this.panel4.Controls.Add(this.summary_roomID);
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Controls.Add(this.summary_custNIK);
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.summary_days);
+            this.panel4.Controls.Add(this.label9);
+            this.panel4.Controls.Add(this.summary_custName);
+            this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.btn_checkin);
             this.panel4.Controls.Add(this.dtp_checkout);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Location = new System.Drawing.Point(788, 64);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(674, 946);
+            this.panel4.Size = new System.Drawing.Size(537, 946);
             this.panel4.TabIndex = 13;
+            // 
+            // summary_days
+            // 
+            this.summary_days.AutoSize = true;
+            this.summary_days.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_days.Location = new System.Drawing.Point(146, 270);
+            this.summary_days.Name = "summary_days";
+            this.summary_days.Size = new System.Drawing.Size(16, 18);
+            this.summary_days.TabIndex = 19;
+            this.summary_days.Text = "1";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(40, 270);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 18);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Days of Stay :";
+            // 
+            // summary_custName
+            // 
+            this.summary_custName.AutoSize = true;
+            this.summary_custName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_custName.Location = new System.Drawing.Point(146, 138);
+            this.summary_custName.Name = "summary_custName";
+            this.summary_custName.Size = new System.Drawing.Size(71, 18);
+            this.summary_custName.TabIndex = 17;
+            this.summary_custName.Text = "Unknown";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 138);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(126, 18);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Customer Name :";
             // 
             // label6
             // 
@@ -264,38 +366,157 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Summary";
             // 
-            // label7
+            // summary_custNIK
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(283, 32);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Additional Facilities";
+            this.summary_custNIK.AutoSize = true;
+            this.summary_custNIK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_custNIK.Location = new System.Drawing.Point(146, 110);
+            this.summary_custNIK.Name = "summary_custNIK";
+            this.summary_custNIK.Size = new System.Drawing.Size(136, 18);
+            this.summary_custNIK.TabIndex = 21;
+            this.summary_custNIK.Text = "1234561212120001";
             // 
-            // button1
+            // label11
             // 
-            this.button1.Location = new System.Drawing.Point(621, 273);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 35);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Add Facility";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(40, 110);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 18);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Customer ID :";
             // 
-            // FormPesanKamar
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(74, 188);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(66, 16);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Room ID :";
+            // 
+            // summary_roomID
+            // 
+            this.summary_roomID.AutoSize = true;
+            this.summary_roomID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_roomID.Location = new System.Drawing.Point(146, 186);
+            this.summary_roomID.Name = "summary_roomID";
+            this.summary_roomID.Size = new System.Drawing.Size(136, 18);
+            this.summary_roomID.TabIndex = 23;
+            this.summary_roomID.Text = "1234561212120001";
+            // 
+            // summary_roomLocation
+            // 
+            this.summary_roomLocation.AutoSize = true;
+            this.summary_roomLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_roomLocation.Location = new System.Drawing.Point(146, 213);
+            this.summary_roomLocation.Name = "summary_roomLocation";
+            this.summary_roomLocation.Size = new System.Drawing.Size(136, 18);
+            this.summary_roomLocation.TabIndex = 24;
+            this.summary_roomLocation.Text = "1234561212120001";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(76, 215);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(64, 16);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "Location :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(32, 242);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(108, 16);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Room Category :";
+            // 
+            // summary_roomCategory
+            // 
+            this.summary_roomCategory.AutoSize = true;
+            this.summary_roomCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_roomCategory.Location = new System.Drawing.Point(146, 242);
+            this.summary_roomCategory.Name = "summary_roomCategory";
+            this.summary_roomCategory.Size = new System.Drawing.Size(136, 18);
+            this.summary_roomCategory.TabIndex = 27;
+            this.summary_roomCategory.Text = "1234561212120001";
+            // 
+            // dgv_addedFacilities
+            // 
+            this.dgv_addedFacilities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_addedFacilities.Location = new System.Drawing.Point(3, 365);
+            this.dgv_addedFacilities.Name = "dgv_addedFacilities";
+            this.dgv_addedFacilities.RowHeadersWidth = 51;
+            this.dgv_addedFacilities.RowTemplate.Height = 24;
+            this.dgv_addedFacilities.Size = new System.Drawing.Size(531, 260);
+            this.dgv_addedFacilities.TabIndex = 28;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 326);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(233, 32);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Added Facilities";
+            // 
+            // summary_totalFacPrice
+            // 
+            this.summary_totalFacPrice.AutoSize = true;
+            this.summary_totalFacPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_totalFacPrice.Location = new System.Drawing.Point(149, 884);
+            this.summary_totalFacPrice.Name = "summary_totalFacPrice";
+            this.summary_totalFacPrice.Size = new System.Drawing.Size(16, 18);
+            this.summary_totalFacPrice.TabIndex = 31;
+            this.summary_totalFacPrice.Text = "1";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(6, 884);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(137, 18);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "Facilities Total : Rp.";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // summary_facilitiesAdded
+            // 
+            this.summary_facilitiesAdded.AutoSize = true;
+            this.summary_facilitiesAdded.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_facilitiesAdded.Location = new System.Drawing.Point(389, 884);
+            this.summary_facilitiesAdded.Name = "summary_facilitiesAdded";
+            this.summary_facilitiesAdded.Size = new System.Drawing.Size(16, 18);
+            this.summary_facilitiesAdded.TabIndex = 33;
+            this.summary_facilitiesAdded.Text = "1";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(424, 884);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(110, 18);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "Facilities Added";
+            // 
+            // FormCheckin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1474, 1023);
+            this.ClientSize = new System.Drawing.Size(1337, 1023);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lbl_staffName);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
-            this.Name = "FormPesanKamar";
+            this.Name = "FormCheckin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPesanKamar";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cust)).EndInit();
@@ -306,9 +527,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rooms)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_facility)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_addedFacilities)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,10 +554,28 @@
         private System.Windows.Forms.DateTimePicker dtp_checkout;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_facility;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label summary_custName;
+        private System.Windows.Forms.Label summary_days;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label summary_custNIK;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label summary_roomCategory;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label summary_roomLocation;
+        private System.Windows.Forms.Label summary_roomID;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dgv_addedFacilities;
+        private System.Windows.Forms.Label summary_totalFacPrice;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label summary_facilitiesAdded;
+        private System.Windows.Forms.Label label17;
     }
 }
