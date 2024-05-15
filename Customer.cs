@@ -30,7 +30,7 @@ namespace ProjectHotel_UAS_PAD
                 "customer_name AS Name, " +
                 "customer_address AS Address, " +
                 "customer_address AS Phone " +
-                "FROM customers;", koneksi.getConn());
+            "FROM customers;", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             DataTable dt = new DataTable();

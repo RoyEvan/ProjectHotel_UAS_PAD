@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class MasterCustomer : Form
+    public partial class FormAddRoom : Form
     {
-        public MasterCustomer()
+        public FormAddRoom()
         {
             InitializeComponent();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
