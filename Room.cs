@@ -17,7 +17,7 @@ namespace ProjectHotel_UAS_PAD
         public string category {
             get; set;
         }
-        public string price_base {
+        public long price_base {
             get; set;
         }
         public string price {
@@ -27,7 +27,7 @@ namespace ProjectHotel_UAS_PAD
             get; set;
         }
 
-        public Room(string id, string cid, string category, string price_base, string price, bool available)
+        public Room(string id, string cid, string category, long price_base, string price, bool available)
         {
             this.id = id;
             this.cid = cid;

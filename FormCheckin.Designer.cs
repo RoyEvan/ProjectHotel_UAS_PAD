@@ -46,13 +46,12 @@
             this.btn_addFacility = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_facility = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.panel_summary = new System.Windows.Forms.Panel();
+            this.btn_removeAddedFac = new System.Windows.Forms.Button();
             this.summary_roomPrice = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.summary_roomNumber = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.summary_addedFacCount = new System.Windows.Forms.Label();
             this.summary_totalFacPrice = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -68,14 +67,25 @@
             this.summary_custName = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.summary_roomFacTotalPrice = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btn_checkVoucher = new System.Windows.Forms.Button();
+            this.tbox_voucherId = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.summary_grandTotal = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cust)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_rooms)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facility)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.panel_summary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_addedFacilities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbox_custPhone
@@ -207,6 +217,7 @@
             // 
             // dtp_checkout
             // 
+            this.dtp_checkout.Enabled = false;
             this.dtp_checkout.Location = new System.Drawing.Point(164, 52);
             this.dtp_checkout.Name = "dtp_checkout";
             this.dtp_checkout.Size = new System.Drawing.Size(213, 22);
@@ -216,6 +227,7 @@
             // 
             // btn_checkin
             // 
+            this.btn_checkin.Enabled = false;
             this.btn_checkin.Location = new System.Drawing.Point(786, 937);
             this.btn_checkin.Name = "btn_checkin";
             this.btn_checkin.Size = new System.Drawing.Size(531, 35);
@@ -245,6 +257,7 @@
             // 
             // btn_addFacility
             // 
+            this.btn_addFacility.Enabled = false;
             this.btn_addFacility.Location = new System.Drawing.Point(618, 273);
             this.btn_addFacility.Name = "btn_addFacility";
             this.btn_addFacility.Size = new System.Drawing.Size(146, 35);
@@ -280,62 +293,73 @@
             this.dgv_facility.Size = new System.Drawing.Size(761, 214);
             this.dgv_facility.TabIndex = 0;
             // 
-            // panel4
+            // panel_summary
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.button2);
-            this.panel4.Controls.Add(this.summary_roomPrice);
-            this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.summary_roomNumber);
-            this.panel4.Controls.Add(this.label18);
-            this.panel4.Controls.Add(this.summary_addedFacCount);
-            this.panel4.Controls.Add(this.summary_totalFacPrice);
-            this.panel4.Controls.Add(this.label16);
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.dgv_addedFacilities);
-            this.panel4.Controls.Add(this.summary_roomCategory);
-            this.panel4.Controls.Add(this.label12);
-            this.panel4.Controls.Add(this.label14);
-            this.panel4.Controls.Add(this.summary_roomLocation);
-            this.panel4.Controls.Add(this.summary_custNIK);
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.summary_days);
-            this.panel4.Controls.Add(this.label9);
-            this.panel4.Controls.Add(this.summary_custName);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.dtp_checkout);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(782, 51);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(537, 880);
-            this.panel4.TabIndex = 13;
+            this.panel_summary.BackColor = System.Drawing.Color.White;
+            this.panel_summary.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_summary.Controls.Add(this.label17);
+            this.panel_summary.Controls.Add(this.label20);
+            this.panel_summary.Controls.Add(this.summary_grandTotal);
+            this.panel_summary.Controls.Add(this.label19);
+            this.panel_summary.Controls.Add(this.dataGridView1);
+            this.panel_summary.Controls.Add(this.tbox_voucherId);
+            this.panel_summary.Controls.Add(this.btn_checkVoucher);
+            this.panel_summary.Controls.Add(this.label10);
+            this.panel_summary.Controls.Add(this.summary_roomFacTotalPrice);
+            this.panel_summary.Controls.Add(this.label4);
+            this.panel_summary.Controls.Add(this.btn_removeAddedFac);
+            this.panel_summary.Controls.Add(this.summary_roomPrice);
+            this.panel_summary.Controls.Add(this.label15);
+            this.panel_summary.Controls.Add(this.summary_roomNumber);
+            this.panel_summary.Controls.Add(this.label18);
+            this.panel_summary.Controls.Add(this.summary_totalFacPrice);
+            this.panel_summary.Controls.Add(this.label16);
+            this.panel_summary.Controls.Add(this.label13);
+            this.panel_summary.Controls.Add(this.dgv_addedFacilities);
+            this.panel_summary.Controls.Add(this.summary_roomCategory);
+            this.panel_summary.Controls.Add(this.label12);
+            this.panel_summary.Controls.Add(this.label14);
+            this.panel_summary.Controls.Add(this.summary_roomLocation);
+            this.panel_summary.Controls.Add(this.summary_custNIK);
+            this.panel_summary.Controls.Add(this.label11);
+            this.panel_summary.Controls.Add(this.summary_days);
+            this.panel_summary.Controls.Add(this.label9);
+            this.panel_summary.Controls.Add(this.summary_custName);
+            this.panel_summary.Controls.Add(this.label8);
+            this.panel_summary.Controls.Add(this.label6);
+            this.panel_summary.Controls.Add(this.dtp_checkout);
+            this.panel_summary.Controls.Add(this.label5);
+            this.panel_summary.Enabled = false;
+            this.panel_summary.Location = new System.Drawing.Point(782, 51);
+            this.panel_summary.Name = "panel_summary";
+            this.panel_summary.Size = new System.Drawing.Size(537, 880);
+            this.panel_summary.TabIndex = 13;
             // 
-            // button2
+            // btn_removeAddedFac
             // 
-            this.button2.Location = new System.Drawing.Point(6, 613);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(146, 35);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Remove Facility";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_removeAddedFac.Enabled = false;
+            this.btn_removeAddedFac.Location = new System.Drawing.Point(386, 531);
+            this.btn_removeAddedFac.Name = "btn_removeAddedFac";
+            this.btn_removeAddedFac.Size = new System.Drawing.Size(146, 35);
+            this.btn_removeAddedFac.TabIndex = 16;
+            this.btn_removeAddedFac.Text = "Remove Facility";
+            this.btn_removeAddedFac.UseVisualStyleBackColor = true;
             // 
             // summary_roomPrice
             // 
             this.summary_roomPrice.AutoSize = true;
             this.summary_roomPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_roomPrice.Location = new System.Drawing.Point(383, 668);
+            this.summary_roomPrice.Location = new System.Drawing.Point(130, 566);
             this.summary_roomPrice.Name = "summary_roomPrice";
             this.summary_roomPrice.Size = new System.Drawing.Size(16, 18);
             this.summary_roomPrice.TabIndex = 37;
-            this.summary_roomPrice.Text = "1";
+            this.summary_roomPrice.Text = "0";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(281, 668);
+            this.label15.Location = new System.Drawing.Point(28, 566);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(96, 18);
             this.label15.TabIndex = 36;
@@ -360,31 +384,21 @@
             this.label18.TabIndex = 34;
             this.label18.Text = "Room Number :";
             // 
-            // summary_addedFacCount
-            // 
-            this.summary_addedFacCount.AutoSize = true;
-            this.summary_addedFacCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_addedFacCount.Location = new System.Drawing.Point(6, 850);
-            this.summary_addedFacCount.Name = "summary_addedFacCount";
-            this.summary_addedFacCount.Size = new System.Drawing.Size(122, 18);
-            this.summary_addedFacCount.TabIndex = 32;
-            this.summary_addedFacCount.Text = "0 Facilities Added";
-            // 
             // summary_totalFacPrice
             // 
             this.summary_totalFacPrice.AutoSize = true;
             this.summary_totalFacPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_totalFacPrice.Location = new System.Drawing.Point(383, 635);
+            this.summary_totalFacPrice.Location = new System.Drawing.Point(130, 538);
             this.summary_totalFacPrice.Name = "summary_totalFacPrice";
             this.summary_totalFacPrice.Size = new System.Drawing.Size(16, 18);
             this.summary_totalFacPrice.TabIndex = 31;
-            this.summary_totalFacPrice.Text = "1";
+            this.summary_totalFacPrice.Text = "0";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(267, 635);
+            this.label16.Location = new System.Drawing.Point(14, 538);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(110, 18);
             this.label16.TabIndex = 30;
@@ -402,13 +416,19 @@
             // 
             // dgv_addedFacilities
             // 
+            this.dgv_addedFacilities.AllowUserToAddRows = false;
+            this.dgv_addedFacilities.AllowUserToDeleteRows = false;
+            this.dgv_addedFacilities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_addedFacilities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_addedFacilities.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv_addedFacilities.Enabled = false;
             this.dgv_addedFacilities.Location = new System.Drawing.Point(3, 332);
             this.dgv_addedFacilities.Name = "dgv_addedFacilities";
+            this.dgv_addedFacilities.ReadOnly = true;
+            this.dgv_addedFacilities.RowHeadersVisible = false;
             this.dgv_addedFacilities.RowHeadersWidth = 51;
             this.dgv_addedFacilities.RowTemplate.Height = 24;
-            this.dgv_addedFacilities.Size = new System.Drawing.Size(529, 274);
+            this.dgv_addedFacilities.Size = new System.Drawing.Size(529, 193);
             this.dgv_addedFacilities.TabIndex = 28;
             // 
             // summary_roomCategory
@@ -473,7 +493,7 @@
             // 
             this.summary_days.AutoSize = true;
             this.summary_days.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_days.Location = new System.Drawing.Point(383, 700);
+            this.summary_days.Location = new System.Drawing.Point(130, 594);
             this.summary_days.Name = "summary_days";
             this.summary_days.Size = new System.Drawing.Size(16, 18);
             this.summary_days.TabIndex = 19;
@@ -483,7 +503,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(277, 700);
+            this.label9.Location = new System.Drawing.Point(24, 594);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 18);
             this.label9.TabIndex = 18;
@@ -519,13 +539,110 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Summary";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(79, 622);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 16);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Total :";
+            // 
+            // summary_roomFacTotalPrice
+            // 
+            this.summary_roomFacTotalPrice.AutoSize = true;
+            this.summary_roomFacTotalPrice.Location = new System.Drawing.Point(130, 622);
+            this.summary_roomFacTotalPrice.Name = "summary_roomFacTotalPrice";
+            this.summary_roomFacTotalPrice.Size = new System.Drawing.Size(14, 16);
+            this.summary_roomFacTotalPrice.TabIndex = 39;
+            this.summary_roomFacTotalPrice.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(44, 665);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 16);
+            this.label10.TabIndex = 40;
+            this.label10.Text = "Vouchers ID";
+            // 
+            // btn_checkVoucher
+            // 
+            this.btn_checkVoucher.Location = new System.Drawing.Point(296, 662);
+            this.btn_checkVoucher.Name = "btn_checkVoucher";
+            this.btn_checkVoucher.Size = new System.Drawing.Size(81, 23);
+            this.btn_checkVoucher.TabIndex = 42;
+            this.btn_checkVoucher.Text = "Check";
+            this.btn_checkVoucher.UseVisualStyleBackColor = true;
+            this.btn_checkVoucher.Click += new System.EventHandler(this.btn_checkVoucher_Click);
+            // 
+            // tbox_voucherId
+            // 
+            this.tbox_voucherId.Location = new System.Drawing.Point(133, 662);
+            this.tbox_voucherId.Name = "tbox_voucherId";
+            this.tbox_voucherId.Size = new System.Drawing.Size(157, 22);
+            this.tbox_voucherId.TabIndex = 43;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Enabled = false;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 690);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(529, 124);
+            this.dataGridView1.TabIndex = 44;
+            // 
+            // summary_grandTotal
+            // 
+            this.summary_grandTotal.AutoSize = true;
+            this.summary_grandTotal.Location = new System.Drawing.Point(132, 849);
+            this.summary_grandTotal.Name = "summary_grandTotal";
+            this.summary_grandTotal.Size = new System.Drawing.Size(14, 16);
+            this.summary_grandTotal.TabIndex = 46;
+            this.summary_grandTotal.Text = "0";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(40, 849);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(84, 16);
+            this.label19.TabIndex = 45;
+            this.label19.Text = "Grand Total :";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(132, 820);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(14, 16);
+            this.label17.TabIndex = 48;
+            this.label17.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(18, 820);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(106, 16);
+            this.label20.TabIndex = 47;
+            this.label20.Text = "Total Discounts :";
+            // 
             // FormCheckin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1328, 984);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel_summary);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lbl_staffName);
             this.Controls.Add(this.panel2);
@@ -544,9 +661,10 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facility)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel_summary.ResumeLayout(false);
+            this.panel_summary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_addedFacilities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,7 +688,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dgv_facility;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel_summary;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_addFacility;
         private System.Windows.Forms.Label label7;
@@ -588,11 +706,20 @@
         private System.Windows.Forms.DataGridView dgv_addedFacilities;
         private System.Windows.Forms.Label summary_totalFacPrice;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label summary_addedFacCount;
         private System.Windows.Forms.Label summary_roomNumber;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label summary_roomPrice;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_removeAddedFac;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label summary_roomFacTotalPrice;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox tbox_voucherId;
+        private System.Windows.Forms.Button btn_checkVoucher;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label summary_grandTotal;
+        private System.Windows.Forms.Label label19;
     }
 }

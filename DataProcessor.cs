@@ -91,7 +91,7 @@ namespace ProjectHotel_UAS_PAD
 
             foreach (DataRow dr in dt.Rows)
             {
-                rooms.Add(new Room(dr["ID"]+"", dr["CID"] + "", dr["Category"] + "", dr["price_base"] + "", dr["price"] + "", Convert.ToBoolean(dr["Available"])));
+                rooms.Add(new Room(dr["ID"]+"", dr["CID"] + "", dr["Category"] + "", Convert.ToInt64(dr["price_base"]), dr["price"] + "", Convert.ToBoolean(dr["Available"])));
             }
 
             dt.Columns.Remove("CID");
@@ -112,6 +112,10 @@ namespace ProjectHotel_UAS_PAD
             return dt;
         }
 
+        // =======================================================
+
+
+        // ======================== FACILITIES ========================
         public DataTable GetAllFcilities()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT " +
@@ -129,13 +133,7 @@ namespace ProjectHotel_UAS_PAD
 
         public DataTable GetFacility(string facility_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT " +
-                    "facility_id AS ID, " +
-                    "facility_name AS Name, " +
-                    "CONCAT(\"Rp. \", FORMAT(price, 0)) AS Price" + 
-                    "price AS base_price, " +
-                "FROM facilities" +
-                "WHERE facility_id = @facility_id;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT facility_id AS ID, facility_name AS Name, CONCAT('Rp. ', FORMAT(price, 0)) AS Price, price AS base_price FROM facilities WHERE facility_id = @facility_id;", koneksi.getConn());
             cmd.Parameters.AddWithValue("facility_id", facility_id);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
@@ -144,6 +142,24 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
-        // =======================================================
+        // ============================================================
+
+
+        // ======================== VOUCHERS ========================
+        public DataTable GetVoucher(string voucher_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("", koneksi.getConn());
+            
+            
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        // ==========================================================
+
+
+        
     }
 }

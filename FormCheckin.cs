@@ -12,6 +12,7 @@ namespace ProjectHotel_UAS_PAD
         List<Room> room_list = new List<Room>();
         List<Facility> addedFacility_list = new List<Facility>();
         string nik = "";
+        long roomPrice = 0;
 
         public FormCheckin()
         {
@@ -50,7 +51,7 @@ namespace ProjectHotel_UAS_PAD
             }
             else
             {
-                int days = dtp_checkout.Value.Day - DateTime.Now.Day;
+                short days =  (short)(dtp_checkout.Value.Day - DateTime.Now.Day);
 
                 summary_days.Text = days.ToString();
             }
@@ -82,19 +83,49 @@ namespace ProjectHotel_UAS_PAD
                 summary_roomNumber.Text = roomId.Substring(3, 2);
                 summary_roomCategory.Text = category;
 
+                foreach(Room r in room_list)
+                {
+                    if(r.id == roomId)
+                    {
+                        roomPrice = r.price_base;
+                    }
+                }
+
+                summary_roomPrice.Text = "Rp. " + roomPrice.ToString("N0");
+
+                panel_summary.Enabled = true;
+
                 dgv_facility.Enabled = true;
+                dtp_checkout.Enabled = true;
+                btn_addFacility.Enabled = true;
+                btn_checkin.Enabled = true;
             }
         }
 
         private void btn_addFacility_Click(object sender, EventArgs e)
         {
-            string fid = dgv_addedFacilities.SelectedRows[0].ToString();
+            btn_removeAddedFac.Enabled = true;
+            string fid = dgv_facility.CurrentRow.Cells[0].Value+"";
 
             DataTable dt = dp.GetFacility(fid);
             
             foreach(DataRow dr in dt.Rows)
             {
-                addedFacility_list.Add(new Facility(dr["ID"]+"", dr["Name"]+"", Convert.ToInt64(dr["base_price"].ToString()), dr["Price"]+""));
+                if (addedFacility_list.Count == 0) addedFacility_list.Add(new Facility(dr["ID"] + "", dr["Name"] + "", Convert.ToInt64(dr["base_price"].ToString()), dr["Price"] + ""));
+                else
+                {
+                    bool exists = false;
+                    foreach (Facility f in addedFacility_list)
+                    {
+                        if (f.id == fid) {
+                            f.qty++;
+                            exists = true;
+                            break;
+                        }
+                    }
+
+                    if(!exists) addedFacility_list.Add(new Facility(dr["ID"] + "", dr["Name"] + "", Convert.ToInt64(dr["base_price"].ToString()), dr["Price"] + ""));
+                }
             }
 
             // Refreshes DGV Added Facilities
@@ -105,10 +136,22 @@ namespace ProjectHotel_UAS_PAD
             dgv_addedFacilities.Columns.Add("Price", "Price");
             dgv_addedFacilities.Columns.Add("Qty", "Qty");
 
+            long totalFacPrice = 0;
+
             foreach(Facility f in addedFacility_list)
             {
                 dgv_addedFacilities.Rows.Add(f.id, f.name, f.price, f.qty);
+
+                totalFacPrice += (f.base_price * f.qty);
             }
+
+            summary_totalFacPrice.Text = "Rp. " + totalFacPrice.ToString("N0");
+        }
+
+        private void btn_checkVoucher_Click(object sender, EventArgs e)
+        {
+            string vid = tbox_voucherId.Text;
+
 
         }
     }
