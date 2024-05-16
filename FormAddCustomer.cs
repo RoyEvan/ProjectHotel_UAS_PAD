@@ -11,11 +11,11 @@ namespace ProjectHotel_UAS_PAD
             koneksi.setConn();
         }
 
-        Customer c = new Customer();
+        DataProcessor dp = new DataProcessor();
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-            c.InsertCustomer(textNIK.Text, textName.Text, textAddress.Text, textPhone.Text);
+            dp.InsertCustomer(textNIK.Text, textName.Text, textAddress.Text, textPhone.Text);
         }
     }
 }
