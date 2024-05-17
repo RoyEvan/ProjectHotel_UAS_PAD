@@ -16,7 +16,36 @@ namespace ProjectHotel_UAS_PAD
         //    InitializeComponent();
         //}
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            sidebarTimer.Start();
+        }
+
+        bool sidebarExpand;
+        private void sidebarTimer_Tick(object sender, EventArgs e)
+        {
+            //
+            if (sidebarExpand)
+            {
+                sidebar.Width -= 10;
+                if (sidebar.Width == sidebar.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sidebarTimer.Stop();
+                }
+            }
+            else 
+            {
+                sidebar.Width += 10;
+                if (sidebar.Width == sidebar.MaximumSize.Width) 
+                {
+                    sidebarExpand = true;
+                    sidebarTimer.Stop();
+                }
+            }
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
         {
             FormCheckin form = new FormCheckin();
             this.Hide();
@@ -24,7 +53,7 @@ namespace ProjectHotel_UAS_PAD
             this.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCheckOut_Click(object sender, EventArgs e)
         {
             FormCheckout form = new FormCheckout();
             this.Hide();
@@ -32,9 +61,17 @@ namespace ProjectHotel_UAS_PAD
             this.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnLogTransaction_Click(object sender, EventArgs e)
         {
             FormTransactionLogs form = new FormTransactionLogs();
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            FormLogin form = new FormLogin();
             this.Hide();
             form.ShowDialog();
             this.Show();
