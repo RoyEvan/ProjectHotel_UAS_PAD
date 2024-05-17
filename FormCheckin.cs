@@ -13,6 +13,9 @@ namespace ProjectHotel_UAS_PAD
         List<Facility> addedFacility_list = new List<Facility>();
         string nik = "";
         long roomPrice = 0;
+        double grandTotal = 0;
+        double discounts = 0;
+        bool discounted = false;
 
         public FormCheckin()
         {
@@ -32,6 +35,40 @@ namespace ProjectHotel_UAS_PAD
             dgv_rooms.DataSource = dp.GetRooms(room_list);
             dgv_facility.DataSource = dp.GetAllFcilities();
         }
+
+        public void RefreshAllTotals()
+        {
+            long totalFacPrice = 0;
+
+            foreach (Facility f in addedFacility_list)
+            {
+                totalFacPrice += (f.base_price * f.qty);
+            }
+
+            int days = (dtp_checkout.Value.Day - DateTime.Now.Day);
+            summary_totalFacPrice.Text = "Rp. " + totalFacPrice.ToString("N0");
+            summary_roomFacTotalPrice.Text = "Rp. " + (totalFacPrice + (roomPrice * days)).ToString("N0");
+            
+            grandTotal = (totalFacPrice + (roomPrice * days)) - discounts;
+            summary_grandTotal.Text = "Rp. " + grandTotal.ToString("N0");
+        }
+
+        public void RefreshAddedFacilities()
+        {
+            // Refreshes DGV Added Facilities
+            dgv_addedFacilities.Rows.Clear();
+            dgv_addedFacilities.Columns.Clear();
+            dgv_addedFacilities.Columns.Add("ID", "ID");
+            dgv_addedFacilities.Columns.Add("Name", "Name");
+            dgv_addedFacilities.Columns.Add("Price", "Price");
+            dgv_addedFacilities.Columns.Add("Qty", "Qty");
+
+            foreach (Facility f in addedFacility_list)
+            {
+                dgv_addedFacilities.Rows.Add(f.id, f.name, f.price, f.qty);
+            }
+        }
+
         private void btn_addCust_Click(object sender, EventArgs e)
         {
             FormAddCustomer fa = new FormAddCustomer();
@@ -54,6 +91,8 @@ namespace ProjectHotel_UAS_PAD
                 short days =  (short)(dtp_checkout.Value.Day - DateTime.Now.Day);
 
                 summary_days.Text = days.ToString();
+
+                RefreshAllTotals();
             }
         }
 
@@ -105,6 +144,9 @@ namespace ProjectHotel_UAS_PAD
         private void btn_addFacility_Click(object sender, EventArgs e)
         {
             btn_removeAddedFac.Enabled = true;
+            tbox_voucherId.Enabled = true;
+            btn_checkVoucher.Enabled = true;
+
             string fid = dgv_facility.CurrentRow.Cells[0].Value+"";
 
             DataTable dt = dp.GetFacility(fid);
@@ -128,31 +170,80 @@ namespace ProjectHotel_UAS_PAD
                 }
             }
 
-            // Refreshes DGV Added Facilities
-            dgv_addedFacilities.Rows.Clear();
-            dgv_addedFacilities.Columns.Clear();
-            dgv_addedFacilities.Columns.Add("ID", "ID");
-            dgv_addedFacilities.Columns.Add("Name", "Name");
-            dgv_addedFacilities.Columns.Add("Price", "Price");
-            dgv_addedFacilities.Columns.Add("Qty", "Qty");
+            RefreshAddedFacilities();
 
-            long totalFacPrice = 0;
+            RefreshAllTotals();
+        }
 
-            foreach(Facility f in addedFacility_list)
+        private void btn_removeAddedFac_Click(object sender, EventArgs e)
+        {
+            int fid = Convert.ToInt32(dgv_addedFacilities.CurrentRow.Cells[0].Value);
+            int index = dgv_addedFacilities.CurrentRow.Index;
+            dgv_addedFacilities.Rows.RemoveAt(index);
+
+
+            for(int i=0; i<addedFacility_list.Count; i++)
             {
-                dgv_addedFacilities.Rows.Add(f.id, f.name, f.price, f.qty);
+                Facility f = addedFacility_list[i];
 
-                totalFacPrice += (f.base_price * f.qty);
+                if(f.id == fid.ToString())
+                {
+                    index = i;
+                }
             }
 
-            summary_totalFacPrice.Text = "Rp. " + totalFacPrice.ToString("N0");
+            addedFacility_list.RemoveAt(index);
+
+            RefreshAddedFacilities();
+            RefreshAllTotals();
+        }
+
+        private void btn_applyVoucher_Click(object sender, EventArgs e)
+        {
+            if (!discounted)
+            {
+                string vid = tbox_voucherId.Text;
+
+                double afterDisc = dp.GetVoucher(vid, grandTotal);
+                discounts = grandTotal - afterDisc;
+                MessageBox.Show(afterDisc + "");
+                MessageBox.Show(grandTotal + "");
+
+                RefreshAllTotals();
+
+                discounted = true;
+                tbox_voucherId.Enabled = false;
+                btn_checkVoucher.Enabled = false;
+                btn_applyVoucher.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("You can only use 1 voucher code at a time!");
+            }
         }
 
         private void btn_checkVoucher_Click(object sender, EventArgs e)
         {
-            string vid = tbox_voucherId.Text;
+            string vid = tbox_voucherId.Text.TrimStart().TrimEnd();
+            tbox_voucherId.Text = vid;
+
+            if (tbox_voucherId.Text.TrimStart().TrimEnd() == "" || tbox_voucherId.Text.TrimStart().TrimEnd() == " ")
+            {
+                MessageBox.Show("Please fill before checking!");
+            }
 
 
+            DataRow dr = dp.GetVoucher(vid);
+
+            foreach(Facility f in addedFacility_list)
+            {
+                if (dr["facility_id"] == f.id)
+                {
+                    MessageBox.Show("Ketemu!");
+                }
+            }
         }
+
+        //
     }
 }

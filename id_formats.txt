@@ -12,15 +12,15 @@ Rooms :
 
 
 Categories :
-[KodeLorong] [2_digit_NoUrut]
+C [2_digit_NoUrut]
   CONTOH = C40 --> Kategori Kamar dengan kode C40
 
 Facilities : AUTO_INCREMENT
 
 
 Discounts :
-DSC [5_digit_KodeFasilitas][4_digitNoUrutDiskon]
-  CONTOH = DSC1010 --> Diskon dengan kode DSC1010
+DSC [4_digitNoUrutDiskon]
+  CONTOH = DSC1010 --> Diskon nomor urut 1010
 
 
 Customers :
