@@ -116,6 +116,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCheckin.resx">
       <DependentUpon>FormCheckin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddRoom.resx">
       <DependentUpon>FormAddRoom.cs</DependentUpon>
     </EmbeddedResource>
