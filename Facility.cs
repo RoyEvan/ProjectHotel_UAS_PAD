@@ -23,5 +23,10 @@ namespace ProjectHotel_UAS_PAD
             this.price = price;
             this.qty = 1;
         }
+
+        public Facility()
+        {
+
+        }
     }
 }

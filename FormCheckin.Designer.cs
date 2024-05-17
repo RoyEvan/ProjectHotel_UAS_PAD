@@ -50,7 +50,7 @@
             this.btn_checkVoucher = new System.Windows.Forms.Button();
             this.summary_voucherName = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
+            this.summary_totalDisc = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.summary_grandTotal = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -79,6 +79,7 @@
             this.summary_custName = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btn_cancelTrans = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cust)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -220,7 +221,7 @@
             // dtp_checkout
             // 
             this.dtp_checkout.Enabled = false;
-            this.dtp_checkout.Location = new System.Drawing.Point(169, 52);
+            this.dtp_checkout.Location = new System.Drawing.Point(154, 53);
             this.dtp_checkout.Name = "dtp_checkout";
             this.dtp_checkout.Size = new System.Drawing.Size(213, 22);
             this.dtp_checkout.TabIndex = 11;
@@ -304,7 +305,7 @@
             this.panel_summary.Controls.Add(this.btn_checkVoucher);
             this.panel_summary.Controls.Add(this.summary_voucherName);
             this.panel_summary.Controls.Add(this.label22);
-            this.panel_summary.Controls.Add(this.label17);
+            this.panel_summary.Controls.Add(this.summary_totalDisc);
             this.panel_summary.Controls.Add(this.label20);
             this.panel_summary.Controls.Add(this.btn_checkin);
             this.panel_summary.Controls.Add(this.summary_grandTotal);
@@ -374,15 +375,15 @@
             this.label22.TabIndex = 49;
             this.label22.Text = "Voucher Name :";
             // 
-            // label17
+            // summary_totalDisc
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(151, 739);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(16, 18);
-            this.label17.TabIndex = 48;
-            this.label17.Text = "0";
+            this.summary_totalDisc.AutoSize = true;
+            this.summary_totalDisc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_totalDisc.Location = new System.Drawing.Point(151, 739);
+            this.summary_totalDisc.Name = "summary_totalDisc";
+            this.summary_totalDisc.Size = new System.Drawing.Size(16, 18);
+            this.summary_totalDisc.TabIndex = 48;
+            this.summary_totalDisc.Text = "0";
             // 
             // label20
             // 
@@ -672,12 +673,24 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Summary";
             // 
+            // btn_cancelTrans
+            // 
+            this.btn_cancelTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelTrans.Location = new System.Drawing.Point(1169, 12);
+            this.btn_cancelTrans.Name = "btn_cancelTrans";
+            this.btn_cancelTrans.Size = new System.Drawing.Size(150, 35);
+            this.btn_cancelTrans.TabIndex = 14;
+            this.btn_cancelTrans.Text = "Cancel";
+            this.btn_cancelTrans.UseVisualStyleBackColor = true;
+            this.btn_cancelTrans.Click += new System.EventHandler(this.btn_cancelTrans_Click);
+            // 
             // FormCheckin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1328, 975);
+            this.Controls.Add(this.btn_cancelTrans);
             this.Controls.Add(this.panel_summary);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.lbl_staffName);
@@ -750,12 +763,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tbox_voucherId;
         private System.Windows.Forms.Button btn_applyVoucher;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label summary_totalDisc;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label summary_grandTotal;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label summary_voucherName;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button btn_checkVoucher;
+        private System.Windows.Forms.Button btn_cancelTrans;
     }
 }

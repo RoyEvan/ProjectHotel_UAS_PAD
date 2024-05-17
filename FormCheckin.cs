@@ -27,13 +27,57 @@ namespace ProjectHotel_UAS_PAD
 
         public void ResetAll()
         {
-            // Set dateTimePicker to Tomorrow!
-            dtp_checkout.Value = (DateTime.Now.AddDays(1));
+            // Reset All The Global Variables value
+            dp = new DataProcessor();
+            room_list = new List<Room>();
+            addedFacility_list = new List<Facility>();
+            nik = "";
+            roomPrice = 0;
+            grandTotal = 0;
+            discounts = 0;
+            discounted = false;          
 
             // Fills all DataGridViews
             dgv_cust.DataSource = dp.GetCustomer();
             dgv_rooms.DataSource = dp.GetRooms(room_list);
             dgv_facility.DataSource = dp.GetAllFcilities();
+
+
+            // Reset the Summary
+            dtp_checkout.Value = (DateTime.Now.AddDays(1));
+            
+            summary_custNIK.Text = "1234561212120001";
+            summary_custName.Text = "Unknown";
+            summary_roomLocation.Text = "Lorong X Gedung Y";
+            summary_roomNumber.Text = "Z";
+            summary_roomCategory.Text = "AaBb CcDd";
+
+            dgv_addedFacilities.Rows.Clear();
+
+            summary_totalFacPrice.Text = "0";
+            summary_roomPrice.Text = "0";
+            summary_days.Text = "1";
+            summary_roomFacTotalPrice.Text = "0";
+            
+            tbox_voucherId.Text = "";
+            
+            summary_voucherName.Text = "";
+            summary_totalDisc.Text = "0";
+            summary_grandTotal.Text = "0";
+
+
+            // Disables Properties so that the user can't input randomly
+            dgv_rooms.Enabled = false;
+            dgv_facility.Enabled = false;
+            dtp_checkout.Enabled = false;
+            btn_addFacility.Enabled = false;
+            btn_checkin.Enabled = false;
+            dgv_addedFacilities.Enabled = false;
+            btn_removeAddedFac.Enabled = false;
+            tbox_voucherId.Enabled = false;
+            btn_checkVoucher.Enabled = false;
+            btn_applyVoucher.Enabled = false;
+
         }
 
         public void RefreshAllTotals()
@@ -49,7 +93,17 @@ namespace ProjectHotel_UAS_PAD
             summary_totalFacPrice.Text = "Rp. " + totalFacPrice.ToString("N0");
             summary_roomFacTotalPrice.Text = "Rp. " + (totalFacPrice + (roomPrice * days)).ToString("N0");
             
-            grandTotal = (totalFacPrice + (roomPrice * days)) - discounts;
+            grandTotal = (totalFacPrice + (roomPrice * days));
+
+            double afterDisc = 0;
+            if (discounts > 0)
+            {
+                if (discounts <= 100) afterDisc = (grandTotal * 1.0 * ((100.0 - discounts) * 1.0 / 100.0));
+                else afterDisc = grandTotal - discounts;
+            }
+
+            if(afterDisc != 0) grandTotal = afterDisc;
+
             summary_grandTotal.Text = "Rp. " + grandTotal.ToString("N0");
         }
 
@@ -73,6 +127,10 @@ namespace ProjectHotel_UAS_PAD
         {
             FormAddCustomer fa = new FormAddCustomer();
             this.Hide();
+            fa.ShowDialog();
+            this.Show();
+
+            ResetAll();
         }
 
         private void btn_searchCust_Click(object sender, EventArgs e)
@@ -100,12 +158,11 @@ namespace ProjectHotel_UAS_PAD
         {
             if (e.RowIndex >= 0)
             {
-                String NIK = dgv_cust.Rows[e.RowIndex].Cells[0].Value.ToString();
+                nik = dgv_cust.Rows[e.RowIndex].Cells[0].Value.ToString();
                 String name = dgv_cust.Rows[e.RowIndex].Cells[1].Value.ToString();
 
-                summary_custNIK.Text = NIK;
+                summary_custNIK.Text = nik;
                 summary_custName.Text = name;
-                nik = NIK;
 
                 dgv_rooms.Enabled = true;
             }
@@ -143,9 +200,14 @@ namespace ProjectHotel_UAS_PAD
 
         private void btn_addFacility_Click(object sender, EventArgs e)
         {
+            dgv_addedFacilities.Enabled = true;
             btn_removeAddedFac.Enabled = true;
-            tbox_voucherId.Enabled = true;
-            btn_checkVoucher.Enabled = true;
+
+            if(!discounted)
+            {
+                tbox_voucherId.Enabled = true;
+                btn_checkVoucher.Enabled = true;
+            }
 
             string fid = dgv_facility.CurrentRow.Cells[0].Value+"";
 
@@ -179,47 +241,98 @@ namespace ProjectHotel_UAS_PAD
         {
             int fid = Convert.ToInt32(dgv_addedFacilities.CurrentRow.Cells[0].Value);
             int index = dgv_addedFacilities.CurrentRow.Index;
-            dgv_addedFacilities.Rows.RemoveAt(index);
-
-
-            for(int i=0; i<addedFacility_list.Count; i++)
+            if(!discounted)
             {
-                Facility f = addedFacility_list[i];
+                dgv_addedFacilities.Rows.RemoveAt(index);
 
-                if(f.id == fid.ToString())
+
+                for(int i=0; i<addedFacility_list.Count; i++)
                 {
-                    index = i;
+                    Facility f = addedFacility_list[i];
+
+                    if(f.id == fid.ToString()) index = i;
+                }
+
+                addedFacility_list.RemoveAt(index);
+
+                RefreshAddedFacilities();
+                RefreshAllTotals();
+            }
+            else
+            {
+                int listIndex = -1;
+                bool removeable = true;
+                string vid = tbox_voucherId.Text;
+                DataRow dr = dp.GetVoucher(vid);
+                Facility f = new Facility();
+
+                for (int i = 0; i < addedFacility_list.Count; i++)
+                {
+                    Facility fac = addedFacility_list[i];
+
+                    if (fid.ToString() == fac.id.ToString())
+                    {
+                        f = fac;
+                        removeable = false;
+
+                        listIndex = i;
+                        break;
+                    }
+                }
+
+                if(!removeable)
+                {
+                    // 6 = yes
+                    // 7 = no
+                    int choice = (int)MessageBox.Show("Your voucher will also be removed.\nDo you still want to remove this item?\nName : " + f.name + "\nPrice : " + f.price, "Item not removable", MessageBoxButtons.YesNo);
+                    
+                    if(choice == 6)
+                    {
+                        // Removes the discounts
+                        discounted = false;
+                        discounts = 0;
+
+                        // Removes the selected item from the list
+                        addedFacility_list.RemoveAt(listIndex);
+
+                        RefreshAddedFacilities();
+                        RefreshAllTotals();
+
+                        // Re-Enables all vouchers inputs and buttons
+                        tbox_voucherId.Text = "";
+                        tbox_voucherId.Enabled = true;
+                        btn_checkVoucher.Enabled = true;
+                        btn_applyVoucher.Enabled = true;
+                    }
+                }
+                else
+                {
+                    addedFacility_list.RemoveAt(index);
+
+                    RefreshAddedFacilities();
+                    RefreshAllTotals();
                 }
             }
-
-            addedFacility_list.RemoveAt(index);
-
-            RefreshAddedFacilities();
-            RefreshAllTotals();
         }
 
         private void btn_applyVoucher_Click(object sender, EventArgs e)
         {
-            if (!discounted)
-            {
-                string vid = tbox_voucherId.Text;
+            string vid = tbox_voucherId.Text;
 
-                double afterDisc = dp.GetVoucher(vid, grandTotal);
-                discounts = grandTotal - afterDisc;
-                MessageBox.Show(afterDisc + "");
-                MessageBox.Show(grandTotal + "");
+            discounts = dp.GetDiscount(vid, grandTotal);
+            DataRow dr = dp.GetVoucher(vid);
 
-                RefreshAllTotals();
+            RefreshAllTotals();
 
-                discounted = true;
-                tbox_voucherId.Enabled = false;
-                btn_checkVoucher.Enabled = false;
-                btn_applyVoucher.Enabled = false;
-            }
-            else
-            {
-                MessageBox.Show("You can only use 1 voucher code at a time!");
-            }
+            discounted = true;
+            tbox_voucherId.Enabled = false;
+            btn_checkVoucher.Enabled = false;
+            btn_applyVoucher.Enabled = false;
+            summary_voucherName.Text = dr["VOUCHER_NAME"].ToString();
+
+            if (discounts <= 100) summary_totalDisc.Text = discounts + "%";
+            else summary_totalDisc.Text = "Rp. " + discounts.ToString("N0");
+            
         }
 
         private void btn_checkVoucher_Click(object sender, EventArgs e)
@@ -234,16 +347,23 @@ namespace ProjectHotel_UAS_PAD
 
 
             DataRow dr = dp.GetVoucher(vid);
-
+            bool canBeUsed = false;
             foreach(Facility f in addedFacility_list)
             {
-                if (dr["facility_id"] == f.id)
+                if(dr["facility_id"].ToString() == f.id.ToString())
                 {
-                    MessageBox.Show("Ketemu!");
+                    MessageBox.Show("Voucher is available!");
+                    btn_applyVoucher.Enabled = true;
+                    canBeUsed = true;
                 }
             }
+
+            if (!canBeUsed) MessageBox.Show("Voucher unavailable or does not satisfy the requirements!");
         }
 
-        //
+        private void btn_cancelTrans_Click(object sender, EventArgs e)
+        {
+            ResetAll();
+        }
     }
 }
