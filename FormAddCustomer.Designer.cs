@@ -137,7 +137,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(17, 184);
+            this.btn_submit.Location = new System.Drawing.Point(17, 183);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(366, 23);
             this.btn_submit.TabIndex = 13;

@@ -25,7 +25,7 @@ namespace ProjectHotel_UAS_PAD
                 "customer_id AS NIK, " +
                 "customer_name AS Name, " +
                 "customer_address AS Address, " +
-                "customer_address AS Phone " +
+                "customer_phone AS Phone " +
             "FROM customers;", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 

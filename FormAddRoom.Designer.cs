@@ -93,7 +93,7 @@
             this.button1.Text = "Delete";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // MasterKamar
+            // FormAddRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,7 +104,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "MasterKamar";
+            this.Name = "FormAddRoom";
             this.Text = "MasterKamar";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
