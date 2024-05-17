@@ -146,17 +146,43 @@ namespace ProjectHotel_UAS_PAD
 
 
         // ======================== VOUCHERS ========================
-        public DataTable GetVoucher(string voucher_id)
+        public DataRow GetVoucher(string voucher_id)
         {
-            MySqlCommand cmd = new MySqlCommand("", koneksi.getConn());
-            
-            
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM vouchers WHERE facility_id = @voucher_id AND date_start <= @now AND date_end >= @now;", koneksi.getConn());
+            cmd.Parameters.AddWithValue("voucher_id", voucher_id);
+            cmd.Parameters.AddWithValue("now", DateTime.Now);
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            return dt;
+            return dt.Rows[0];
         }
 
+        public double GetVoucher(string voucher_id, double currentTotal)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM vouchers WHERE voucher_id = @voucher_id AND date_start <= @now AND date_end >= @now;", koneksi.getConn());
+            cmd.Parameters.AddWithValue("voucher_id", voucher_id);
+            cmd.Parameters.AddWithValue("now", DateTime.Now);
+            MySqlDataReader dr = cmd.ExecuteReader();
+            long discValue = 0;
+            while (dr.Read()) {
+                discValue = dr.GetInt64("VOUCHER");
+            }
+            dr.Close();
+
+            double afterDisc = 0;
+            if (discValue > 0)
+            {
+                if (discValue <= 100) afterDisc = (currentTotal*1.0 * (discValue*1.0 / 100.0));
+                else afterDisc = currentTotal - discValue;
+
+                return afterDisc;
+            }
+            
+            return 0;
+        }
         // ==========================================================
 
 
