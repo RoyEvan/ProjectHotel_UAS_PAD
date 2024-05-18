@@ -12,9 +12,17 @@ namespace ProjectHotel_UAS_PAD
 {
     public partial class FormTransactionLogs : Form
     {
+        private Staff staff;
         public FormTransactionLogs()
         {
             InitializeComponent();
+        }
+        
+        public FormTransactionLogs(Staff staff)
+        {
+            InitializeComponent();
+
+            this.staff = staff;
         }
     }
 }

@@ -28,57 +28,75 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.staffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.btn_logout = new System.Windows.Forms.Button();
+            this.btn_transLog = new System.Windows.Forms.Button();
+            this.btn_formEditStaff = new System.Windows.Forms.Button();
+            this.lbl_staffName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // btn_logout
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.staffToolStripMenuItem,
-            this.logTransactionToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(355, 28);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.btn_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_logout.Location = new System.Drawing.Point(12, 251);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(505, 67);
+            this.btn_logout.TabIndex = 8;
+            this.btn_logout.Text = "Log Out";
+            this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
-            // staffToolStripMenuItem
+            // btn_transLog
             // 
-            this.staffToolStripMenuItem.Name = "staffToolStripMenuItem";
-            this.staffToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
-            this.staffToolStripMenuItem.Text = "Staff";
-            this.staffToolStripMenuItem.Click += new System.EventHandler(this.staffToolStripMenuItem_Click);
+            this.btn_transLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_transLog.Location = new System.Drawing.Point(12, 178);
+            this.btn_transLog.Name = "btn_transLog";
+            this.btn_transLog.Size = new System.Drawing.Size(505, 67);
+            this.btn_transLog.TabIndex = 7;
+            this.btn_transLog.Text = "Transaction Logs";
+            this.btn_transLog.UseVisualStyleBackColor = true;
             // 
-            // logTransactionToolStripMenuItem
+            // btn_formEditStaff
             // 
-            this.logTransactionToolStripMenuItem.Name = "logTransactionToolStripMenuItem";
-            this.logTransactionToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
-            this.logTransactionToolStripMenuItem.Text = "Log Transaction";
+            this.btn_formEditStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_formEditStaff.Location = new System.Drawing.Point(12, 105);
+            this.btn_formEditStaff.Name = "btn_formEditStaff";
+            this.btn_formEditStaff.Size = new System.Drawing.Size(505, 67);
+            this.btn_formEditStaff.TabIndex = 6;
+            this.btn_formEditStaff.Text = "Staff Master";
+            this.btn_formEditStaff.UseVisualStyleBackColor = true;
+            this.btn_formEditStaff.Click += new System.EventHandler(this.btn_formEditStaff_Click);
+            // 
+            // lbl_staffName
+            // 
+            this.lbl_staffName.AutoSize = true;
+            this.lbl_staffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_staffName.Location = new System.Drawing.Point(12, 9);
+            this.lbl_staffName.Name = "lbl_staffName";
+            this.lbl_staffName.Size = new System.Drawing.Size(228, 32);
+            this.lbl_staffName.TabIndex = 9;
+            this.lbl_staffName.Text = "Welcome back, ";
             // 
             // FormMenuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 115);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(529, 330);
+            this.Controls.Add(this.lbl_staffName);
+            this.Controls.Add(this.btn_logout);
+            this.Controls.Add(this.btn_transLog);
+            this.Controls.Add(this.btn_formEditStaff);
             this.Name = "FormMenuManager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMenuManager";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem staffToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logTransactionToolStripMenuItem;
+        private System.Windows.Forms.Button btn_logout;
+        private System.Windows.Forms.Button btn_transLog;
+        private System.Windows.Forms.Button btn_formEditStaff;
+        private System.Windows.Forms.Label lbl_staffName;
     }
 }

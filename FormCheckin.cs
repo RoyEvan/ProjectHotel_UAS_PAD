@@ -7,8 +7,8 @@ namespace ProjectHotel_UAS_PAD
 {
     public partial class FormCheckin : Form
     {
-
         DataProcessor dp = new DataProcessor();
+        private Staff s;
         List<Room> room_list = new List<Room>();
         List<Facility> addedFacility_list = new List<Facility>();
         string nik = "";
@@ -20,9 +20,38 @@ namespace ProjectHotel_UAS_PAD
         public FormCheckin()
         {
             InitializeComponent();
-            koneksi.setConn();
 
-            ResetAll();
+            SetConnection();
+        }
+
+        public FormCheckin(Staff staff)
+        {
+            InitializeComponent();
+            this.s = staff;
+            SetConnection();
+
+            lbl_staffName.Text += s.name;
+        }
+
+        public void SetConnection()
+        {
+            bool connected = koneksi.setConn();
+            int choice = 0;
+
+            while (!connected)
+            {
+                MessageBox.Show("Failed to establish a connection with MySQL Database!", "Database Error");
+                choice = (int)MessageBox.Show("Do you want to reconnect?", "Reconnect Database", MessageBoxButtons.YesNo);
+
+                if (choice == 6) 
+                    connected = koneksi.setConn();
+                else if (choice == 7) 
+                    break;
+                else 
+                    MessageBox.Show("Invalid choice!", "Invalid");
+            }
+
+            if (connected) ResetAll();
         }
 
         public void ResetAll()
@@ -66,7 +95,7 @@ namespace ProjectHotel_UAS_PAD
             summary_grandTotal.Text = "0";
 
 
-            // Disables Properties so that the user can't input randomly
+            // Disables the Properties so that the user can't input randomly
             dgv_rooms.Enabled = false;
             dgv_facility.Enabled = false;
             dtp_checkout.Enabled = false;
@@ -89,7 +118,7 @@ namespace ProjectHotel_UAS_PAD
                 totalFacPrice += (f.base_price * f.qty);
             }
 
-            int days = (dtp_checkout.Value.Day - DateTime.Now.Day);
+            short days = (short)Math.Ceiling(dtp_checkout.Value.Subtract(DateTime.Now).TotalDays);
             summary_totalFacPrice.Text = "Rp. " + totalFacPrice.ToString("N0");
             summary_roomFacTotalPrice.Text = "Rp. " + (totalFacPrice + (roomPrice * days)).ToString("N0");
             
@@ -146,7 +175,7 @@ namespace ProjectHotel_UAS_PAD
             }
             else
             {
-                short days =  (short)(dtp_checkout.Value.Day - DateTime.Now.Day);
+                short days = (short) Math.Ceiling(dtp_checkout.Value.Subtract(DateTime.Now).TotalDays);
 
                 summary_days.Text = days.ToString();
 
@@ -172,29 +201,36 @@ namespace ProjectHotel_UAS_PAD
         {
             if (e.RowIndex >= 0 && dgv_rooms.Enabled)
             {
-                string roomId = dgv_rooms.Rows[e.RowIndex].Cells[0].Value.ToString();
-                string category = dgv_rooms.Rows[e.RowIndex].Cells[1].Value.ToString();
-
-                summary_roomLocation.Text = "Lorong " + roomId.Substring(0, 1) + " Lantai " + Convert.ToInt16(roomId.Substring(1, 2));
-                summary_roomNumber.Text = roomId.Substring(3, 2);
-                summary_roomCategory.Text = category;
-
-                foreach(Room r in room_list)
+                if(Convert.ToBoolean(dgv_rooms.Rows[e.RowIndex].Cells[3].Value))
                 {
-                    if(r.id == roomId)
+                    string roomId = dgv_rooms.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string category = dgv_rooms.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+                    summary_roomLocation.Text = "Lorong " + roomId.Substring(0, 1) + " Lantai " + Convert.ToInt16(roomId.Substring(1, 2));
+                    summary_roomNumber.Text = roomId.Substring(3, 2);
+                    summary_roomCategory.Text = category;
+
+                    foreach(Room r in room_list)
                     {
-                        roomPrice = r.price_base;
+                        if(r.id == roomId)
+                        {
+                            roomPrice = r.price_base;
+                        }
                     }
+
+                    summary_roomPrice.Text = "Rp. " + roomPrice.ToString("N0");
+
+                    panel_summary.Enabled = true;
+
+                    dgv_facility.Enabled = true;
+                    dtp_checkout.Enabled = true;
+                    btn_addFacility.Enabled = true;
+                    btn_checkin.Enabled = true;
                 }
-
-                summary_roomPrice.Text = "Rp. " + roomPrice.ToString("N0");
-
-                panel_summary.Enabled = true;
-
-                dgv_facility.Enabled = true;
-                dtp_checkout.Enabled = true;
-                btn_addFacility.Enabled = true;
-                btn_checkin.Enabled = true;
+                else
+                {
+                    MessageBox.Show("Room is in use!", "Room Availability");
+                }
             }
         }
 
@@ -344,26 +380,52 @@ namespace ProjectHotel_UAS_PAD
             {
                 MessageBox.Show("Please fill before checking!");
             }
-
-
-            DataRow dr = dp.GetVoucher(vid);
-            bool canBeUsed = false;
-            foreach(Facility f in addedFacility_list)
+            else
             {
-                if(dr["facility_id"].ToString() == f.id.ToString())
+                DataRow dr = dp.GetVoucher(vid);
+                bool canBeUsed = false;
+                if(!(dr is null))
                 {
-                    MessageBox.Show("Voucher is available!");
-                    btn_applyVoucher.Enabled = true;
-                    canBeUsed = true;
+                    foreach(Facility f in addedFacility_list)
+                    {
+                        if(dr["facility_id"].ToString() == f.id.ToString())
+                        {
+                            MessageBox.Show("Voucher is available!");
+                            btn_applyVoucher.Enabled = true;
+                            canBeUsed = true;
+                        }
+                    }
                 }
+                if (!canBeUsed) MessageBox.Show("Voucher unavailable or does not satisfy the requirements!");
             }
-
-            if (!canBeUsed) MessageBox.Show("Voucher unavailable or does not satisfy the requirements!");
         }
 
         private void btn_cancelTrans_Click(object sender, EventArgs e)
         {
             ResetAll();
+        }
+
+        private void btn_checkin_Click(object sender, EventArgs e)
+        {
+            // Preparing the data for inputs
+            string room_id = dgv_rooms.CurrentRow.Cells[0].Value.ToString();
+            string voucher_id = tbox_voucherId.Text;
+            string staff_id = this.s.id;
+            string customer_id = nik;
+            DateTime checkin_date = DateTime.Now;
+            DateTime checkout_date = dtp_checkout.Value;
+            double bill_total = grandTotal;
+            double bill_grandTotal = 0;
+
+            //MessageBox.Show(checkin_date + " - " + checkout_date);
+
+            dp.InsertTransaction(
+                room_id, voucher_id, staff_id,
+                customer_id, checkin_date, checkout_date,
+                bill_total, bill_grandTotal, addedFacility_list
+            );
+
+
         }
     }
 }

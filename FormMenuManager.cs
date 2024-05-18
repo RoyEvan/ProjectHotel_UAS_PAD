@@ -10,12 +10,17 @@ namespace ProjectHotel_UAS_PAD
             InitializeComponent();
         }
 
-        private void staffToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btn_formEditStaff_Click(object sender, EventArgs e)
         {
             FormEditStaff fes = new FormEditStaff();
             this.Hide();
             fes.ShowDialog();
             this.Show();
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

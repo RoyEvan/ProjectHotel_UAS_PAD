@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectHotel_UAS_PAD
 {
-    internal class Facility
+    public class Facility
     {
         public string id { get; set; }
         public string name { get; set; }

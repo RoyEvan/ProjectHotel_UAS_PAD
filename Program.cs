@@ -13,8 +13,7 @@ namespace ProjectHotel_UAS_PAD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormLogin());
-            Application.Run(new FormCheckin());
+            Application.Run(new FormLogin());
         }
     }
 }

@@ -238,6 +238,7 @@
             this.btn_checkin.TabIndex = 9;
             this.btn_checkin.Text = "Check In";
             this.btn_checkin.UseVisualStyleBackColor = true;
+            this.btn_checkin.Click += new System.EventHandler(this.btn_checkin_Click);
             // 
             // lbl_staffName
             // 

@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\dataprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:dataprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\fine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:fine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\formcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:formcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\facility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:facility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\formcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\formcheckout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:formcheckout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\formcheckout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:formcheckout.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\formcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:formcheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\dataprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:dataprocessor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:staff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|c:\\users\\xteam\\onedrive\\documents\\kuliah\\pad\\uas\\projecthotel_uas_pad\\koneksi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB2FCFA7-B3E7-41BB-A9D8-2807E0A73E3C}|ProjectHotel_UAS_PAD.csproj|solutionrelative:koneksi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,79 +46,121 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "Bill.cs",
+              "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Bill.cs",
+              "RelativeDocumentMoniker": "Bill.cs",
+              "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Bill.cs",
+              "RelativeToolTip": "Bill.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAywCIAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T14:20:58.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "FormCheckin.cs [Design]",
               "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckin.cs",
               "RelativeDocumentMoniker": "FormCheckin.cs",
               "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckin.cs [Design]",
               "RelativeToolTip": "FormCheckin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T08:32:46.935Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-05-18T12:58:21.91Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Facility.cs",
-              "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Facility.cs",
-              "RelativeDocumentMoniker": "Facility.cs",
-              "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Facility.cs",
-              "RelativeToolTip": "Facility.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAeAAAA",
+              "Title": "Fine.cs",
+              "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Fine.cs",
+              "RelativeDocumentMoniker": "Fine.cs",
+              "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Fine.cs",
+              "RelativeToolTip": "Fine.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T09:28:16.877Z",
+              "WhenOpened": "2024-05-18T12:17:34.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "DataProcessor.cs",
               "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\DataProcessor.cs",
               "RelativeDocumentMoniker": "DataProcessor.cs",
               "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\DataProcessor.cs",
               "RelativeToolTip": "DataProcessor.cs",
-              "ViewState": "AQIAAJ0AAAAAAAAAAAAhwK4AAAAcAAAA",
+              "ViewState": "AQIAACMBAAAAAAAAAAAEwCwBAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-17T08:51:13.11Z",
               "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "838970bc-d0f9-46fb-9afc-c094218d0fdf",
-        "Display": 1,
-        "X": 900,
-        "Y": 214,
-        "Width": 1025,
-        "Height": 603,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
+            },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "FormCheckin.cs",
               "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckin.cs",
               "RelativeDocumentMoniker": "FormCheckin.cs",
               "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckin.cs",
               "RelativeToolTip": "FormCheckin.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE4AAAAtAAAA",
+              "ViewState": "AQIAAG8AAAAAAAAAAAAvwA4BAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-17T08:47:32.645Z",
+              "WhenOpened": "2024-05-18T12:58:22.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormCheckout.cs",
+              "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckout.cs",
+              "RelativeDocumentMoniker": "FormCheckout.cs",
+              "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckout.cs",
+              "RelativeToolTip": "FormCheckout.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAzwDgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T11:10:46.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormCheckout.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckout.cs",
+              "RelativeDocumentMoniker": "FormCheckout.cs",
+              "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\FormCheckout.cs [Design]",
+              "RelativeToolTip": "FormCheckout.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T11:05:08.487Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Staff.cs",
+              "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Staff.cs",
+              "RelativeDocumentMoniker": "Staff.cs",
+              "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\Staff.cs",
+              "RelativeToolTip": "Staff.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAiwB8AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T10:11:31.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "koneksi.cs",
+              "DocumentMoniker": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\koneksi.cs",
+              "RelativeDocumentMoniker": "koneksi.cs",
+              "ToolTip": "C:\\Users\\xteam\\OneDrive\\Documents\\kuliah\\PAD\\UAS\\ProjectHotel_UAS_PAD\\koneksi.cs",
+              "RelativeToolTip": "koneksi.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAgwBUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-18T07:09:15.489Z",
               "EditorCaption": ""
             }
           ]

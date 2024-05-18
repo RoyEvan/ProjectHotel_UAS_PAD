@@ -28,44 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_formCheckin = new System.Windows.Forms.Button();
+            this.btn_formCheckout = new System.Windows.Forms.Button();
+            this.btn_transLog = new System.Windows.Forms.Button();
             this.lbl_staffName = new System.Windows.Forms.Label();
+            this.btn_logout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btn_formCheckin
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 123);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(505, 67);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Check In";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_formCheckin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_formCheckin.Location = new System.Drawing.Point(12, 123);
+            this.btn_formCheckin.Name = "btn_formCheckin";
+            this.btn_formCheckin.Size = new System.Drawing.Size(505, 67);
+            this.btn_formCheckin.TabIndex = 1;
+            this.btn_formCheckin.Text = "Check In";
+            this.btn_formCheckin.UseVisualStyleBackColor = true;
+            this.btn_formCheckin.Click += new System.EventHandler(this.btn_formCheckin_Click);
             // 
-            // button2
+            // btn_formCheckout
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(505, 67);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Check Out";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_formCheckout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_formCheckout.Location = new System.Drawing.Point(12, 196);
+            this.btn_formCheckout.Name = "btn_formCheckout";
+            this.btn_formCheckout.Size = new System.Drawing.Size(505, 67);
+            this.btn_formCheckout.TabIndex = 2;
+            this.btn_formCheckout.Text = "Check Out";
+            this.btn_formCheckout.UseVisualStyleBackColor = true;
+            this.btn_formCheckout.Click += new System.EventHandler(this.btn_formCheckout_Click);
             // 
-            // button3
+            // btn_transLog
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(12, 269);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(505, 67);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Transaction Logs";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btn_transLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_transLog.Location = new System.Drawing.Point(12, 269);
+            this.btn_transLog.Name = "btn_transLog";
+            this.btn_transLog.Size = new System.Drawing.Size(505, 67);
+            this.btn_transLog.TabIndex = 3;
+            this.btn_transLog.Text = "Transaction Logs";
+            this.btn_transLog.UseVisualStyleBackColor = true;
+            this.btn_transLog.Click += new System.EventHandler(this.btn_transLog_Click);
             // 
             // lbl_staffName
             // 
@@ -77,15 +78,27 @@
             this.lbl_staffName.TabIndex = 4;
             this.lbl_staffName.Text = "Welcome back, ";
             // 
+            // btn_logout
+            // 
+            this.btn_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_logout.Location = new System.Drawing.Point(12, 342);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(505, 67);
+            this.btn_logout.TabIndex = 5;
+            this.btn_logout.Text = "Log Out";
+            this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
+            // 
             // FormMenuStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 348);
+            this.ClientSize = new System.Drawing.Size(529, 421);
+            this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.lbl_staffName);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_transLog);
+            this.Controls.Add(this.btn_formCheckout);
+            this.Controls.Add(this.btn_formCheckin);
             this.Name = "FormMenuStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMenuStaff";
@@ -95,9 +108,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_formCheckin;
+        private System.Windows.Forms.Button btn_formCheckout;
+        private System.Windows.Forms.Button btn_transLog;
         private System.Windows.Forms.Label lbl_staffName;
+        private System.Windows.Forms.Button btn_logout;
     }
 }

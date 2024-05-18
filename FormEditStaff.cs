@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -7,16 +8,31 @@ namespace ProjectHotel_UAS_PAD
 {
     public partial class FormEditStaff : Form
     {
+        DataProcessor dp = new DataProcessor();
         public FormEditStaff()
         {
             InitializeComponent();
+
+            SetConnection();
         }
-        Staff s = new Staff();
-        private void FormEditStaff_Load(object sender, EventArgs e)
+        public void SetConnection()
         {
-            koneksi.setConn();
-            dgv_staff.DataSource = s.getStaff();
+            bool connected = koneksi.setConn();
+            int choice = 0;
+
+            while (!connected)
+            {
+                MessageBox.Show("Failed to establish a connection with MySQL Database!", "Database Error");
+                choice = (int)MessageBox.Show("Do you want to reconnect?", "Reconnect Database", MessageBoxButtons.YesNo);
+
+                if (choice == 6) connected = koneksi.setConn();
+                else if (choice == 7) break;
+                else MessageBox.Show("Invalid choice!", "Invalid");
+            }
+
+            if (connected) resetDGV();
         }
+
         private void resetDGV()
         {
             textUsername.Text = "";
@@ -26,7 +42,8 @@ namespace ProjectHotel_UAS_PAD
             textPhone.Enabled = false;
             cbox_isManager.Checked = false;
             cbox_updStatus.Checked = false;
-            dgv_staff.DataSource = s.getStaff();
+
+            dgv_staff.DataSource = dp.getStaff();
         }
         private void dgv_staff_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -39,6 +56,7 @@ namespace ProjectHotel_UAS_PAD
             string s_phone = selectedRow.Cells["staff_phone"].Value.ToString();
             bool s_is_active = (bool)selectedRow.Cells["staff_is_active"].Value;
             bool s_is_manager = (bool)selectedRow.Cells["staff_is_manager"].Value;
+
             label1.Text = s_id;
             textUsername.Text = s_username;
             textUsername.Enabled = false;
@@ -50,21 +68,7 @@ namespace ProjectHotel_UAS_PAD
             cbox_updStatus.Checked = s_is_active;
         }
 
-        private void Update_Click(object sender, EventArgs e)
-        {
-            string s_id = label1.Text;
-            string s_username = textUsername.Text;
-            string s_password = textPassword.Text;
-            string s_name = textName.Text;
-            string s_email = textEmail.Text;
-            string s_phone = textPhone.Text;
-            bool s_is_manager = cbox_isManager.Checked;
-            bool s_is_active = cbox_updStatus.Checked;
-            s.updateStaff(s_id, s_password, s_name, s_email, s_phone, s_is_manager, s_is_active);
-            resetDGV();
-        }
-
-        private void Submit_Click(object sender, EventArgs e)
+        private void btn_insert_Click(object sender, EventArgs e)
         {
             string s_username = textUsername.Text;
             string s_password = textPassword.Text;
@@ -73,7 +77,22 @@ namespace ProjectHotel_UAS_PAD
             string s_phone = textPhone.Text;
             bool s_is_manager = cbox_isManager.Checked;
             bool s_is_active = cbox_isManager.Checked;
-            s.insertStaff(s_username, s_password, s_name, s_email, s_phone, s_is_manager, s_is_active);
+
+            dp.insertStaff(s_username, s_password, s_name, s_email, s_phone, s_is_manager, s_is_active);
+            resetDGV();
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            string s_id = lbl_staffId.Text;
+            string s_password = textPassword.Text;
+            string s_name = textName.Text;
+            string s_email = textEmail.Text;
+            string s_phone = textPhone.Text;
+            bool s_is_manager = cbox_isManager.Checked;
+            bool s_is_active = cbox_updStatus.Checked;
+
+            dp.updateStaff(s_id, s_password, s_name, s_email, s_phone, s_is_manager, s_is_active);
             resetDGV();
         }
     }
