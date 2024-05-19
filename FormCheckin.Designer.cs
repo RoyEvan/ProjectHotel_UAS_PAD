@@ -362,9 +362,9 @@
             this.summary_voucherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.summary_voucherName.Location = new System.Drawing.Point(151, 693);
             this.summary_voucherName.Name = "summary_voucherName";
-            this.summary_voucherName.Size = new System.Drawing.Size(93, 18);
+            this.summary_voucherName.Size = new System.Drawing.Size(87, 18);
             this.summary_voucherName.TabIndex = 50;
-            this.summary_voucherName.Text = "Discount Z%";
+            this.summary_voucherName.Text = "No Voucher";
             // 
             // label22
             // 
@@ -600,9 +600,9 @@
             this.summary_roomLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.summary_roomLocation.Location = new System.Drawing.Point(151, 174);
             this.summary_roomLocation.Name = "summary_roomLocation";
-            this.summary_roomLocation.Size = new System.Drawing.Size(138, 18);
+            this.summary_roomLocation.Size = new System.Drawing.Size(125, 18);
             this.summary_roomLocation.TabIndex = 24;
-            this.summary_roomLocation.Text = "Lorong X Gedung Y";
+            this.summary_roomLocation.Text = "Lorong X Lantai Y";
             // 
             // summary_custNIK
             // 

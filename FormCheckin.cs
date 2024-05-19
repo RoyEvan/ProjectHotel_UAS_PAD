@@ -16,18 +16,70 @@ namespace ProjectHotel_UAS_PAD
         double grandTotal = 0;
         double discounts = 0;
         bool discounted = false;
+        bool extendingRoomMode = false;
 
-        public FormCheckin()
-        {
-            InitializeComponent();
-        }
 
         public FormCheckin(Staff staff, string bill_id)
         {
             InitializeComponent();
             this.s = staff;
+            extendingRoomMode = true;
 
             ResetAll();
+
+            Bill bill = dp.GetActiveTransactions(bill_id);
+            dp.GetFacilityByBillID(bill_id, addedFacility_list);
+
+
+            dtp_checkout.Value = DateTime.Now.AddDays(1);
+
+            summary_custNIK.Text = bill.nik;
+            summary_custName.Text = bill.cust_name;
+            summary_roomLocation.Text = "Lorong " + bill.room_id.Substring(0, 1) + " Lantai " + Convert.ToInt16(bill.room_id.Substring(1, 2));
+            summary_roomNumber.Text = bill.room_id.Substring(3, 2);
+
+            foreach (Room r in room_list)
+            {
+                if (r.id == bill.room_id)
+                {
+                    summary_roomCategory.Text = r.category;
+                }
+            }
+
+            foreach (Room r in room_list)
+            {
+                if (r.id == bill.room_id) roomPrice = r.price_base;
+            }
+
+            dgv_addedFacilities.Rows.Clear();
+            dgv_addedFacilities.Columns.Add("ID", "ID");
+            dgv_addedFacilities.Columns.Add("Name", "Name");
+            dgv_addedFacilities.Columns.Add("Price", "Price");
+            dgv_addedFacilities.Columns.Add("Qty", "Qty");
+            foreach (Facility f in addedFacility_list)
+            {
+                dgv_addedFacilities.Rows.Add(f.id, f.name, f.price, f.qty);
+            }
+
+            summary_days.Text = "1";
+            summary_roomPrice.Text = "Rp. " + roomPrice.ToString("N0");
+
+            panel_summary.Enabled = true;
+            dgv_rooms.Enabled = true;
+            dgv_facility.Enabled = true;
+            dtp_checkout.Enabled = true;
+            btn_addFacility.Enabled = true;
+            btn_checkin.Enabled = true;
+
+            if (addedFacility_list.Count > 0)
+            {
+                dgv_addedFacilities.Enabled = true;
+                btn_removeAddedFac.Enabled = true;
+                tbox_voucherId.Enabled = true;
+                btn_checkVoucher.Enabled = true;
+            }
+
+            RefreshAllTotals();
         }
 
         public FormCheckin(Staff staff)
@@ -49,12 +101,12 @@ namespace ProjectHotel_UAS_PAD
             grandTotal = 0;
             discounts = 0;
             discounted = false;
-            lbl_staffName.Text += s.name;
+            lbl_staffName.Text = "Hello, " + s.name;
 
             // Fills all DataGridViews
             dgv_cust.DataSource = dp.GetCustomer();
             dgv_rooms.DataSource = dp.GetRooms(room_list);
-            dgv_facility.DataSource = dp.GetAllFcilities();
+            dgv_facility.DataSource = dp.GetAllFacilities();
 
 
             // Reset the Summary
@@ -62,7 +114,7 @@ namespace ProjectHotel_UAS_PAD
             
             summary_custNIK.Text = "1234561212120001";
             summary_custName.Text = "Unknown";
-            summary_roomLocation.Text = "Lorong X Gedung Y";
+            summary_roomLocation.Text = "Lorong X Lantai Y";
             summary_roomNumber.Text = "Z";
             summary_roomCategory.Text = "AaBb CcDd";
 
@@ -75,12 +127,13 @@ namespace ProjectHotel_UAS_PAD
             
             tbox_voucherId.Text = "";
             
-            summary_voucherName.Text = "";
+            summary_voucherName.Text = "No Voucher";
             summary_totalDisc.Text = "0";
             summary_grandTotal.Text = "0";
 
 
             // Disables the Properties so that the user can't input randomly
+            panel_summary.Enabled = false;
             dgv_rooms.Enabled = false;
             dgv_facility.Enabled = false;
             dtp_checkout.Enabled = false;
@@ -91,7 +144,6 @@ namespace ProjectHotel_UAS_PAD
             tbox_voucherId.Enabled = false;
             btn_checkVoucher.Enabled = false;
             btn_applyVoucher.Enabled = false;
-
         }
 
         public void RefreshAllTotals()
@@ -100,7 +152,7 @@ namespace ProjectHotel_UAS_PAD
 
             foreach (Facility f in addedFacility_list)
             {
-                totalFacPrice += (f.base_price * f.qty);
+                totalFacPrice += (f.price_base * f.qty);
             }
 
             short days = (short)Math.Ceiling(dtp_checkout.Value.Subtract(DateTime.Now).TotalDays);
@@ -155,7 +207,7 @@ namespace ProjectHotel_UAS_PAD
         private void dtp_checkout_ValueChanged(object sender, EventArgs e)
         {
             if (dtp_checkout.Value <= DateTime.Now) {
-                MessageBox.Show("Minus");
+                MessageBox.Show("Check Out Date must be at least set to tomorrow!");
                 dtp_checkout.Value = (DateTime.Now.AddDays(1));
             }
             else
@@ -236,7 +288,7 @@ namespace ProjectHotel_UAS_PAD
             
             foreach(DataRow dr in dt.Rows)
             {
-                if (addedFacility_list.Count == 0) addedFacility_list.Add(new Facility(dr["ID"] + "", dr["Name"] + "", Convert.ToInt64(dr["base_price"].ToString()), dr["Price"] + ""));
+                if (addedFacility_list.Count == 0) addedFacility_list.Add(new Facility(dr["ID"] + "", dr["Name"] + "", Convert.ToInt64(dr["price_base"].ToString()), dr["Price"]+""));
                 else
                 {
                     bool exists = false;
@@ -249,7 +301,7 @@ namespace ProjectHotel_UAS_PAD
                         }
                     }
 
-                    if(!exists) addedFacility_list.Add(new Facility(dr["ID"] + "", dr["Name"] + "", Convert.ToInt64(dr["base_price"].ToString()), dr["Price"] + ""));
+                    if(!exists) addedFacility_list.Add(new Facility(dr["ID"] + "", dr["Name"] + "", Convert.ToInt64(dr["price_base"].ToString()), dr["price"]+""));
                 }
             }
 
@@ -339,30 +391,34 @@ namespace ProjectHotel_UAS_PAD
         private void btn_applyVoucher_Click(object sender, EventArgs e)
         {
             string vid = null;
-            if(discounted) vid = tbox_voucherId.Text;
-
-            discounts = dp.GetDiscount(vid, grandTotal);
-            DataRow dr = dp.GetVoucher(vid);
 
             RefreshAllTotals();
 
             discounted = true;
+            if (discounted)
+            {
+                vid = tbox_voucherId.Text;
+
+                discounts = dp.GetDiscount(vid, grandTotal);
+                DataRow dr = dp.GetVoucher(vid);
+                summary_voucherName.Text = dr["VOUCHER_NAME"].ToString();
+
+                if (discounts <= 100) summary_totalDisc.Text = discounts + "%";
+                else summary_totalDisc.Text = "Rp. " + discounts.ToString("N0");
+            }
+
             tbox_voucherId.Enabled = false;
             btn_checkVoucher.Enabled = false;
             btn_applyVoucher.Enabled = false;
-            summary_voucherName.Text = dr["VOUCHER_NAME"].ToString();
 
-            if (discounts <= 100) summary_totalDisc.Text = discounts + "%";
-            else summary_totalDisc.Text = "Rp. " + discounts.ToString("N0");
             
         }
 
         private void btn_checkVoucher_Click(object sender, EventArgs e)
         {
             string vid = tbox_voucherId.Text.TrimStart().TrimEnd();
-            tbox_voucherId.Text = vid;
 
-            if (tbox_voucherId.Text.TrimStart().TrimEnd() == "" || tbox_voucherId.Text.TrimStart().TrimEnd() == " ")
+            if (vid == "" || vid == " ")
             {
                 MessageBox.Show("Please fill before checking!");
             }
@@ -392,6 +448,8 @@ namespace ProjectHotel_UAS_PAD
         private void btn_cancelTrans_Click(object sender, EventArgs e)
         {
             ResetAll();
+
+            if (extendingRoomMode) this.Close();
         }
 
         private void btn_checkin_Click(object sender, EventArgs e)
@@ -417,9 +475,15 @@ namespace ProjectHotel_UAS_PAD
                 bill_total, bill_grandTotal, addedFacility_list
             );
 
-            if (completed) ResetAll();
+            if (completed)
+            {
+                ResetAll();
+
+                if (extendingRoomMode) this.Close();
+            }
             else MessageBox.Show("Transaction Failed!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            
         }
     }
 }

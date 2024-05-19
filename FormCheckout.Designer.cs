@@ -41,7 +41,6 @@
             this.btn_addFine = new System.Windows.Forms.Button();
             this.cbox_fines = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_extend = new System.Windows.Forms.Button();
             this.summary_grandTotal = new System.Windows.Forms.Label();
@@ -126,12 +125,13 @@
             // btn_searchBill
             // 
             this.btn_searchBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_searchBill.Location = new System.Drawing.Point(244, 52);
+            this.btn_searchBill.Location = new System.Drawing.Point(244, 51);
             this.btn_searchBill.Name = "btn_searchBill";
             this.btn_searchBill.Size = new System.Drawing.Size(80, 24);
             this.btn_searchBill.TabIndex = 3;
             this.btn_searchBill.Text = "Search";
             this.btn_searchBill.UseVisualStyleBackColor = true;
+            this.btn_searchBill.Click += new System.EventHandler(this.btn_searchBill_Click);
             // 
             // lbl_staffName
             // 
@@ -150,7 +150,6 @@
             this.panel2.Controls.Add(this.btn_addFine);
             this.panel2.Controls.Add(this.cbox_fines);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Location = new System.Drawing.Point(12, 368);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(625, 263);
@@ -190,9 +189,9 @@
             // 
             this.btn_addFine.Enabled = false;
             this.btn_addFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addFine.Location = new System.Drawing.Point(479, 44);
+            this.btn_addFine.Location = new System.Drawing.Point(3, 226);
             this.btn_addFine.Name = "btn_addFine";
-            this.btn_addFine.Size = new System.Drawing.Size(115, 32);
+            this.btn_addFine.Size = new System.Drawing.Size(89, 32);
             this.btn_addFine.TabIndex = 6;
             this.btn_addFine.Text = "Add Fine";
             this.btn_addFine.UseVisualStyleBackColor = true;
@@ -203,9 +202,9 @@
             this.cbox_fines.Enabled = false;
             this.cbox_fines.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbox_fines.FormattingEnabled = true;
-            this.cbox_fines.Location = new System.Drawing.Point(49, 48);
+            this.cbox_fines.Location = new System.Drawing.Point(3, 48);
             this.cbox_fines.Name = "cbox_fines";
-            this.cbox_fines.Size = new System.Drawing.Size(424, 26);
+            this.cbox_fines.Size = new System.Drawing.Size(619, 26);
             this.cbox_fines.TabIndex = 3;
             // 
             // label3
@@ -218,18 +217,9 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Fines";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 18);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Fine";
-            // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.btn_extend);
             this.panel3.Controls.Add(this.summary_grandTotal);
             this.panel3.Controls.Add(this.label13);
@@ -266,7 +256,7 @@
             // 
             this.summary_grandTotal.AutoSize = true;
             this.summary_grandTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_grandTotal.Location = new System.Drawing.Point(263, 196);
+            this.summary_grandTotal.Location = new System.Drawing.Point(243, 196);
             this.summary_grandTotal.Name = "summary_grandTotal";
             this.summary_grandTotal.Size = new System.Drawing.Size(16, 18);
             this.summary_grandTotal.TabIndex = 39;
@@ -276,7 +266,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(160, 196);
+            this.label13.Location = new System.Drawing.Point(140, 196);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(94, 18);
             this.label13.TabIndex = 38;
@@ -286,7 +276,7 @@
             // 
             this.summary_oldBillTotal.AutoSize = true;
             this.summary_oldBillTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_oldBillTotal.Location = new System.Drawing.Point(263, 139);
+            this.summary_oldBillTotal.Location = new System.Drawing.Point(243, 139);
             this.summary_oldBillTotal.Name = "summary_oldBillTotal";
             this.summary_oldBillTotal.Size = new System.Drawing.Size(16, 18);
             this.summary_oldBillTotal.TabIndex = 37;
@@ -296,7 +286,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(155, 139);
+            this.label10.Location = new System.Drawing.Point(135, 139);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 18);
             this.label10.TabIndex = 36;
@@ -306,7 +296,7 @@
             // 
             this.summary_totalFines.AutoSize = true;
             this.summary_totalFines.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_totalFines.Location = new System.Drawing.Point(263, 168);
+            this.summary_totalFines.Location = new System.Drawing.Point(243, 168);
             this.summary_totalFines.Name = "summary_totalFines";
             this.summary_totalFines.Size = new System.Drawing.Size(16, 18);
             this.summary_totalFines.TabIndex = 35;
@@ -316,7 +306,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(165, 168);
+            this.label9.Location = new System.Drawing.Point(145, 168);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(89, 18);
             this.label9.TabIndex = 34;
@@ -330,7 +320,7 @@
             this.summary_roomId.Name = "summary_roomId";
             this.summary_roomId.Size = new System.Drawing.Size(49, 18);
             this.summary_roomId.TabIndex = 33;
-            this.summary_roomId.Text = "A0101";
+            this.summary_roomId.Text = "A0100";
             // 
             // label11
             // 
@@ -350,7 +340,7 @@
             this.summary_custId.Name = "summary_custId";
             this.summary_custId.Size = new System.Drawing.Size(136, 18);
             this.summary_custId.TabIndex = 31;
-            this.summary_custId.Text = "3578111212120002";
+            this.summary_custId.Text = "3578121212121212";
             // 
             // btn_checkout
             // 
@@ -372,7 +362,7 @@
             this.summary_billId.Name = "summary_billId";
             this.summary_billId.Size = new System.Drawing.Size(179, 18);
             this.summary_billId.TabIndex = 4;
-            this.summary_billId.Text = "NOTA11072024115900";
+            this.summary_billId.Text = "NOTA11072024115999";
             // 
             // label7
             // 
@@ -452,7 +442,6 @@
         private System.Windows.Forms.Label lbl_staffName;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbox_fines;
         private System.Windows.Forms.Button btn_addFine;
         private System.Windows.Forms.Button btn_removeFine;

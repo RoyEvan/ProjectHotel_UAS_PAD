@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace ProjectHotel_UAS_PAD
         DataProcessor dp = new DataProcessor();
         List<Fine> fine_list = new List<Fine>();
         List<Bill> bill_list = new List<Bill>();
+        List<List<string>> room_inv = new List<List<string>>();
         double totalFine = 0;
         double totalHotelPrice = 0;
         double grandTotal = 0;
@@ -36,11 +38,23 @@ namespace ProjectHotel_UAS_PAD
         public void ResetAll()
         {
             dgv_bills.DataSource = dp.GetActiveTransactions(bill_list);
+            dgv_addedFines.Rows.Clear();
 
-            cbox_fines.DataSource = dp.GetFines();
+            cbox_fines.DataSource = dp.GetFines("A0100");
             cbox_fines.DisplayMember = "AMOUNT";
             cbox_fines.ValueMember = "ID";
 
+            lbl_staffName.Text = "Hello, " + staff.name;
+            tbox_roomId.Text = "";
+            summary_billId.Text = "NOTA11072024115999";
+            summary_custId.Text = "3578121212121212";
+            summary_roomId.Text = "A0100";
+            summary_oldBillTotal.Text = "0";
+            summary_totalFines.Text = "0";
+            summary_grandTotal.Text = "0";
+
+            cbox_fines.Enabled = false;
+            btn_addFine.Enabled = false;
             dgv_addedFines.Enabled = false;
             btn_removeFine.Enabled = false;
         }
@@ -50,7 +64,6 @@ namespace ProjectHotel_UAS_PAD
             totalFine = 0;
             foreach(Fine f in fine_list)
             {
-                MessageBox.Show(f.fine.ToString());
                 totalFine += f.fine;
             }
 
@@ -94,11 +107,17 @@ namespace ProjectHotel_UAS_PAD
 
         private void dgv_bills_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            summary_billId.Text = dgv_bills.CurrentRow.Cells["ID"].Value.ToString();
+            summary_custId.Text = dgv_bills.CurrentRow.Cells["NIK"].Value.ToString();
+            summary_roomId.Text = dgv_bills.CurrentRow.Cells["Room"].Value.ToString();
             cbox_fines.Enabled = true;
+
+            cbox_fines.DataSource = dp.GetFines(dgv_bills.CurrentRow.Cells["Room"].Value.ToString());
+            cbox_fines.DisplayMember = "AMOUNT";
+            cbox_fines.ValueMember = "ID";
+
             btn_addFine.Enabled = true;
             btn_removeFine.Enabled = true;
-
-            summary_billId.Text = dgv_bills.CurrentRow.Cells["ID"].Value.ToString();
             btn_checkout.Enabled = true;
             btn_extend.Enabled = true;
 
@@ -145,23 +164,56 @@ namespace ProjectHotel_UAS_PAD
 
             bool checkedOut = dp.FinishTransaction(bid, fine_list);
 
-            if (checkedOut) ResetAll();
+            if (checkedOut)
+            {
+                MessageBox.Show("Checked Out successfully!", "Check Out", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetAll();
+            }
             else MessageBox.Show("Transaction Failed!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            
         }
 
         private void btn_extend_Click(object sender, EventArgs e)
         {
-            string bill_id = dgv_bills.CurrentRow.Cells["ID"].Value.ToString();
+            string bid = dgv_bills.CurrentRow.Cells["ID"].Value.ToString();
+            bool checkedOut = dp.FinishTransaction(bid, fine_list);
 
-            FormCheckin f = new FormCheckin(staff, bill_id);
-            this.Hide();
-            f.ShowDialog();
-            this.Close();
+            if (checkedOut)
+            {
+                ResetAll();
+
+                FormCheckin f = new FormCheckin(staff, bid);
+                this.Hide();
+                f.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Transaction Failed!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btn_cancelTrans_Click(object sender, EventArgs e)
         {
             ResetAll();
+        }
+
+        private void btn_searchBill_Click(object sender, EventArgs e)
+        {
+
+            string rid = tbox_roomId.Text.TrimStart().TrimEnd();
+
+            if (rid == "" || rid == " ")
+            {
+                tbox_roomId.Text = "";
+                MessageBox.Show("There is no room with ID ''!");
+            }
+            else
+            {
+                dgv_bills.DataSource = dp.GetActiveTransactions(bill_list, rid);
+            }
         }
     }
 }

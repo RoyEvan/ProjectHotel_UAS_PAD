@@ -10,18 +10,17 @@ namespace ProjectHotel_UAS_PAD
     {
         public string id { get; set; }
         public string name { get; set; }
-        public long base_price { get; set; }
+        public long price_base { get; set; }
         public string price { get; set; }
-
         public int qty { get; set; }
 
-        public Facility(string id, string name, long base_price, string price)
+        public Facility(string id, string name, long price_base, string price, int qty = 1)
         {
             this.id = id;
             this.name = name;
-            this.base_price = base_price;
+            this.price_base = price_base;
             this.price = price;
-            this.qty = 1;
+            this.qty = qty;
         }
 
         public Facility()

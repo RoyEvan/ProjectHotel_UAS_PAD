@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx.Crud;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjectHotel_UAS_PAD
@@ -119,12 +121,13 @@ namespace ProjectHotel_UAS_PAD
 
 
         // ======================== FACILITIES ========================
-        public DataTable GetAllFcilities()
+        public DataTable GetAllFacilities()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT " +
                     "facility_id AS ID, " +
                     "facility_name AS Name, " +
-                    "price AS price " +
+                    "price AS price_base, " +
+                    "CONCAT('Rp. ', FORMAT(price, 0)) AS Price " +
                 "FROM facilities;", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
@@ -136,7 +139,12 @@ namespace ProjectHotel_UAS_PAD
 
         public DataTable GetFacility(string facility_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT facility_id AS ID, facility_name AS Name, CONCAT('Rp. ', FORMAT(price, 0)) AS Price, price AS base_price FROM facilities WHERE facility_id = @facility_id;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                "facility_id AS ID, " +
+                "facility_name AS Name, " +
+                "price AS price_base, " +
+                "CONCAT('Rp. ', FORMAT(price, 0)) AS Price " +
+            "FROM facilities WHERE facility_id = @facility_id;", koneksi.getConn());
             cmd.Parameters.AddWithValue("facility_id", facility_id);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
@@ -145,6 +153,34 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
+        
+        public DataTable GetFacilityByBillID(string bill_id, List<Facility> facility_list)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                    "f.facility_id AS ID, " +
+                    "f.facility_name AS NAME, " +
+                    "f.price AS price_base, " +
+                    "CONCAT(\"Rp. \", FORMAT(f.price, 0)) AS Price," +
+                    "d.qty AS Qty " +
+                "FROM d_bills d LEFT OUTER JOIN facilities f ON d.facility_id = f.facility_id " +
+                "WHERE bill_id = @bill_id; ", koneksi.getConn());
+            cmd.Parameters.AddWithValue("bill_id", bill_id);
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                facility_list.Add(new Facility(dr["ID"] + "", dr["Name"] + "", Convert.ToInt64(dr["price_base"].ToString()), dr["Price"] + "", Convert.ToInt32(dr["Qty"])));
+            }
+
+            dt.Columns.Remove("price_base");
+
+            return dt;
+        }
+        
+        
         // ============================================================
 
 
@@ -224,8 +260,6 @@ namespace ProjectHotel_UAS_PAD
 
                 // Prepares the Bill ID
                 string bill_id = "NOTA" + day + month + year + hour + minute + second;
-
-                MessageBox.Show(checkin_date_s + " - " + checkout_date_s);
 
                 MySqlCommand cmd = new MySqlCommand("INSERT INTO bills(" +
                         "BILL_ID, ROOM_ID, VOUCHER_ID, STAFF_ID, " +
@@ -321,16 +355,111 @@ namespace ProjectHotel_UAS_PAD
             return dt;
         }
 
+        public DataTable GetActiveTransactions(List<Bill> bills, string room_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                    "b.bill_id AS ID, " +
+                    "b.room_id AS Room, " +
+                    "b.staff_id AS SID, " +
+                    "b.customer_id AS NIK, " +
+                    "b.checkin_date AS \"Check In\", " +
+                    "b.checkout_date AS \"Check Out\", " +
+                    "b.bill_total AS total_base, " +
+                    "CONCAT(\"Rp. \", FORMAT(b.bill_total, 0)) AS Total, " +
+                    "b.bill_grandtotal AS \"Grand Total\", " +
+                    "s.staff_name AS Staff, " +
+                    "c.customer_name AS Customer " +
+                "FROM bills b LEFT OUTER JOIN staffs s ON b.staff_id = s.staff_id LEFT OUTER JOIN customers c ON b.customer_id = c.customer_id " +
+                "WHERE b.bill_status = 1 AND b.room_id LIKE @room_id;",
+                koneksi.getConn()
+            );
+            cmd.Parameters.AddWithValue("room_id", "%" + room_id + "%");
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                bills.Add(new Bill(
+                    dr["ID"] + "",
+                    dr["Room"] + "",
+                    dr["SID"] + "",
+                    dr["NIK"] + "",
+                    dr["Check In"] + "",
+                    dr["Check Out"] + "",
+                    Convert.ToDouble(dr["total_base"]),
+                    Convert.ToDouble(dr["Grand Total"]),
+                    dr["Staff"] + "",
+                    dr["Customer"] + ""
+                ));
+            }
+
+            dt.Columns.Remove("SID");
+            dt.Columns.Remove("total_base");
+            dt.Columns.Remove("Grand Total");
+
+            return dt;
+        }
+
+        public Bill GetActiveTransactions(string bill_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                    "b.bill_id AS ID, " +
+                    "b.room_id AS Room, " +
+                    "b.staff_id AS SID, " +
+                    "b.customer_id AS NIK, " +
+                    "b.checkin_date AS \"Check In\", " +
+                    "b.checkout_date AS \"Check Out\", " +
+                    "b.bill_total AS total_base, " +
+                    "CONCAT(\"Rp. \", FORMAT(b.bill_total, 0)) AS Total, " +
+                    "b.bill_grandtotal AS \"Grand Total\", " +
+                    "s.staff_name AS Staff, " +
+                    "c.customer_name AS Customer " +
+                "FROM bills b LEFT OUTER JOIN staffs s ON b.staff_id = s.staff_id LEFT OUTER JOIN customers c ON b.customer_id = c.customer_id " +
+                "WHERE b.bill_status = 1 AND b.bill_id = @bill_id;",
+                koneksi.getConn()
+            );
+            cmd.Parameters.AddWithValue("bill_id", bill_id);
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            Bill bill = new Bill();
+            
+            foreach(DataRow dr in dt.Rows)
+            {
+                bill = new Bill(
+                    dr["ID"] + "",
+                    dr["Room"] + "",
+                    dr["SID"] + "",
+                    dr["NIK"] + "",
+                    dr["Check In"] + "",
+                    dr["Check Out"] + "",
+                    Convert.ToDouble(dr["total_base"]),
+                    Convert.ToDouble(dr["Grand Total"]),
+                    dr["Staff"] + "",
+                    dr["Customer"] + ""
+                );
+            }
+
+            return bill;
+        }
         public bool FinishTransaction(string bill_id, List<Fine> fines)
         {
             MySqlTransaction trans = koneksi.getConn().BeginTransaction();
             try
             {
                 MySqlCommand cmd;
+
+                double totalFine = 0;
                 if(fines.Count > 0)
                 {
                     foreach(Fine f in fines)
                     {
+                        totalFine += f.fine;
+
                         cmd = new MySqlCommand("INSERT INTO d_fines(FINE_ID, BILL_ID) VALUES (@fine_id, @bill_id);", koneksi.getConn());
                         cmd.Parameters.AddWithValue("fine_id", f.id);
                         cmd.Parameters.AddWithValue("bill_id", bill_id);
@@ -339,7 +468,9 @@ namespace ProjectHotel_UAS_PAD
                     }
                 }
 
-                cmd = new MySqlCommand("UPDATE bills SET BILL_STATUS = 0 WHERE BILL_ID = @bill_id;", koneksi.getConn());
+                
+                cmd = new MySqlCommand("UPDATE bills SET CHECKOUT_DATE = NOW(), BILL_GRANDTOTAL = (BILL_TOTAL + @grand_total), BILL_STATUS = 0 WHERE BILL_ID = @bill_id;", koneksi.getConn());
+                cmd.Parameters.AddWithValue("grand_total", totalFine);
                 cmd.Parameters.AddWithValue("bill_id", bill_id);
 
                 cmd.ExecuteNonQuery();
@@ -417,9 +548,25 @@ namespace ProjectHotel_UAS_PAD
         // ========================================================
 
         // ======================== FINES ========================
-        public DataTable GetFines()
+        public DataTable GetFines(string room_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT FINE_ID AS ID, CONCAT(CONCAT(FINE_NAME,\" - \"), CONCAT(\"Rp. \", FORMAT(fine, 0))) AS AMOUNT FROM fines;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                    "f.fine_id AS ID, " +
+                    "CONCAT(" +
+                        "CONCAT(" +
+                            "CONCAT(\"Rp. \", FORMAT(f.fine, 0)), " +
+                            "\" - \"" +
+                        "), " +
+                        "CONCAT(" +
+                            "CONCAT(f.FINE_NAME, \" - \"), " +
+                            "ri.room_inventory_name" +
+                        ")" +
+                    ") AS AMOUNT " +
+                "FROM fines f INNER JOIN room_inventory ri ON f.fine_id = ri.fine_id " +
+                "WHERE ri.room_id = @room_id;",
+                koneksi.getConn()
+            );
+            cmd.Parameters.AddWithValue("room_id", room_id);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             DataTable dt = new DataTable();
@@ -440,7 +587,6 @@ namespace ProjectHotel_UAS_PAD
             foreach(DataRow dr in dt.Rows)
             {
                 addedFines.Add(new Fine(dr["ID"]+"", dr["NAME"]+"", Convert.ToDouble(dr["FINE"])));
-                MessageBox.Show(dr["FINE"].ToString());
             }
         }
         // =======================================================
