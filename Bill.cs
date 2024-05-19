@@ -14,8 +14,7 @@ namespace ProjectHotel_UAS_PAD
         public string nik { get; set; }
         public string c_in { get; set; }
         public string c_out { get; set; }
-        public double total_base { get; set; }
-        public string total { get; set; }
+        public double total { get; set; }
         public double gtotal { get; set; }
         public string staff_name { get; set; }
         public string cust_name { get; set; }
@@ -23,8 +22,8 @@ namespace ProjectHotel_UAS_PAD
         public Bill(
             string id, string room_id, string staff_id,
             string nik, string c_in, string c_out,
-            double total_base, string total, double gtotal,
-            string staff_name, string cust_name
+            double total, double gtotal, string staff_name,
+            string cust_name
         ) {
             this.id = id;
             this.room_id = room_id;
@@ -32,11 +31,24 @@ namespace ProjectHotel_UAS_PAD
             this.nik = nik;
             this.c_in = c_in;
             this.c_out = c_out;
-            this.total_base = total_base;
             this.total = total;
             this.gtotal = gtotal;
             this.staff_name = staff_name;
             this.cust_name = cust_name;
+        }
+
+        public Bill()
+        {
+            this.id = null;
+            this.room_id = null;
+            this.staff_id = null;
+            this.nik = null;
+            this.c_in = null;
+            this.c_out = null;
+            this.total = 0;
+            this.gtotal = 0;
+            this.staff_name = null;
+            this.cust_name = null;
         }
     }
 }

@@ -43,20 +43,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.summary_billId = new System.Windows.Forms.Label();
-            this.btn_checkout = new System.Windows.Forms.Button();
-            this.summary_custId = new System.Windows.Forms.Label();
-            this.summary_roomId = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.summary_totalFines = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.summary_oldBillTotal = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.btn_extend = new System.Windows.Forms.Button();
             this.summary_grandTotal = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.summary_oldBillTotal = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.summary_totalFines = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.summary_roomId = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.summary_custId = new System.Windows.Forms.Label();
+            this.btn_checkout = new System.Windows.Forms.Button();
+            this.summary_billId = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btn_cancelTrans = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_bills)).BeginInit();
             this.panel2.SuspendLayout();
@@ -228,6 +230,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btn_extend);
             this.panel3.Controls.Add(this.summary_grandTotal);
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.summary_oldBillTotal);
@@ -247,127 +250,17 @@
             this.panel3.Size = new System.Drawing.Size(383, 263);
             this.panel3.TabIndex = 12;
             // 
-            // label5
+            // btn_extend
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(124, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(141, 32);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Summary";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(56, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 18);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Bill ID :";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 78);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 18);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Customer ID :";
-            // 
-            // summary_billId
-            // 
-            this.summary_billId.AutoSize = true;
-            this.summary_billId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_billId.Location = new System.Drawing.Point(127, 52);
-            this.summary_billId.Name = "summary_billId";
-            this.summary_billId.Size = new System.Drawing.Size(179, 18);
-            this.summary_billId.TabIndex = 4;
-            this.summary_billId.Text = "NOTA11072024115900";
-            // 
-            // btn_checkout
-            // 
-            this.btn_checkout.Enabled = false;
-            this.btn_checkout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_checkout.Location = new System.Drawing.Point(3, 228);
-            this.btn_checkout.Name = "btn_checkout";
-            this.btn_checkout.Size = new System.Drawing.Size(377, 32);
-            this.btn_checkout.TabIndex = 30;
-            this.btn_checkout.Text = "Check Out";
-            this.btn_checkout.UseVisualStyleBackColor = true;
-            this.btn_checkout.Click += new System.EventHandler(this.btn_checkout_Click);
-            // 
-            // summary_custId
-            // 
-            this.summary_custId.AutoSize = true;
-            this.summary_custId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_custId.Location = new System.Drawing.Point(127, 78);
-            this.summary_custId.Name = "summary_custId";
-            this.summary_custId.Size = new System.Drawing.Size(136, 18);
-            this.summary_custId.TabIndex = 31;
-            this.summary_custId.Text = "3578111212120002";
-            // 
-            // summary_roomId
-            // 
-            this.summary_roomId.AutoSize = true;
-            this.summary_roomId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_roomId.Location = new System.Drawing.Point(127, 106);
-            this.summary_roomId.Name = "summary_roomId";
-            this.summary_roomId.Size = new System.Drawing.Size(49, 18);
-            this.summary_roomId.TabIndex = 33;
-            this.summary_roomId.Text = "A0101";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(42, 106);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 18);
-            this.label11.TabIndex = 32;
-            this.label11.Text = "Room ID :";
-            // 
-            // summary_totalFines
-            // 
-            this.summary_totalFines.AutoSize = true;
-            this.summary_totalFines.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_totalFines.Location = new System.Drawing.Point(263, 168);
-            this.summary_totalFines.Name = "summary_totalFines";
-            this.summary_totalFines.Size = new System.Drawing.Size(16, 18);
-            this.summary_totalFines.TabIndex = 35;
-            this.summary_totalFines.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(165, 168);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 18);
-            this.label9.TabIndex = 34;
-            this.label9.Text = "Total Fines :";
-            // 
-            // summary_oldBillTotal
-            // 
-            this.summary_oldBillTotal.AutoSize = true;
-            this.summary_oldBillTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.summary_oldBillTotal.Location = new System.Drawing.Point(263, 139);
-            this.summary_oldBillTotal.Name = "summary_oldBillTotal";
-            this.summary_oldBillTotal.Size = new System.Drawing.Size(16, 18);
-            this.summary_oldBillTotal.TabIndex = 37;
-            this.summary_oldBillTotal.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(155, 139);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(99, 18);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Old Bill Total :";
+            this.btn_extend.Enabled = false;
+            this.btn_extend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_extend.Location = new System.Drawing.Point(3, 228);
+            this.btn_extend.Name = "btn_extend";
+            this.btn_extend.Size = new System.Drawing.Size(187, 32);
+            this.btn_extend.TabIndex = 40;
+            this.btn_extend.Text = "Extend";
+            this.btn_extend.UseVisualStyleBackColor = true;
+            this.btn_extend.Click += new System.EventHandler(this.btn_extend_Click);
             // 
             // summary_grandTotal
             // 
@@ -389,11 +282,145 @@
             this.label13.TabIndex = 38;
             this.label13.Text = "Grand Total :";
             // 
+            // summary_oldBillTotal
+            // 
+            this.summary_oldBillTotal.AutoSize = true;
+            this.summary_oldBillTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_oldBillTotal.Location = new System.Drawing.Point(263, 139);
+            this.summary_oldBillTotal.Name = "summary_oldBillTotal";
+            this.summary_oldBillTotal.Size = new System.Drawing.Size(16, 18);
+            this.summary_oldBillTotal.TabIndex = 37;
+            this.summary_oldBillTotal.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(155, 139);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 18);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Old Bill Total :";
+            // 
+            // summary_totalFines
+            // 
+            this.summary_totalFines.AutoSize = true;
+            this.summary_totalFines.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_totalFines.Location = new System.Drawing.Point(263, 168);
+            this.summary_totalFines.Name = "summary_totalFines";
+            this.summary_totalFines.Size = new System.Drawing.Size(16, 18);
+            this.summary_totalFines.TabIndex = 35;
+            this.summary_totalFines.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(165, 168);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 18);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Total Fines :";
+            // 
+            // summary_roomId
+            // 
+            this.summary_roomId.AutoSize = true;
+            this.summary_roomId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_roomId.Location = new System.Drawing.Point(127, 106);
+            this.summary_roomId.Name = "summary_roomId";
+            this.summary_roomId.Size = new System.Drawing.Size(49, 18);
+            this.summary_roomId.TabIndex = 33;
+            this.summary_roomId.Text = "A0101";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(42, 106);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(76, 18);
+            this.label11.TabIndex = 32;
+            this.label11.Text = "Room ID :";
+            // 
+            // summary_custId
+            // 
+            this.summary_custId.AutoSize = true;
+            this.summary_custId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_custId.Location = new System.Drawing.Point(127, 78);
+            this.summary_custId.Name = "summary_custId";
+            this.summary_custId.Size = new System.Drawing.Size(136, 18);
+            this.summary_custId.TabIndex = 31;
+            this.summary_custId.Text = "3578111212120002";
+            // 
+            // btn_checkout
+            // 
+            this.btn_checkout.Enabled = false;
+            this.btn_checkout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_checkout.Location = new System.Drawing.Point(193, 228);
+            this.btn_checkout.Name = "btn_checkout";
+            this.btn_checkout.Size = new System.Drawing.Size(187, 32);
+            this.btn_checkout.TabIndex = 30;
+            this.btn_checkout.Text = "Check Out";
+            this.btn_checkout.UseVisualStyleBackColor = true;
+            this.btn_checkout.Click += new System.EventHandler(this.btn_checkout_Click);
+            // 
+            // summary_billId
+            // 
+            this.summary_billId.AutoSize = true;
+            this.summary_billId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.summary_billId.Location = new System.Drawing.Point(127, 52);
+            this.summary_billId.Name = "summary_billId";
+            this.summary_billId.Size = new System.Drawing.Size(179, 18);
+            this.summary_billId.TabIndex = 4;
+            this.summary_billId.Text = "NOTA11072024115900";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(18, 78);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 18);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Customer ID :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(56, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 18);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Bill ID :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(124, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 32);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Summary";
+            // 
+            // btn_cancelTrans
+            // 
+            this.btn_cancelTrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancelTrans.Location = new System.Drawing.Point(876, 12);
+            this.btn_cancelTrans.Name = "btn_cancelTrans";
+            this.btn_cancelTrans.Size = new System.Drawing.Size(150, 35);
+            this.btn_cancelTrans.TabIndex = 15;
+            this.btn_cancelTrans.Text = "Cancel";
+            this.btn_cancelTrans.UseVisualStyleBackColor = true;
+            this.btn_cancelTrans.Click += new System.EventHandler(this.btn_cancelTrans_Click);
+            // 
             // FormCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1038, 642);
+            this.Controls.Add(this.btn_cancelTrans);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lbl_staffName);
@@ -445,5 +472,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label summary_oldBillTotal;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btn_extend;
+        private System.Windows.Forms.Button btn_cancelTrans;
     }
 }

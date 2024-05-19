@@ -308,7 +308,6 @@ namespace ProjectHotel_UAS_PAD
                     dr["Check In"]+"",
                     dr["Check Out"]+"",
                     Convert.ToDouble(dr["total_base"]),
-                    dr["Total"]+"",
                     Convert.ToDouble(dr["Grand Total"]),
                     dr["Staff"]+"",
                     dr["Customer"]+""
@@ -316,34 +315,49 @@ namespace ProjectHotel_UAS_PAD
             }
 
             dt.Columns.Remove("SID");
+            dt.Columns.Remove("total_base");
             dt.Columns.Remove("Grand Total");
 
             return dt;
         }
 
-        public bool FinishTransaction(string bill_id)
+        public bool FinishTransaction(string bill_id, List<Fine> fines)
         {
-            
-            return true;
-        }
-
-        public DataTable GetBills(List<Room> rooms)
-        {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM bills WHERE bill_status = 1;", koneksi.getConn());
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
+            MySqlTransaction trans = koneksi.getConn().BeginTransaction();
+            try
             {
-                rooms.Add(new Room(dr["ID"] + "", dr["CID"] + "", dr["Category"] + "", Convert.ToInt64(dr["price_base"]), dr["price"] + "", Convert.ToBoolean(dr["Available"])));
+                MySqlCommand cmd;
+                if(fines.Count > 0)
+                {
+                    foreach(Fine f in fines)
+                    {
+                        cmd = new MySqlCommand("INSERT INTO d_fines(FINE_ID, BILL_ID) VALUES (@fine_id, @bill_id);", koneksi.getConn());
+                        cmd.Parameters.AddWithValue("fine_id", f.id);
+                        cmd.Parameters.AddWithValue("bill_id", bill_id);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                cmd = new MySqlCommand("UPDATE bills SET BILL_STATUS = 0 WHERE BILL_ID = @bill_id;", koneksi.getConn());
+                cmd.Parameters.AddWithValue("bill_id", bill_id);
+
+                cmd.ExecuteNonQuery();
+
+                trans.Commit();
+            }
+            catch(Exception ex)
+            {
+                trans.Rollback();
+
+                MessageBox.Show(ex.Message.ToString());
+
+                return false;
             }
 
-            dt.Columns.Remove("CID");
-            dt.Columns.Remove("price_base");
-
-            return dt;
+            // If no exceptions caught then return true,
+            // True means the checkout transaction is successfully completed
+            return true;
         }
         // ==============================================================
 
@@ -416,7 +430,7 @@ namespace ProjectHotel_UAS_PAD
 
         public void GetFines(List<Fine> addedFines, string fine_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT FINE_ID AS ID, FINE_NAME AS NAME, FINE AS FINE_BASE, CONCAT(\"Rp. \", FORMAT(fine, 0)) AS AMOUNT FROM fines WHERE fine_id = @fine_id;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT FINE_ID AS ID, FINE_NAME AS NAME, FINE FROM fines WHERE fine_id = @fine_id;", koneksi.getConn());
             cmd.Parameters.AddWithValue("fine_id", fine_id);
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
@@ -425,7 +439,8 @@ namespace ProjectHotel_UAS_PAD
 
             foreach(DataRow dr in dt.Rows)
             {
-                addedFines.Add(new Fine(dr["ID"]+"", dr["NAME"]+"", Convert.ToDouble(dr["FINE_BASE"]), dr["AMOUNT"]+""));
+                addedFines.Add(new Fine(dr["ID"]+"", dr["NAME"]+"", Convert.ToDouble(dr["FINE"])));
+                MessageBox.Show(dr["FINE"].ToString());
             }
         }
         // =======================================================

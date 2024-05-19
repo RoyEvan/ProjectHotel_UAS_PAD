@@ -20,38 +20,22 @@ namespace ProjectHotel_UAS_PAD
         public FormCheckin()
         {
             InitializeComponent();
+        }
 
-            SetConnection();
+        public FormCheckin(Staff staff, string bill_id)
+        {
+            InitializeComponent();
+            this.s = staff;
+
+            ResetAll();
         }
 
         public FormCheckin(Staff staff)
         {
             InitializeComponent();
             this.s = staff;
-            SetConnection();
 
-            lbl_staffName.Text += s.name;
-        }
-
-        public void SetConnection()
-        {
-            bool connected = koneksi.setConn();
-            int choice = 0;
-
-            while (!connected)
-            {
-                MessageBox.Show("Failed to establish a connection with MySQL Database!", "Database Error");
-                choice = (int)MessageBox.Show("Do you want to reconnect?", "Reconnect Database", MessageBoxButtons.YesNo);
-
-                if (choice == 6) 
-                    connected = koneksi.setConn();
-                else if (choice == 7) 
-                    break;
-                else 
-                    MessageBox.Show("Invalid choice!", "Invalid");
-            }
-
-            if (connected) ResetAll();
+            ResetAll();
         }
 
         public void ResetAll()
@@ -64,7 +48,8 @@ namespace ProjectHotel_UAS_PAD
             roomPrice = 0;
             grandTotal = 0;
             discounts = 0;
-            discounted = false;          
+            discounted = false;
+            lbl_staffName.Text += s.name;
 
             // Fills all DataGridViews
             dgv_cust.DataSource = dp.GetCustomer();
@@ -212,11 +197,9 @@ namespace ProjectHotel_UAS_PAD
 
                     foreach(Room r in room_list)
                     {
-                        if(r.id == roomId)
-                        {
-                            roomPrice = r.price_base;
-                        }
+                        if(r.id == roomId) roomPrice = r.price_base;
                     }
+
 
                     summary_roomPrice.Text = "Rp. " + roomPrice.ToString("N0");
 
@@ -226,6 +209,8 @@ namespace ProjectHotel_UAS_PAD
                     dtp_checkout.Enabled = true;
                     btn_addFacility.Enabled = true;
                     btn_checkin.Enabled = true;
+
+                    RefreshAllTotals();
                 }
                 else
                 {
@@ -353,7 +338,8 @@ namespace ProjectHotel_UAS_PAD
 
         private void btn_applyVoucher_Click(object sender, EventArgs e)
         {
-            string vid = tbox_voucherId.Text;
+            string vid = null;
+            if(discounted) vid = tbox_voucherId.Text;
 
             discounts = dp.GetDiscount(vid, grandTotal);
             DataRow dr = dp.GetVoucher(vid);
@@ -396,7 +382,10 @@ namespace ProjectHotel_UAS_PAD
                         }
                     }
                 }
-                if (!canBeUsed) MessageBox.Show("Voucher unavailable or does not satisfy the requirements!");
+                if (!canBeUsed) {
+                    MessageBox.Show("Voucher unavailable or does not satisfy the requirements!");
+                    tbox_voucherId.Text = "";
+                }
             }
         }
 
@@ -409,7 +398,10 @@ namespace ProjectHotel_UAS_PAD
         {
             // Preparing the data for inputs
             string room_id = dgv_rooms.CurrentRow.Cells[0].Value.ToString();
-            string voucher_id = tbox_voucherId.Text;
+            string voucher_id = null;
+
+            if(voucher_id == "") voucher_id = tbox_voucherId.Text;
+
             string staff_id = this.s.id;
             string customer_id = nik;
             DateTime checkin_date = DateTime.Now;
@@ -419,12 +411,14 @@ namespace ProjectHotel_UAS_PAD
 
             //MessageBox.Show(checkin_date + " - " + checkout_date);
 
-            dp.InsertTransaction(
+            bool completed = dp.InsertTransaction(
                 room_id, voucher_id, staff_id,
                 customer_id, checkin_date, checkout_date,
                 bill_total, bill_grandTotal, addedFacility_list
             );
 
+            if (completed) ResetAll();
+            else MessageBox.Show("Transaction Failed!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
     }

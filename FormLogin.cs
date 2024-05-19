@@ -9,7 +9,31 @@ namespace ProjectHotel_UAS_PAD
         public FormLogin()
         {
             InitializeComponent();
-            koneksi.setConn();
+            SetConnection();
+        }
+
+        public void SetConnection()
+        {
+            bool connected = koneksi.setConn();
+            int choice = 0;
+
+            while (!connected)
+            {
+                MessageBox.Show("Failed to establish a connection with MySQL Database!", "Database Error");
+                choice = (int)MessageBox.Show("Do you want to reconnect?", "Reconnect Database", MessageBoxButtons.YesNo);
+
+                if (choice == 6)
+                    connected = koneksi.setConn();
+                else if (choice == 7)
+                    break;
+                else
+                    MessageBox.Show("Invalid choice!", "Invalid");
+            }
+        }
+
+        public void CloseConnection()
+        {
+            koneksi.closeConn();
         }
 
         public void ResetAll() {
@@ -79,6 +103,11 @@ namespace ProjectHotel_UAS_PAD
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CloseConnection();
         }
     }
 }

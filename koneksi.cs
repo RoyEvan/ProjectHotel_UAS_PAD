@@ -27,5 +27,11 @@ namespace ProjectHotel_UAS_PAD
                 return false;
             }
         }
+
+        public static void closeConn()
+        {
+            conn.Close();
+            conn.Dispose();
+        }
     }
 }

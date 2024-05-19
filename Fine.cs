@@ -12,23 +12,20 @@ namespace ProjectHotel_UAS_PAD
 
         public string id { get; set; }
         public string name { get; set; }
-        public string amount { get; set; }
-        public double fine_base { get; set; }
+        public double fine { get; set; }
 
-        public Fine(string id, string name, double fine_base, string amount)
+        public Fine(string id, string name, double fine)
         {
             this.id = id;
             this.name = name;
-            this.amount = amount;
-            this.fine_base = fine_base;
+            this.fine = fine;
         }
 
         public Fine()
         {
             this.id = null;
             this.name = null;
-            this.amount = null;
-            this.fine_base = 0.0;
+            this.fine = 0;
         }
     }
 }
