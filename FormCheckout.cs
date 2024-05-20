@@ -100,9 +100,10 @@ namespace ProjectHotel_UAS_PAD
             }
         }
         
-        public void PrintReport()
+        public void PrintReport(string bill_id)
         {
-
+            FormCheckoutReport f = new FormCheckoutReport(bill_id);
+            f.Show();
         }
 
         private void dgv_bills_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -129,7 +130,7 @@ namespace ProjectHotel_UAS_PAD
             string fid = cbox_fines.SelectedValue.ToString();
 
             dp.GetFines(fine_list, fid);
-            
+            MessageBox.Show("p1");
             RefreshFines();
 
             RefreshAllTotals();
@@ -167,6 +168,8 @@ namespace ProjectHotel_UAS_PAD
             if (checkedOut)
             {
                 MessageBox.Show("Checked Out successfully!", "Check Out", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                PrintReport(bid);
                 ResetAll();
             }
             else MessageBox.Show("Transaction Failed!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -182,6 +185,8 @@ namespace ProjectHotel_UAS_PAD
             if (checkedOut)
             {
                 ResetAll();
+
+                PrintReport(bid);
 
                 FormCheckin f = new FormCheckin(staff, bid);
                 this.Hide();

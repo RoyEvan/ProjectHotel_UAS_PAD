@@ -390,22 +390,31 @@ namespace ProjectHotel_UAS_PAD
 
         private void btn_applyVoucher_Click(object sender, EventArgs e)
         {
-            string vid = null;
+            string vid = tbox_voucherId.Text.TrimStart().TrimEnd();
+            discounted = true;
+
+            if (vid == "" || vid == " ")
+            {
+                MessageBox.Show("Please fill before applying!");
+                btn_applyVoucher.Enabled = false;
+            }
+            else
+            {
+
+                if (discounted)
+                {
+
+                    discounts = dp.GetDiscount(vid, grandTotal);
+                    DataRow dr = dp.GetVoucher(vid);
+                    summary_voucherName.Text = dr["VOUCHER_NAME"].ToString();
+
+                    if (discounts <= 100) summary_totalDisc.Text = discounts + "%";
+                    else summary_totalDisc.Text = "Rp. " + discounts.ToString("N0");
+                }
+            }
+
 
             RefreshAllTotals();
-
-            discounted = true;
-            if (discounted)
-            {
-                vid = tbox_voucherId.Text;
-
-                discounts = dp.GetDiscount(vid, grandTotal);
-                DataRow dr = dp.GetVoucher(vid);
-                summary_voucherName.Text = dr["VOUCHER_NAME"].ToString();
-
-                if (discounts <= 100) summary_totalDisc.Text = discounts + "%";
-                else summary_totalDisc.Text = "Rp. " + discounts.ToString("N0");
-            }
 
             tbox_voucherId.Enabled = false;
             btn_checkVoucher.Enabled = false;
