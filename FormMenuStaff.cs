@@ -40,7 +40,7 @@ namespace ProjectHotel_UAS_PAD
 
         private void btn_transLog_Click(object sender, EventArgs e)
         {
-            FormTransactionLogs form = new FormTransactionLogs(staff);
+            FormTransactionLogsStaff form = new FormTransactionLogsStaff(staff);
             this.Hide();
             form.ShowDialog();
             this.Show();

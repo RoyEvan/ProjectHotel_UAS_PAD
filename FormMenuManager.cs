@@ -22,5 +22,37 @@ namespace ProjectHotel_UAS_PAD
         {
             this.Close();
         }
+
+        private void btn_transLog_Click(object sender, EventArgs e)
+        {
+            FormTransactionLogsManager ftlm = new FormTransactionLogsManager();
+            this.Hide();
+            ftlm.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_editFacilities_Click(object sender, EventArgs e)
+        {
+            FormFacilities ffa = new FormFacilities();
+            this.Hide();
+            ffa.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_editVouchers_Click(object sender, EventArgs e)
+        {
+            FormVouchers fv = new FormVouchers();
+            this.Hide();
+            fv.ShowDialog();
+            this.Show();
+        }
+
+        private void btn_editFines_Click(object sender, EventArgs e)
+        {
+            FormFines ffi = new FormFines();
+            this.Hide();
+            ffi.ShowDialog();
+            this.Show();
+        }
     }
 }

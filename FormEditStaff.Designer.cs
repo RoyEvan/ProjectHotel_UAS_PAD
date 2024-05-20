@@ -63,7 +63,7 @@
             this.dgv_staff.RowHeadersVisible = false;
             this.dgv_staff.RowHeadersWidth = 51;
             this.dgv_staff.RowTemplate.Height = 24;
-            this.dgv_staff.Size = new System.Drawing.Size(1167, 265);
+            this.dgv_staff.Size = new System.Drawing.Size(1062, 265);
             this.dgv_staff.TabIndex = 0;
             this.dgv_staff.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_staff_CellContentDoubleClick);
             // 
@@ -236,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1191, 579);
+            this.ClientSize = new System.Drawing.Size(1083, 579);
             this.Controls.Add(this.lbl_staffId);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

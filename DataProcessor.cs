@@ -136,6 +136,20 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
+        public DataTable GetFacilities()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                    "facility_id AS ID, " +
+                    "facility_name AS Name, " +
+                    "price AS Price " +
+                "FROM facilities", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
 
         public DataTable GetFacility(string facility_id)
         {
@@ -179,8 +193,30 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
-        
-        
+
+        public void insertFacilities(string name, string price)
+        {
+            MySqlCommand cmd = new MySqlCommand(
+                $"insert into facilities (facility_name, price) values(@name, @price)"
+                , koneksi.getConn());
+
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@price", price);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void updateFacilities(string id, string name, string price)
+        {
+            MySqlCommand cmd = new MySqlCommand(
+                $"UPDATE facilities SET facility_name = @name, price = @price WHERE facility_id = @id", koneksi.getConn());
+
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@price", price);
+            cmd.ExecuteNonQuery();
+        }
+
+
         // ============================================================
 
 
@@ -308,7 +344,30 @@ namespace ProjectHotel_UAS_PAD
             // True means the transaction (Data Insertion) is successfully completed
             return true;
         }
-        
+        public DataTable getTransactionsStaff()
+        {
+            MySqlDataAdapter da =
+                new MySqlDataAdapter("select b.room_id as ID, s.staff_name as Staff, c.customer_name as Customer, b.checkin_date, b.checkout_date, " +
+                "b.bill_status from bills b join staffs s on b.staff_id = s.staff_id " +
+                "join customers c on b.customer_id = c.customer_id", koneksi.getConn());
+            DataTable dt = new DataTable("transactionlogs");
+            da.Fill(dt);
+            return dt;
+        }
+        public DataTable getTransactionsByCustomerName(string customerName)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT b.room_id AS ID, s.staff_name AS Staff, c.customer_name AS Customer, " +
+                "b.checkin_date, b.checkout_date, b.bill_status FROM bills b " +
+                "JOIN staffs s ON b.staff_id = s.staff_id " +
+                "JOIN customers c ON b.customer_id = c.customer_id " +
+                "WHERE c.customer_name LIKE @customerName", koneksi.getConn());
+            cmd.Parameters.AddWithValue("@customerName", "%" + customerName + "%");
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+                    
+            return dt;
+        }
         public DataTable GetActiveTransactions(List<Bill> bills)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT " +
@@ -588,6 +647,52 @@ namespace ProjectHotel_UAS_PAD
             {
                 addedFines.Add(new Fine(dr["ID"]+"", dr["NAME"]+"", Convert.ToDouble(dr["FINE"])));
             }
+        }
+
+        public DataTable GetAllFines()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT fine_id AS ID, fine_name AS NAME,fine FROM fines", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        public void insertFines(string name, string fine)
+        {
+            MySqlCommand getLastId = new MySqlCommand("SELECT MAX(fine_id) FROM fines", koneksi.getConn());
+            object lastIdObj = getLastId.ExecuteScalar();
+            int lastId = 0;
+
+            if (lastIdObj != null && lastIdObj != DBNull.Value)
+            {
+                int.TryParse(lastIdObj.ToString().Substring(4), out lastId); // Mengambil angka setelah "FINE"
+            }
+
+            string nextFinesId = "FINE" + (lastId + 1).ToString("D4");
+
+
+            MySqlCommand cmd = new MySqlCommand(
+                $"insert into fines (fine_id, fine_name, fine) values(@id, @name, @fine)"
+                , koneksi.getConn());
+
+            cmd.Parameters.AddWithValue("@id", nextFinesId);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@fine", fine);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void updateFines(string id, string name, string fine)
+        {
+            MySqlCommand cmd = new MySqlCommand(
+                $"UPDATE fines SET fine_name = @name, fine = @fine WHERE fine_id = @id", koneksi.getConn());
+
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@fine", fine);
+            cmd.ExecuteNonQuery();
         }
         // =======================================================
 

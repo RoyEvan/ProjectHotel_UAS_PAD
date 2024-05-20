@@ -32,12 +32,15 @@
             this.btn_transLog = new System.Windows.Forms.Button();
             this.btn_formEditStaff = new System.Windows.Forms.Button();
             this.lbl_staffName = new System.Windows.Forms.Label();
+            this.btn_editFacilities = new System.Windows.Forms.Button();
+            this.btn_editVouchers = new System.Windows.Forms.Button();
+            this.btn_editFines = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_logout
             // 
             this.btn_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_logout.Location = new System.Drawing.Point(12, 251);
+            this.btn_logout.Location = new System.Drawing.Point(12, 435);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(505, 67);
             this.btn_logout.TabIndex = 8;
@@ -48,17 +51,18 @@
             // btn_transLog
             // 
             this.btn_transLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_transLog.Location = new System.Drawing.Point(12, 178);
+            this.btn_transLog.Location = new System.Drawing.Point(12, 362);
             this.btn_transLog.Name = "btn_transLog";
             this.btn_transLog.Size = new System.Drawing.Size(505, 67);
             this.btn_transLog.TabIndex = 7;
             this.btn_transLog.Text = "Transaction Logs";
             this.btn_transLog.UseVisualStyleBackColor = true;
+            this.btn_transLog.Click += new System.EventHandler(this.btn_transLog_Click);
             // 
             // btn_formEditStaff
             // 
             this.btn_formEditStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_formEditStaff.Location = new System.Drawing.Point(12, 105);
+            this.btn_formEditStaff.Location = new System.Drawing.Point(12, 70);
             this.btn_formEditStaff.Name = "btn_formEditStaff";
             this.btn_formEditStaff.Size = new System.Drawing.Size(505, 67);
             this.btn_formEditStaff.TabIndex = 6;
@@ -76,11 +80,47 @@
             this.lbl_staffName.TabIndex = 9;
             this.lbl_staffName.Text = "Welcome back, ";
             // 
+            // btn_editFacilities
+            // 
+            this.btn_editFacilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editFacilities.Location = new System.Drawing.Point(12, 143);
+            this.btn_editFacilities.Name = "btn_editFacilities";
+            this.btn_editFacilities.Size = new System.Drawing.Size(505, 67);
+            this.btn_editFacilities.TabIndex = 10;
+            this.btn_editFacilities.Text = "Facilities Master";
+            this.btn_editFacilities.UseVisualStyleBackColor = true;
+            this.btn_editFacilities.Click += new System.EventHandler(this.btn_editFacilities_Click);
+            // 
+            // btn_editVouchers
+            // 
+            this.btn_editVouchers.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editVouchers.Location = new System.Drawing.Point(12, 216);
+            this.btn_editVouchers.Name = "btn_editVouchers";
+            this.btn_editVouchers.Size = new System.Drawing.Size(505, 67);
+            this.btn_editVouchers.TabIndex = 11;
+            this.btn_editVouchers.Text = "Vouchers Master";
+            this.btn_editVouchers.UseVisualStyleBackColor = true;
+            this.btn_editVouchers.Click += new System.EventHandler(this.btn_editVouchers_Click);
+            // 
+            // btn_editFines
+            // 
+            this.btn_editFines.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_editFines.Location = new System.Drawing.Point(12, 289);
+            this.btn_editFines.Name = "btn_editFines";
+            this.btn_editFines.Size = new System.Drawing.Size(505, 67);
+            this.btn_editFines.TabIndex = 12;
+            this.btn_editFines.Text = "Fines Master";
+            this.btn_editFines.UseVisualStyleBackColor = true;
+            this.btn_editFines.Click += new System.EventHandler(this.btn_editFines_Click);
+            // 
             // FormMenuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 330);
+            this.ClientSize = new System.Drawing.Size(529, 523);
+            this.Controls.Add(this.btn_editFines);
+            this.Controls.Add(this.btn_editVouchers);
+            this.Controls.Add(this.btn_editFacilities);
             this.Controls.Add(this.lbl_staffName);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.btn_transLog);
@@ -98,5 +138,8 @@
         private System.Windows.Forms.Button btn_transLog;
         private System.Windows.Forms.Button btn_formEditStaff;
         private System.Windows.Forms.Label lbl_staffName;
+        private System.Windows.Forms.Button btn_editFacilities;
+        private System.Windows.Forms.Button btn_editVouchers;
+        private System.Windows.Forms.Button btn_editFines;
     }
 }

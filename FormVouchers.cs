@@ -10,19 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    public partial class FormTransactionLogs : Form
+    public partial class FormVouchers : Form
     {
-        private Staff staff;
-        public FormTransactionLogs()
+        public FormVouchers()
         {
             InitializeComponent();
-        }
-        
-        public FormTransactionLogs(Staff staff)
-        {
-            InitializeComponent();
-
-            this.staff = staff;
         }
     }
 }

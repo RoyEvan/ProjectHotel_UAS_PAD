@@ -105,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bill.cs" />
+    <Compile Include="CrystalReport_Transaction.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport_Transaction.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrystalReport_Update.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -139,6 +145,18 @@
     <Compile Include="FormEditStaff.Designer.cs">
       <DependentUpon>FormEditStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFacilities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFacilities.Designer.cs">
+      <DependentUpon>FormFacilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFines.Designer.cs">
+      <DependentUpon>FormFines.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,11 +181,23 @@
     <Compile Include="FormCheckin.Designer.cs">
       <DependentUpon>FormCheckin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTransactionLogs.cs">
+    <Compile Include="FormTransactionLogsManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTransactionLogs.Designer.cs">
-      <DependentUpon>FormTransactionLogs.cs</DependentUpon>
+    <Compile Include="FormTransactionLogsManager.Designer.cs">
+      <DependentUpon>FormTransactionLogsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTransactionLogsStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTransactionLogsStaff.Designer.cs">
+      <DependentUpon>FormTransactionLogsStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVouchers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVouchers.Designer.cs">
+      <DependentUpon>FormVouchers.cs</DependentUpon>
     </Compile>
     <Compile Include="koneksi.cs" />
     <Compile Include="FormAddRoom.cs">
@@ -180,6 +210,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Staff.cs" />
+    <EmbeddedResource Include="CrystalReport_Transaction.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport_Transaction.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReport_Update.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport_Update.cs</LastGenOutput>
@@ -202,6 +236,12 @@
     <EmbeddedResource Include="FormEditStaff.resx">
       <DependentUpon>FormEditStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFacilities.resx">
+      <DependentUpon>FormFacilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFines.resx">
+      <DependentUpon>FormFines.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +250,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenuStaff.resx">
       <DependentUpon>FormMenuStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransactionLogsManager.resx">
+      <DependentUpon>FormTransactionLogsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransactionLogsStaff.resx">
+      <DependentUpon>FormTransactionLogsStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
