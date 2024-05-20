@@ -278,9 +278,8 @@ namespace ProjectHotel_UAS_PAD
 
         public double GetDiscount(string voucher_id, double currentTotal)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM vouchers WHERE voucher_id = @voucher_id AND date_start <= @now AND date_end >= @now;", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM vouchers WHERE voucher_id = @voucher_id AND date_start <= NOW() AND date_end >= NOW();", koneksi.getConn());
             cmd.Parameters.AddWithValue("voucher_id", voucher_id);
-            cmd.Parameters.AddWithValue("now", DateTime.Now);
             MySqlDataReader dr = cmd.ExecuteReader();
             long discValue = 0;
             while (dr.Read()) {
@@ -556,9 +555,10 @@ namespace ProjectHotel_UAS_PAD
                     {
                         totalFine += f.fine;
 
-                        cmd = new MySqlCommand("INSERT INTO d_fines(FINE_ID, BILL_ID) VALUES (@fine_id, @bill_id);", koneksi.getConn());
+                        cmd = new MySqlCommand("INSERT INTO d_fines(FINE_ID, BILL_ID, ROOM_INVENTORY_ID) VALUES (@fine_id, @bill_id, @inv_id);", koneksi.getConn());
                         cmd.Parameters.AddWithValue("fine_id", f.id);
                         cmd.Parameters.AddWithValue("bill_id", bill_id);
+                        cmd.Parameters.AddWithValue("inv_id", f.room_inventory_id);
 
                         cmd.ExecuteNonQuery();
                     }
@@ -647,7 +647,7 @@ namespace ProjectHotel_UAS_PAD
         public DataTable GetFines(string room_id)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT " +
-                    "f.fine_id AS ID, " +
+                    "CONCAT(f.fine_id, ri.ROOM_INVENTORY_ID) AS ID, " +
                     "CONCAT(" +
                         "CONCAT(" +
                             "CONCAT(\"Rp. \", FORMAT(f.fine, 0)), " +
@@ -674,7 +674,7 @@ namespace ProjectHotel_UAS_PAD
         public void GetFines(List<Fine> addedFines, string fine_id)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT FINE_ID AS ID, FINE_NAME AS NAME, FINE FROM fines WHERE fine_id = @fine_id;", koneksi.getConn());
-            cmd.Parameters.AddWithValue("fine_id", fine_id);
+            cmd.Parameters.AddWithValue("fine_id", fine_id.Substring(0, 8));
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
             DataTable dt = new DataTable();
@@ -682,7 +682,7 @@ namespace ProjectHotel_UAS_PAD
 
             foreach(DataRow dr in dt.Rows)
             {
-                addedFines.Add(new Fine(dr["ID"]+"", dr["NAME"]+"", Convert.ToDouble(dr["FINE"])));
+                addedFines.Add(new Fine(dr["ID"]+"", dr["NAME"]+"", Convert.ToDouble(dr["FINE"]), Convert.ToInt32(fine_id.Substring(8))));
             }
         }
 
