@@ -228,9 +228,9 @@
             this.lbl_staffId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_staffId.Location = new System.Drawing.Point(66, 289);
             this.lbl_staffId.Name = "lbl_staffId";
-            this.lbl_staffId.Size = new System.Drawing.Size(75, 25);
+            this.lbl_staffId.Size = new System.Drawing.Size(63, 25);
             this.lbl_staffId.TabIndex = 35;
-            this.lbl_staffId.Text = "S0000";
+            this.lbl_staffId.Text = "S000";
             // 
             // FormEditStaff
             // 

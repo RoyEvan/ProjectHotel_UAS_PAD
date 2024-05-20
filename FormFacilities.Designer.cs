@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 328);
+            this.ClientSize = new System.Drawing.Size(723, 328);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_insert);
             this.Controls.Add(this.textPrice);

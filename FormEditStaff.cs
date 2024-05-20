@@ -57,7 +57,7 @@ namespace ProjectHotel_UAS_PAD
             bool s_is_active = (bool)selectedRow.Cells["staff_is_active"].Value;
             bool s_is_manager = (bool)selectedRow.Cells["staff_is_manager"].Value;
 
-            label1.Text = s_id;
+            lbl_staffId.Text = s_id;
             textUsername.Text = s_username;
             textUsername.Enabled = false;
             textPassword.Text = s_password;

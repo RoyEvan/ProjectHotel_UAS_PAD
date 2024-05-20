@@ -257,6 +257,9 @@
     <EmbeddedResource Include="FormTransactionLogsStaff.resx">
       <DependentUpon>FormTransactionLogsStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVouchers.resx">
+      <DependentUpon>FormVouchers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
