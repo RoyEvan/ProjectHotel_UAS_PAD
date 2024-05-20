@@ -221,6 +221,43 @@ namespace ProjectHotel_UAS_PAD
 
 
         // ======================== VOUCHERS ========================
+        public DataTable getVouchers()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT v.voucher_id AS ID, f.facility_name as Facility, v.voucher_name as Voucher, " +
+                "v.voucher as Available, v.date_start, v.date_end from vouchers v join facilities f on v.facility_id = f.facility_id", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+        public void insertVouchers(string f_id, string v_name, string amount, string tgl_start, string tgl_end)
+        {
+            MySqlCommand getLastId = new MySqlCommand("SELECT MAX(voucher_id) FROM vouchers", koneksi.getConn());
+            object lastIdObj = getLastId.ExecuteScalar();
+            int lastId = 0;
+
+            if (lastIdObj != null && lastIdObj != DBNull.Value)
+            {
+                int.TryParse(lastIdObj.ToString().Substring(4), out lastId); 
+            }
+
+            string nextVoucherId = "DSC" + (lastId + 1).ToString("D4");
+
+            MySqlCommand cmd = new MySqlCommand(
+                $"insert into vouchers (voucher_id, facility_id, voucher_name, voucher, date_start, date_end) " +
+                $"values(@v_id, @f_id, @v_name, @amount, STR_TO_DATE(@tgl_start, \"%d-%m-%Y\"), STR_TO_DATE(@tgl_end, \"%d-%m-%Y\"))"
+                , koneksi.getConn());
+
+            cmd.Parameters.AddWithValue("@v_id", nextVoucherId);
+            cmd.Parameters.AddWithValue("@f_id", f_id);
+            cmd.Parameters.AddWithValue("@v_name", v_name);
+            cmd.Parameters.AddWithValue("@amount", amount);
+            cmd.Parameters.AddWithValue("@tgl_start", tgl_start);
+            cmd.Parameters.AddWithValue("@tgl_end", tgl_end);
+            cmd.ExecuteNonQuery();
+        }
         public DataRow GetVoucher(string facility_id)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM vouchers WHERE voucher_id = @voucher_id AND date_start <= NOW() AND date_end >= NOW();", koneksi.getConn());
@@ -668,7 +705,7 @@ namespace ProjectHotel_UAS_PAD
 
             if (lastIdObj != null && lastIdObj != DBNull.Value)
             {
-                int.TryParse(lastIdObj.ToString().Substring(4), out lastId); // Mengambil angka setelah "FINE"
+                int.TryParse(lastIdObj.ToString().Substring(4), out lastId); 
             }
 
             string nextFinesId = "FINE" + (lastId + 1).ToString("D4");
