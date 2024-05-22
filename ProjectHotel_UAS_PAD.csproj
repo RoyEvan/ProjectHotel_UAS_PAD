@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,18 +48,63 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
-      <HintPath>packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>packages\BouncyCastle.Cryptography.2.2.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\MySQL Installer for Windows\MySql.Data.dll</HintPath>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Google.Protobuf, Version=3.25.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.25.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.3.5\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.5.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.3.5\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.4.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.4.0\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.4.4.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,16 +114,39 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ZstdSharp, Version=0.7.1.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>packages\ZstdSharp.Port.0.7.1\lib\net461\ZstdSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bill.cs" />
+    <Compile Include="CrystalReport_Transaction.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport_Transaction.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport_Update.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport_Update.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="DataProcessor.cs" />
     <Compile Include="Facility.cs" />
+    <Compile Include="Fine.cs" />
     <Compile Include="FormAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAddCustomer.Designer.cs">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCheckIn.Designer.cs">
+      <DependentUpon>FormCheckIn.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCheckout.cs">
       <SubType>Form</SubType>
@@ -71,11 +154,29 @@
     <Compile Include="FormCheckout.Designer.cs">
       <DependentUpon>FormCheckout.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCheckoutReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCheckoutReport.Designer.cs">
+      <DependentUpon>FormCheckoutReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditStaff.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormEditStaff.Designer.cs">
       <DependentUpon>FormEditStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFacilities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFacilities.Designer.cs">
+      <DependentUpon>FormFacilities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFines.Designer.cs">
+      <DependentUpon>FormFines.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
@@ -95,36 +196,66 @@
     <Compile Include="FormMenuStaff.Designer.cs">
       <DependentUpon>FormMenuStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCheckin.cs">
+    <Compile Include="FormTransactionLogsManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCheckin.Designer.cs">
-      <DependentUpon>FormCheckin.cs</DependentUpon>
+    <Compile Include="FormTransactionLogsManager.Designer.cs">
+      <DependentUpon>FormTransactionLogsManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormTransactionLogs.cs">
+    <Compile Include="FormTransactionLogsStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormTransactionLogs.Designer.cs">
-      <DependentUpon>FormTransactionLogs.cs</DependentUpon>
+    <Compile Include="FormTransactionLogsStaff.Designer.cs">
+      <DependentUpon>FormTransactionLogsStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVouchers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVouchers.Designer.cs">
+      <DependentUpon>FormVouchers.cs</DependentUpon>
     </Compile>
     <Compile Include="koneksi.cs" />
-    <Compile Include="FormAddRoom.cs">
+    <Compile Include="FormRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddRoom.Designer.cs">
-      <DependentUpon>FormAddRoom.cs</DependentUpon>
+    <Compile Include="FormRoom.Designer.cs">
+      <DependentUpon>FormRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="Staff.cs" />
+    <EmbeddedResource Include="CrystalReport_Transaction.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport_Transaction.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport_Update.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport_Update.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddCustomer.resx">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCheckin.resx">
-      <DependentUpon>FormCheckin.cs</DependentUpon>
+    <EmbeddedResource Include="FormCheckIn.resx">
+      <DependentUpon>FormCheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRoom.resx">
+      <DependentUpon>FormRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCheckout.resx">
+      <DependentUpon>FormCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCheckoutReport.resx">
+      <DependentUpon>FormCheckoutReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditStaff.resx">
       <DependentUpon>FormEditStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFacilities.resx">
+      <DependentUpon>FormFacilities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFines.resx">
+      <DependentUpon>FormFines.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -134,6 +265,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenuStaff.resx">
       <DependentUpon>FormMenuStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransactionLogsManager.resx">
+      <DependentUpon>FormTransactionLogsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTransactionLogsStaff.resx">
+      <DependentUpon>FormTransactionLogsStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -160,22 +297,43 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\density_medium_24dp.png" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\home_24dp.png" />
+    <None Include="Resources\background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fact_check_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\event_available_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\group_add_20dp_FILL0_wght400_GRAD0_opsz20.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\receipt_long_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\group_add_20dp_FILL0_wght400_GRAD0_opsz20 %281%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logout_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resources\check-in-desk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group_add_20dp_FILL0_wght400_GRAD0_opsz20 %282%29 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person_check_20dp_FILL0_wght400_GRAD0_opsz20 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipt_long_20dp_FILL0_wght400_GRAD0_opsz20 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout_20dp_FILL0_wght400_GRAD0_opsz20 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

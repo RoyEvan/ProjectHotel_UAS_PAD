@@ -1,4 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
@@ -9,12 +11,27 @@ namespace ProjectHotel_UAS_PAD
         {
             return conn;
         }
-        public static void setConn()
+        public static bool setConn()
         {
-            conn = new MySqlConnection(
-                $"server=localhost;user=root;database=db_project_pad;"
-                );
-            conn.Open();
+            try
+            {
+                conn = new MySqlConnection(
+                    $"server=localhost;user=root;database=db_project_pad;"
+                    );
+                conn.Open();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public static void closeConn()
+        {
+            conn.Close();
+            conn.Dispose();
         }
     }
 }

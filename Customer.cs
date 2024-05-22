@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ProjectHotel_UAS_PAD
 {
-    internal class Customer
+    public class Customer
     {
         public string id {
             get; set;
