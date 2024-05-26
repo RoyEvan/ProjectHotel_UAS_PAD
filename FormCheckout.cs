@@ -130,7 +130,7 @@ namespace ProjectHotel_UAS_PAD
             string fid = cbox_fines.SelectedValue.ToString();
 
             dp.GetFines(fine_list, fid);
-            MessageBox.Show("p1");
+
             RefreshFines();
 
             RefreshAllTotals();
