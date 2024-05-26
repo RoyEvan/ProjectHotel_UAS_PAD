@@ -142,14 +142,13 @@ namespace ProjectHotel_UAS_PAD
         private void btn_removeFine_Click(object sender, EventArgs e)
         {
             string fid = dgv_addedFines.CurrentRow.Cells["ID"].Value.ToString();
-
             int index = 0;
-            foreach(Fine f in fine_list)
-            {
-                if(f.id == fid)
-                {
+
+            foreach(Fine f in fine_list) {
+                if(f.id == fid) {
                     break;
                 }
+
                 index++;
             }
 
@@ -173,8 +172,6 @@ namespace ProjectHotel_UAS_PAD
                 ResetAll();
             }
             else MessageBox.Show("Transaction Failed!", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            
         }
 
         private void btn_extend_Click(object sender, EventArgs e)
@@ -182,7 +179,7 @@ namespace ProjectHotel_UAS_PAD
             string bid = dgv_bills.CurrentRow.Cells["ID"].Value.ToString();
             bool checkedOut = dp.FinishTransaction(bid, fine_list);
 
-            if (checkedOut)
+            if (checkedOut) 
             {
                 ResetAll();
 

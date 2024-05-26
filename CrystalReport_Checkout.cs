@@ -16,14 +16,14 @@ namespace ProjectHotel_UAS_PAD {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport_Update : ReportClass {
+    public class CrystalReport_Checkout : ReportClass {
         
-        public CrystalReport_Update() {
+        public CrystalReport_Checkout() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport_Update.rpt";
+                return "CrystalReport_Checkout.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProjectHotel_UAS_PAD {
         
         public override string FullResourceName {
             get {
-                return "ProjectHotel_UAS_PAD.CrystalReport_Update.rpt";
+                return "ProjectHotel_UAS_PAD.CrystalReport_Checkout.rpt";
             }
             set {
                 // Do nothing
@@ -130,9 +130,9 @@ namespace ProjectHotel_UAS_PAD {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport_Update : Component, ICachedReport {
+    public class CachedCrystalReport_Checkout : Component, ICachedReport {
         
-        public CachedCrystalReport_Update() {
+        public CachedCrystalReport_Checkout() {
         }
         
         [Browsable(false)]
@@ -169,7 +169,7 @@ namespace ProjectHotel_UAS_PAD {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport_Update rpt = new CrystalReport_Update();
+            CrystalReport_Checkout rpt = new CrystalReport_Checkout();
             rpt.Site = this.Site;
             return rpt;
         }

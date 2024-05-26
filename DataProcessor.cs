@@ -73,7 +73,6 @@ namespace ProjectHotel_UAS_PAD
                 trans.Rollback();
             }
         }
-
         // ===========================================================
 
 
@@ -116,7 +115,6 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
-
         // =======================================================
 
 
@@ -215,8 +213,6 @@ namespace ProjectHotel_UAS_PAD
             cmd.Parameters.AddWithValue("@price", price);
             cmd.ExecuteNonQuery();
         }
-
-
         // ============================================================
 
 
@@ -232,6 +228,7 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
+        
         public void insertVouchers(string f_id, string v_name, string amount, string tgl_start, string tgl_end)
         {
             MySqlCommand getLastId = new MySqlCommand("SELECT MAX(voucher_id) FROM vouchers", koneksi.getConn());
@@ -258,6 +255,7 @@ namespace ProjectHotel_UAS_PAD
             cmd.Parameters.AddWithValue("@tgl_end", tgl_end);
             cmd.ExecuteNonQuery();
         }
+        
         public DataRow GetVoucher(string facility_id)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT * FROM vouchers WHERE voucher_id = @voucher_id AND date_start <= NOW() AND date_end >= NOW();", koneksi.getConn());
@@ -380,6 +378,7 @@ namespace ProjectHotel_UAS_PAD
             // True means the transaction (Data Insertion) is successfully completed
             return true;
         }
+        
         public DataTable getTransactionsStaff()
         {
             MySqlDataAdapter da =
@@ -390,6 +389,7 @@ namespace ProjectHotel_UAS_PAD
             da.Fill(dt);
             return dt;
         }
+        
         public DataTable getTransactionsByCustomerName(string customerName)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT b.room_id AS ID, s.staff_name AS Staff, c.customer_name AS Customer, " +
@@ -404,6 +404,7 @@ namespace ProjectHotel_UAS_PAD
                     
             return dt;
         }
+        
         public DataTable GetActiveTransactions(List<Bill> bills)
         {
             MySqlCommand cmd = new MySqlCommand("SELECT " +
@@ -521,7 +522,7 @@ namespace ProjectHotel_UAS_PAD
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-            Bill bill = new Bill();
+            Bill bill = null;
             
             foreach(DataRow dr in dt.Rows)
             {
@@ -541,12 +542,34 @@ namespace ProjectHotel_UAS_PAD
 
             return bill;
         }
+        
         public bool FinishTransaction(string bill_id, List<Fine> fines)
         {
             MySqlTransaction trans = koneksi.getConn().BeginTransaction();
             try
             {
-                MySqlCommand cmd;
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM bills WHERE bill_id = @bill_id;", koneksi.getConn());
+                cmd.Parameters.AddWithValue("bill_id", bill_id);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                DateTime checkoutdate = DateTime.Now;
+                DateTime maxcheckout = DateTime.Now;
+
+
+                foreach(DataRow dr in dt.Rows)
+                {
+                    string date = dr["checkout_date"].ToString();
+                    checkoutdate = DateTime.Parse(date);
+                }
+
+                if (DateTime.Now.Hour > 12 && DateTime.Now.Minute >= 1 && DateTime.Now.Date >= checkoutdate.Date)
+                {
+                    MessageBox.Show("Terlambat Check Out, maka denda akan ditambahkan ke transaksi!", "Terlambat Check Out!");
+                    fines.Add(new Fine("FINE0006", "Keterlambatan Check-Out", 250000, 98));
+                }
 
                 double totalFine = 0;
                 if(fines.Count > 0)
@@ -563,9 +586,15 @@ namespace ProjectHotel_UAS_PAD
                         cmd.ExecuteNonQuery();
                     }
                 }
-
                 
-                cmd = new MySqlCommand("UPDATE bills SET CHECKOUT_DATE = NOW(), BILL_GRANDTOTAL = (BILL_TOTAL + @grand_total), BILL_STATUS = 0 WHERE BILL_ID = @bill_id;", koneksi.getConn());
+                cmd = new MySqlCommand("UPDATE bills " +
+                    "SET " +
+                        "ACTUAL_CHECKOUT_DATE = NOW(), " +
+                        "BILL_GRANDTOTAL = (BILL_TOTAL + @grand_total), " +
+                        "BILL_STATUS = 0 " +
+                    "WHERE BILL_ID = @bill_id;",
+                    koneksi.getConn()
+                );
                 cmd.Parameters.AddWithValue("grand_total", totalFine);
                 cmd.Parameters.AddWithValue("bill_id", bill_id);
 
@@ -589,8 +618,6 @@ namespace ProjectHotel_UAS_PAD
         // ==============================================================
 
         // ======================== STAFFS ========================
-
-        //INSERT INTO staffs(STAFF_ID, STAFF_NAME, STAFF_EMAIL, STAFF_PHONE, STAFF_IS_ACTIVE, STAFF_IS_MANAGER, STAFF_USERNAME, STAFF_PASSWORD) VALUES('', '', '', '', '', '', '', '');
         public DataTable getStaff()
         {
             MySqlDataAdapter da =
