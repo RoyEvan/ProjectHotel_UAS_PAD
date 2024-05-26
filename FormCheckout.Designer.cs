@@ -177,7 +177,7 @@
             // 
             this.btn_removeFine.Enabled = false;
             this.btn_removeFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_removeFine.Location = new System.Drawing.Point(500, 226);
+            this.btn_removeFine.Location = new System.Drawing.Point(405, 226);
             this.btn_removeFine.Name = "btn_removeFine";
             this.btn_removeFine.Size = new System.Drawing.Size(122, 32);
             this.btn_removeFine.TabIndex = 7;
@@ -189,7 +189,7 @@
             // 
             this.btn_addFine.Enabled = false;
             this.btn_addFine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_addFine.Location = new System.Drawing.Point(3, 226);
+            this.btn_addFine.Location = new System.Drawing.Point(533, 226);
             this.btn_addFine.Name = "btn_addFine";
             this.btn_addFine.Size = new System.Drawing.Size(89, 32);
             this.btn_addFine.TabIndex = 6;

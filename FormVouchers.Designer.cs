@@ -1,4 +1,4 @@
-﻿namespace ProjectHotel_UAS_PAD
+namespace ProjectHotel_UAS_PAD
 {
     partial class FormVouchers
     {
@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1317, 464);
+            this.ClientSize = new System.Drawing.Size(1317, 453);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textFacilitiesID);
