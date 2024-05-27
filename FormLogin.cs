@@ -83,7 +83,7 @@ namespace ProjectHotel_UAS_PAD
                 {
                     if (isManager)
                     {
-                        FormMenuManager fmm = new FormMenuManager();
+                        FormMenuManager fmm = new FormMenuManager(staff);
                         this.Hide();
                         ResetAll();
                         fmm.ShowDialog();

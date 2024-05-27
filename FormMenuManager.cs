@@ -5,9 +5,18 @@ namespace ProjectHotel_UAS_PAD
 {
     public partial class FormMenuManager : Form
     {
+        Staff staff;
         public FormMenuManager()
         {
             InitializeComponent();
+        }
+        public FormMenuManager(Staff staff)
+        {
+            InitializeComponent();
+
+            this.staff = staff;
+
+            lbl_staffName.Text = this.staff.name;
         }
 
         private void btn_formEditStaff_Click(object sender, EventArgs e)
@@ -25,7 +34,7 @@ namespace ProjectHotel_UAS_PAD
 
         private void btn_transLog_Click(object sender, EventArgs e)
         {
-            FormTransactionLogsManager ftlm = new FormTransactionLogsManager();
+            FormTransactionLogsManager ftlm = new FormTransactionLogsManager(this.staff);
             this.Hide();
             ftlm.ShowDialog();
             this.Show();
