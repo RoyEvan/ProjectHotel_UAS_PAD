@@ -54,5 +54,13 @@ namespace ProjectHotel_UAS_PAD
             ffi.ShowDialog();
             this.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormRoom fr = new FormRoom();
+            this.Hide();
+            fr.ShowDialog();
+            this.Show();
+        }
     }
 }

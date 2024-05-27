@@ -256,6 +256,7 @@
             this.Controls.Add(this.textName);
             this.Controls.Add(this.label16);
             this.Name = "FormEditStaff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditStaff";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_staff)).EndInit();
             this.ResumeLayout(false);

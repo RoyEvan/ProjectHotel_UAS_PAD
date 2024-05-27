@@ -245,6 +245,12 @@
     <Compile Include="FormTransactionLogsStaff.Designer.cs">
       <DependentUpon>FormTransactionLogsStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRoom.Designer.cs">
+      <DependentUpon>FormRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVouchers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTransactionLogsStaff.resx">
       <DependentUpon>FormTransactionLogsStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRoom.resx">
+      <DependentUpon>FormRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVouchers.resx">
       <DependentUpon>FormVouchers.cs</DependentUpon>

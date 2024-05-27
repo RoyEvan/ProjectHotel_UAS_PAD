@@ -15,6 +15,7 @@ namespace ProjectHotel_UAS_PAD
 
             SetConnection();
         }
+        
         public void SetConnection()
         {
             bool connected = koneksi.setConn();
@@ -45,6 +46,7 @@ namespace ProjectHotel_UAS_PAD
 
             dgv_staff.DataSource = dp.getStaff();
         }
+        
         private void dgv_staff_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow selectedRow = dgv_staff.Rows[e.RowIndex];

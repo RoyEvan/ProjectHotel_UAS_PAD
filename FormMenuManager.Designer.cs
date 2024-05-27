@@ -35,12 +35,13 @@
             this.btn_editFacilities = new System.Windows.Forms.Button();
             this.btn_editVouchers = new System.Windows.Forms.Button();
             this.btn_editFines = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_logout
             // 
             this.btn_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_logout.Location = new System.Drawing.Point(12, 435);
+            this.btn_logout.Location = new System.Drawing.Point(12, 501);
             this.btn_logout.Name = "btn_logout";
             this.btn_logout.Size = new System.Drawing.Size(505, 67);
             this.btn_logout.TabIndex = 8;
@@ -51,7 +52,7 @@
             // btn_transLog
             // 
             this.btn_transLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_transLog.Location = new System.Drawing.Point(12, 362);
+            this.btn_transLog.Location = new System.Drawing.Point(12, 428);
             this.btn_transLog.Name = "btn_transLog";
             this.btn_transLog.Size = new System.Drawing.Size(505, 67);
             this.btn_transLog.TabIndex = 7;
@@ -62,7 +63,7 @@
             // btn_formEditStaff
             // 
             this.btn_formEditStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_formEditStaff.Location = new System.Drawing.Point(12, 70);
+            this.btn_formEditStaff.Location = new System.Drawing.Point(12, 136);
             this.btn_formEditStaff.Name = "btn_formEditStaff";
             this.btn_formEditStaff.Size = new System.Drawing.Size(505, 67);
             this.btn_formEditStaff.TabIndex = 6;
@@ -83,7 +84,7 @@
             // btn_editFacilities
             // 
             this.btn_editFacilities.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editFacilities.Location = new System.Drawing.Point(12, 143);
+            this.btn_editFacilities.Location = new System.Drawing.Point(12, 209);
             this.btn_editFacilities.Name = "btn_editFacilities";
             this.btn_editFacilities.Size = new System.Drawing.Size(505, 67);
             this.btn_editFacilities.TabIndex = 10;
@@ -94,7 +95,7 @@
             // btn_editVouchers
             // 
             this.btn_editVouchers.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editVouchers.Location = new System.Drawing.Point(12, 216);
+            this.btn_editVouchers.Location = new System.Drawing.Point(12, 282);
             this.btn_editVouchers.Name = "btn_editVouchers";
             this.btn_editVouchers.Size = new System.Drawing.Size(505, 67);
             this.btn_editVouchers.TabIndex = 11;
@@ -105,7 +106,7 @@
             // btn_editFines
             // 
             this.btn_editFines.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_editFines.Location = new System.Drawing.Point(12, 289);
+            this.btn_editFines.Location = new System.Drawing.Point(12, 355);
             this.btn_editFines.Name = "btn_editFines";
             this.btn_editFines.Size = new System.Drawing.Size(505, 67);
             this.btn_editFines.TabIndex = 12;
@@ -113,11 +114,23 @@
             this.btn_editFines.UseVisualStyleBackColor = true;
             this.btn_editFines.Click += new System.EventHandler(this.btn_editFines_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(12, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(505, 67);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Room Master";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormMenuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 523);
+            this.ClientSize = new System.Drawing.Size(529, 579);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_editFines);
             this.Controls.Add(this.btn_editVouchers);
             this.Controls.Add(this.btn_editFacilities);
@@ -141,5 +154,6 @@
         private System.Windows.Forms.Button btn_editFacilities;
         private System.Windows.Forms.Button btn_editVouchers;
         private System.Windows.Forms.Button btn_editFines;
+        private System.Windows.Forms.Button button1;
     }
 }

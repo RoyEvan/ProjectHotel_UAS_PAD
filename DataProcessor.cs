@@ -115,6 +115,47 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
+
+        public void insertRoom(string category, long price, bool available)
+        {
+            MySqlCommand getlastId = new MySqlCommand("SELECT room_id FROM rooms ORDER BY room_id DESC LIMIT 1", koneksi.getConn());
+            string lastStaffId = (string)getlastId.ExecuteScalar();
+
+            int lastId = int.Parse(lastStaffId.Substring(1));
+            string nextStaffId = "A" + (lastId + 1).ToString("D4");
+
+            MySqlCommand getCateoryId = new MySqlCommand("SELECT CATEGORY_ID FROM categories WHERE CATEGORY_NAME = @available", koneksi.getConn());
+            getCateoryId.Parameters.AddWithValue("@available", category);
+            object result = getCateoryId.ExecuteScalar();
+            string r_category = result.ToString();
+
+            MySqlCommand cmd = new MySqlCommand(
+                $"insert into rooms (room_id, category_id, room_price, is_usable) values(@r_id, @r_category, @r_price, @r_usable)"
+                , koneksi.getConn());
+
+            cmd.Parameters.AddWithValue("@r_id", nextStaffId);
+            cmd.Parameters.AddWithValue("@r_category", r_category);
+            cmd.Parameters.AddWithValue("@r_price", price);
+            cmd.Parameters.AddWithValue("@r_usable", available);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void updateRoom(string id, string category, long price, bool available)
+        {
+            MySqlCommand getCateoryId = new MySqlCommand("SELECT CATEGORY_ID FROM categories WHERE CATEGORY_NAME = @available", koneksi.getConn());
+            getCateoryId.Parameters.AddWithValue("@available", category);
+            object result = getCateoryId.ExecuteScalar();
+            string r_category = result.ToString();
+
+            MySqlCommand cmd = new MySqlCommand(
+                $"UPDATE rooms SET room_id = @r_id, category_id = @r_category, room_price = @r_price, is_usable = @r_usable  WHERE room_id = @r_id", koneksi.getConn());
+
+            cmd.Parameters.AddWithValue("@r_id", id);
+            cmd.Parameters.AddWithValue("@r_category", r_category);
+            cmd.Parameters.AddWithValue("@r_price", price);
+            cmd.Parameters.AddWithValue("@r_usable", available);
+            cmd.ExecuteNonQuery();
+        }
         // =======================================================
 
 
@@ -134,6 +175,7 @@ namespace ProjectHotel_UAS_PAD
 
             return dt;
         }
+        
         public DataTable GetFacilities()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT " +
