@@ -20,11 +20,11 @@ namespace ProjectHotel_UAS_PAD
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            CrystalReport_Transaction rep = new CrystalReport_Transaction();
-            string selectedTransaction = comboBoxTransaction.SelectedItem.ToString();
-            rep.SetDatabaseLogon("root", "");
-            rep.SetParameterValue("paramTransaction", selectedTransaction);
-            crystalReportViewer1.ReportSource = rep;
+            //CrystalReport_Transaction rep = new CrystalReport_Transaction();
+            //string selectedTransaction = comboBoxTransaction.SelectedItem.ToString();
+            //rep.SetDatabaseLogon("root", "");
+            //rep.SetParameterValue("paramTransaction", selectedTransaction);
+            //crystalReportViewer1.ReportSource = rep;
         }
     }
 }

@@ -713,7 +713,7 @@ namespace ProjectHotel_UAS_PAD
             }
         }
 
-        public DataTable GetAllFines()
+        public DataTable GetFines()
         {
             MySqlCommand cmd = new MySqlCommand("SELECT fine_id AS ID, fine_name AS NAME,fine FROM fines", koneksi.getConn());
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);

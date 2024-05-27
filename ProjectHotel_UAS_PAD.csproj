@@ -151,10 +151,22 @@
       <DependentUpon>CrystalReport_Checkout.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CrystalReport_Transaction.cs">
+    <Compile Include="CrystalReport_Daily.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport_Transaction.rpt</DependentUpon>
+      <DependentUpon>CrystalReport_Daily.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport_Monthly.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport_Monthly.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrystalReport_Yearly.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport_Yearly.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Customer.cs" />
@@ -254,9 +266,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport_Checkout.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport_Transaction.rpt">
+    <EmbeddedResource Include="CrystalReport_Daily.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport_Transaction.cs</LastGenOutput>
+      <LastGenOutput>CrystalReport_Daily.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport_Monthly.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport_Monthly.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport_Yearly.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport_Yearly.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddCustomer.resx">
       <DependentUpon>FormAddCustomer.cs</DependentUpon>

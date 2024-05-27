@@ -20,7 +20,7 @@ namespace ProjectHotel_UAS_PAD
 
         private void FormFines_Load(object sender, EventArgs e)
         {
-            dgv_fines.DataSource = dp.GetAllFines();
+            dgv_fines.DataSource = dp.GetFines();
         }
         private void resetDGV()
         {
@@ -28,7 +28,7 @@ namespace ProjectHotel_UAS_PAD
             textName.Text = "";
             textFine.Text = "";
 
-            dgv_fines.DataSource = dp.GetAllFines();
+            dgv_fines.DataSource = dp.GetFines();
         }
 
         private void dgv_fines_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
