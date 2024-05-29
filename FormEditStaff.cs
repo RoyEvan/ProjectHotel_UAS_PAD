@@ -50,14 +50,14 @@ namespace ProjectHotel_UAS_PAD
         private void dgv_staff_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow selectedRow = dgv_staff.Rows[e.RowIndex];
-            string s_id = selectedRow.Cells["staff_id"].Value.ToString();
-            string s_username = selectedRow.Cells["staff_username"].Value.ToString();
-            string s_password = selectedRow.Cells["staff_password"].Value.ToString();
-            string s_name = selectedRow.Cells["staff_name"].Value.ToString();
-            string s_email = selectedRow.Cells["staff_email"].Value.ToString();
-            string s_phone = selectedRow.Cells["staff_phone"].Value.ToString();
-            bool s_is_active = (bool)selectedRow.Cells["staff_is_active"].Value;
-            bool s_is_manager = (bool)selectedRow.Cells["staff_is_manager"].Value;
+            string s_id = selectedRow.Cells[0].Value.ToString();
+            string s_username = selectedRow.Cells[1].Value.ToString();
+            string s_password = selectedRow.Cells[2].Value.ToString();
+            string s_name = selectedRow.Cells[3].Value.ToString();
+            string s_email = selectedRow.Cells[4].Value.ToString();
+            string s_phone = selectedRow.Cells[5].Value.ToString();
+            bool s_is_active = (bool)selectedRow.Cells[6].Value;
+            bool s_is_manager = (bool)selectedRow.Cells[7].Value;
 
             label1.Text = s_id;
             textUsername.Text = s_username;
@@ -68,6 +68,7 @@ namespace ProjectHotel_UAS_PAD
             textPhone.Text = s_phone;
             cbox_isManager.Checked = s_is_manager;
             cbox_updStatus.Checked = s_is_active;
+
         }
 
         private void btn_insert_Click(object sender, EventArgs e)
@@ -96,6 +97,16 @@ namespace ProjectHotel_UAS_PAD
 
             dp.updateStaff(s_id, s_password, s_name, s_email, s_phone, s_is_manager, s_is_active);
             resetDGV();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string staffid = dgv_staff.CurrentRow.Cells[0].Value.ToString();
+
+            FormStaffReport fsr = new FormStaffReport(staffid);
+            this.Hide();
+            fsr.ShowDialog();
+            this.Show();
         }
     }
 }

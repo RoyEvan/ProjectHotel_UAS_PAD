@@ -52,7 +52,7 @@
             this.dgv_facilities.RowHeadersVisible = false;
             this.dgv_facilities.RowHeadersWidth = 51;
             this.dgv_facilities.RowTemplate.Height = 24;
-            this.dgv_facilities.Size = new System.Drawing.Size(426, 281);
+            this.dgv_facilities.Size = new System.Drawing.Size(426, 270);
             this.dgv_facilities.TabIndex = 0;
             this.dgv_facilities.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_facilities_CellDoubleClick);
             // 
@@ -100,21 +100,21 @@
             // 
             this.textName.Location = new System.Drawing.Point(520, 47);
             this.textName.Name = "textName";
-            this.textName.Size = new System.Drawing.Size(164, 22);
+            this.textName.Size = new System.Drawing.Size(241, 22);
             this.textName.TabIndex = 5;
             // 
             // textPrice
             // 
             this.textPrice.Location = new System.Drawing.Point(520, 75);
             this.textPrice.Name = "textPrice";
-            this.textPrice.Size = new System.Drawing.Size(164, 22);
+            this.textPrice.Size = new System.Drawing.Size(241, 22);
             this.textPrice.TabIndex = 6;
             // 
             // btn_insert
             // 
             this.btn_insert.Location = new System.Drawing.Point(467, 113);
             this.btn_insert.Name = "btn_insert";
-            this.btn_insert.Size = new System.Drawing.Size(103, 23);
+            this.btn_insert.Size = new System.Drawing.Size(144, 32);
             this.btn_insert.TabIndex = 7;
             this.btn_insert.Text = "Insert";
             this.btn_insert.UseVisualStyleBackColor = true;
@@ -122,9 +122,9 @@
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(576, 113);
+            this.btn_update.Location = new System.Drawing.Point(617, 113);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(108, 23);
+            this.btn_update.Size = new System.Drawing.Size(144, 32);
             this.btn_update.TabIndex = 8;
             this.btn_update.Text = "Update";
             this.btn_update.UseVisualStyleBackColor = true;
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1118, 328);
+            this.ClientSize = new System.Drawing.Size(773, 294);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_insert);
             this.Controls.Add(this.textPrice);
@@ -145,6 +145,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv_facilities);
             this.Name = "FormFacilities";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormFacilities";
             this.Load += new System.EventHandler(this.FormFacilities_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_facilities)).EndInit();

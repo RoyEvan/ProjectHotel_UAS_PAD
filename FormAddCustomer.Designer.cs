@@ -192,6 +192,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "FormAddCustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAddCustomer";
             this.ResumeLayout(false);
             this.PerformLayout();

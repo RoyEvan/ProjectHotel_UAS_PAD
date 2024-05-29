@@ -16,7 +16,7 @@ namespace ProjectHotel_UAS_PAD
 
             this.staff = staff;
 
-            lbl_staffName.Text = this.staff.name;
+            lbl_staffName.Text += this.staff.name;
         }
 
         private void btn_formEditStaff_Click(object sender, EventArgs e)

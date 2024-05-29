@@ -76,6 +76,7 @@
             this.Controls.Add(this.textsearchcust);
             this.Controls.Add(this.dgv_transactionlogsstaff);
             this.Name = "FormTransactionLogsStaff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormTransactionLogsStaff";
             ((System.ComponentModel.ISupportInitialize)(this.dgv_transactionlogsstaff)).EndInit();
             this.ResumeLayout(false);

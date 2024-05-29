@@ -61,9 +61,9 @@
             // 
             // btn_insert
             // 
-            this.btn_insert.Location = new System.Drawing.Point(966, 155);
+            this.btn_insert.Location = new System.Drawing.Point(950, 155);
             this.btn_insert.Name = "btn_insert";
-            this.btn_insert.Size = new System.Drawing.Size(262, 23);
+            this.btn_insert.Size = new System.Drawing.Size(260, 33);
             this.btn_insert.TabIndex = 15;
             this.btn_insert.Text = "Insert";
             this.btn_insert.UseVisualStyleBackColor = true;
@@ -71,23 +71,23 @@
             // 
             // textAmount
             // 
-            this.textAmount.Location = new System.Drawing.Point(966, 127);
+            this.textAmount.Location = new System.Drawing.Point(950, 127);
             this.textAmount.Name = "textAmount";
-            this.textAmount.Size = new System.Drawing.Size(262, 22);
+            this.textAmount.Size = new System.Drawing.Size(260, 22);
             this.textAmount.TabIndex = 14;
             // 
             // textVoucherName
             // 
-            this.textVoucherName.Location = new System.Drawing.Point(966, 72);
+            this.textVoucherName.Location = new System.Drawing.Point(950, 72);
             this.textVoucherName.Name = "textVoucherName";
-            this.textVoucherName.Size = new System.Drawing.Size(262, 22);
+            this.textVoucherName.Size = new System.Drawing.Size(260, 22);
             this.textVoucherName.TabIndex = 13;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(890, 128);
+            this.label4.Location = new System.Drawing.Point(874, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 18);
             this.label4.TabIndex = 12;
@@ -97,7 +97,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(842, 73);
+            this.label3.Location = new System.Drawing.Point(826, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 18);
             this.label3.TabIndex = 11;
@@ -107,7 +107,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(892, 12);
+            this.label2.Location = new System.Drawing.Point(876, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 25);
             this.label2.TabIndex = 10;
@@ -117,7 +117,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(840, 12);
+            this.label1.Location = new System.Drawing.Point(824, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 25);
             this.label1.TabIndex = 9;
@@ -125,16 +125,16 @@
             // 
             // textFacilitiesID
             // 
-            this.textFacilitiesID.Location = new System.Drawing.Point(966, 100);
+            this.textFacilitiesID.Location = new System.Drawing.Point(950, 100);
             this.textFacilitiesID.Name = "textFacilitiesID";
-            this.textFacilitiesID.Size = new System.Drawing.Size(262, 22);
+            this.textFacilitiesID.Size = new System.Drawing.Size(260, 22);
             this.textFacilitiesID.TabIndex = 18;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(866, 101);
+            this.label5.Location = new System.Drawing.Point(850, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 18);
             this.label5.TabIndex = 17;
@@ -142,23 +142,23 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(845, 40);
+            this.dateTimePicker1.Location = new System.Drawing.Point(829, 40);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(196, 22);
             this.dateTimePicker1.TabIndex = 19;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(1065, 40);
+            this.dateTimePicker2.Location = new System.Drawing.Point(1031, 40);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker2.Size = new System.Drawing.Size(179, 22);
             this.dateTimePicker2.TabIndex = 20;
             // 
             // FormVouchers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1317, 453);
+            this.ClientSize = new System.Drawing.Size(1222, 453);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textFacilitiesID);
@@ -172,6 +172,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv_vouchers);
             this.Name = "FormVouchers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormVouchers";
             this.Load += new System.EventHandler(this.FormVouchers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vouchers)).EndInit();

@@ -16,14 +16,14 @@ namespace ProjectHotel_UAS_PAD {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport_Yearly : ReportClass {
+    public class CrystalReport_Staff : ReportClass {
         
-        public CrystalReport_Yearly() {
+        public CrystalReport_Staff() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport_Yearly.rpt";
+                return "CrystalReport_Staff.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProjectHotel_UAS_PAD {
         
         public override string FullResourceName {
             get {
-                return "ProjectHotel_UAS_PAD.CrystalReport_Yearly.rpt";
+                return "ProjectHotel_UAS_PAD.CrystalReport_Staff.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,23 +90,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
-            get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_requester {
+        public CrystalDecisions.Shared.IParameterField Parameter_param_staffid {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -114,9 +98,9 @@ namespace ProjectHotel_UAS_PAD {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport_Yearly : Component, ICachedReport {
+    public class CachedCrystalReport_Staff : Component, ICachedReport {
         
-        public CachedCrystalReport_Yearly() {
+        public CachedCrystalReport_Staff() {
         }
         
         [Browsable(false)]
@@ -153,7 +137,7 @@ namespace ProjectHotel_UAS_PAD {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport_Yearly rpt = new CrystalReport_Yearly();
+            CrystalReport_Staff rpt = new CrystalReport_Staff();
             rpt.Site = this.Site;
             return rpt;
         }

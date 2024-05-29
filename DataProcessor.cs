@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -116,39 +117,20 @@ namespace ProjectHotel_UAS_PAD
             return dt;
         }
 
-        public void insertRoom(string category, long price, bool available)
+        public void insertRoom(string id, string r_category, long price, bool available)
         {
-            MySqlCommand getlastId = new MySqlCommand("SELECT room_id FROM rooms ORDER BY room_id DESC LIMIT 1", koneksi.getConn());
-            string lastStaffId = (string)getlastId.ExecuteScalar();
+            MySqlCommand cmd = new MySqlCommand($"insert into rooms (room_id, category_id, room_price, is_usable) values(@r_id, @r_category, @r_price, @r_usable);", koneksi.getConn());
 
-            int lastId = int.Parse(lastStaffId.Substring(1));
-            string nextStaffId = "A" + (lastId + 1).ToString("D4");
-
-            MySqlCommand getCateoryId = new MySqlCommand("SELECT CATEGORY_ID FROM categories WHERE CATEGORY_NAME = @available", koneksi.getConn());
-            getCateoryId.Parameters.AddWithValue("@available", category);
-            object result = getCateoryId.ExecuteScalar();
-            string r_category = result.ToString();
-
-            MySqlCommand cmd = new MySqlCommand(
-                $"insert into rooms (room_id, category_id, room_price, is_usable) values(@r_id, @r_category, @r_price, @r_usable)"
-                , koneksi.getConn());
-
-            cmd.Parameters.AddWithValue("@r_id", nextStaffId);
+            cmd.Parameters.AddWithValue("@r_id", id);
             cmd.Parameters.AddWithValue("@r_category", r_category);
             cmd.Parameters.AddWithValue("@r_price", price);
             cmd.Parameters.AddWithValue("@r_usable", available);
             cmd.ExecuteNonQuery();
         }
 
-        public void updateRoom(string id, string category, long price, bool available)
+        public void updateRoom(string id, string r_category, long price, bool available)
         {
-            MySqlCommand getCateoryId = new MySqlCommand("SELECT CATEGORY_ID FROM categories WHERE CATEGORY_NAME = @available", koneksi.getConn());
-            getCateoryId.Parameters.AddWithValue("@available", category);
-            object result = getCateoryId.ExecuteScalar();
-            string r_category = result.ToString();
-
-            MySqlCommand cmd = new MySqlCommand(
-                $"UPDATE rooms SET room_id = @r_id, category_id = @r_category, room_price = @r_price, is_usable = @r_usable  WHERE room_id = @r_id", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand($"UPDATE rooms SET room_id = @r_id, category_id = @r_category, room_price = @r_price, is_usable = @r_usable  WHERE room_id = @r_id", koneksi.getConn());
 
             cmd.Parameters.AddWithValue("@r_id", id);
             cmd.Parameters.AddWithValue("@r_category", r_category);
@@ -421,6 +403,26 @@ namespace ProjectHotel_UAS_PAD
             return true;
         }
         
+        public DataTable GetTransactions()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT " +
+                    "b.bill_id AS \"Bill ID\", " +
+                    "s.staff_name AS Staff, " +
+                    "c.customer_name AS Customer, " +
+                    "b.bill_grandtotal AS \"Grand Total\" " +
+                "FROM " +
+                    "bills b LEFT OUTER JOIN staffs s ON b.staff_id = s.staff_id " + "" +
+                    "LEFT OUTER JOIN customers c ON b.customer_id = c.customer_id;",
+            koneksi.getConn());
+
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            return dt;
+        }
+
         public DataTable getTransactionsStaff()
         {
             MySqlDataAdapter da =
@@ -662,9 +664,9 @@ namespace ProjectHotel_UAS_PAD
         // ======================== STAFFS ========================
         public DataTable getStaff()
         {
-            MySqlDataAdapter da =
-                new MySqlDataAdapter("select staff_id, staff_username, staff_password, staff_name, staff_email, staff_phone, " +
-                "staff_is_manager, staff_is_active from staffs ", koneksi.getConn());
+            MySqlCommand cmd = new MySqlCommand("select staff_id AS ID, staff_username AS Username, staff_password AS Password, staff_name AS Name, staff_email AS Email, staff_phone AS Phone, staff_is_manager AS Manager, staff_is_active AS Active FROM staffs;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
             DataTable dt = new DataTable("staff");
             da.Fill(dt);
             return dt;
@@ -802,5 +804,16 @@ namespace ProjectHotel_UAS_PAD
         }
         // =======================================================
 
+
+        // ======================== VOUCHERS ========================
+        public DataTable GetCategories()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM categories;", koneksi.getConn());
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable("staff");
+            da.Fill(dt);
+            return dt;
+        }
+        // ==========================================================
     }
 }

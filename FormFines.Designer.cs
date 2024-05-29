@@ -53,7 +53,7 @@
             this.dgv_fines.RowHeadersVisible = false;
             this.dgv_fines.RowHeadersWidth = 51;
             this.dgv_fines.RowTemplate.Height = 24;
-            this.dgv_fines.Size = new System.Drawing.Size(402, 402);
+            this.dgv_fines.Size = new System.Drawing.Size(402, 426);
             this.dgv_fines.TabIndex = 0;
             this.dgv_fines.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_fines_CellDoubleClick);
             // 
@@ -68,7 +68,7 @@
             // 
             this.btn_update.Location = new System.Drawing.Point(645, 116);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(148, 23);
+            this.btn_update.Size = new System.Drawing.Size(154, 34);
             this.btn_update.TabIndex = 16;
             this.btn_update.Text = "Update";
             this.btn_update.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             // 
             this.btn_insert.Location = new System.Drawing.Point(494, 116);
             this.btn_insert.Name = "btn_insert";
-            this.btn_insert.Size = new System.Drawing.Size(145, 23);
+            this.btn_insert.Size = new System.Drawing.Size(145, 34);
             this.btn_insert.TabIndex = 15;
             this.btn_insert.Text = "Insert";
             this.btn_insert.UseVisualStyleBackColor = true;
@@ -88,14 +88,14 @@
             // 
             this.textFine.Location = new System.Drawing.Point(494, 78);
             this.textFine.Name = "textFine";
-            this.textFine.Size = new System.Drawing.Size(299, 22);
+            this.textFine.Size = new System.Drawing.Size(305, 22);
             this.textFine.TabIndex = 14;
             // 
             // textName
             // 
             this.textName.Location = new System.Drawing.Point(494, 50);
             this.textName.Name = "textName";
-            this.textName.Size = new System.Drawing.Size(299, 22);
+            this.textName.Size = new System.Drawing.Size(305, 22);
             this.textName.TabIndex = 13;
             // 
             // label4
@@ -142,7 +142,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 450);
+            this.ClientSize = new System.Drawing.Size(811, 450);
             this.Controls.Add(this.btn_update);
             this.Controls.Add(this.btn_insert);
             this.Controls.Add(this.textFine);
@@ -153,6 +153,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgv_fines);
             this.Name = "FormFines";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormFines";
             this.Load += new System.EventHandler(this.FormFines_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fines)).EndInit();

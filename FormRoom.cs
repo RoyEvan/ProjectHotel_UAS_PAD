@@ -17,21 +17,29 @@ namespace ProjectHotel_UAS_PAD
         public FormRoom()
         {
             InitializeComponent();
-            FillComboBoxesWithCategories();
             ResetAll();
         }
 
         private void FillComboBoxesWithCategories()
         {
-            HashSet<string> categories = new HashSet<string>();
+            //HashSet<string> categories = new HashSet<string>();
 
-            foreach (var room in room_list)
-            {
-                categories.Add(room.category);
-            }
+            //foreach (var room in room_list)
+            //{
+            //    categories.Add(room.category);
+            //}
 
-            comboBox_insert.Items.AddRange(categories.ToArray());
-            comboBox_update.Items.AddRange(categories.ToArray());
+            //comboBox_insert.Items.AddRange(categories.ToArray());
+            //comboBox_update.Items.AddRange(categories.ToArray());
+            DataTable categories = dp.GetCategories(); ;
+
+            comboBox_insert.DataSource = categories;
+            comboBox_insert.DisplayMember = "CATEGORY_NAME";
+            comboBox_insert.ValueMember = "CATEGORY_ID";
+            
+            comboBox_update.DataSource = categories;
+            comboBox_update.DisplayMember = "CATEGORY_NAME";
+            comboBox_update.ValueMember = "CATEGORY_ID";
         }
 
         private void RadioButton_CheckedChanged(object sender, EventArgs e)
@@ -48,7 +56,7 @@ namespace ProjectHotel_UAS_PAD
             }
         }
 
-        public void cekId()
+/*        public void cekId()
         {
             MySqlCommand getlastId = new MySqlCommand("SELECT room_id FROM rooms ORDER BY room_id DESC LIMIT 1", koneksi.getConn());
             string lastStaffId = (string)getlastId.ExecuteScalar();
@@ -56,7 +64,7 @@ namespace ProjectHotel_UAS_PAD
             string nextStaffId = "A" + (lastId + 1).ToString("D4");
 
             lbl_RoomIdInsert.Text = nextStaffId;
-        }
+        }*/
 
         public void ResetAll()
         {
@@ -67,7 +75,7 @@ namespace ProjectHotel_UAS_PAD
             radioButton1.Checked = true;
             radioButton2.Checked = false;
             FillComboBoxesWithCategories();
-            cekId();
+            /*cekId();*/
         }
 
         private void labelClose_Click(object sender, EventArgs e)
@@ -79,6 +87,7 @@ namespace ProjectHotel_UAS_PAD
         {
             string roomId = dgv_rooms.Rows[e.RowIndex].Cells[0].Value.ToString();
             string category = dgv_rooms.Rows[e.RowIndex].Cells[1].Value.ToString();
+            
 
             if (Convert.ToBoolean(dgv_rooms.Rows[e.RowIndex].Cells[3].Value))
             {
@@ -106,7 +115,8 @@ namespace ProjectHotel_UAS_PAD
 
         private void btn_Insert_Click(object sender, EventArgs e)
         {
-            string category = comboBox_insert.SelectedItem.ToString();
+            string category = comboBox_insert.SelectedValue.ToString();
+            string id = textBox_insertID.Text;
             long price = long.Parse(textBox_insert.Text);
             bool available = true;
 
@@ -119,7 +129,7 @@ namespace ProjectHotel_UAS_PAD
                 available = false;
             }
 
-            dp.insertRoom(category, price, available);
+            dp.insertRoom(id, category, price, available);
             MessageBox.Show("Success Insert");
             ResetAll();
         }
@@ -127,7 +137,7 @@ namespace ProjectHotel_UAS_PAD
         private void btn_Update_Click(object sender, EventArgs e)
         {
             string id = lbl_RoomIdUpdate.Text;
-            string category = comboBox_update.SelectedItem.ToString();
+            string category = comboBox_update.SelectedValue.ToString();
             long price = long.Parse(textBox_update.Text);
             bool available = true;
 

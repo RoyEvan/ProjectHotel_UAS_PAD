@@ -16,14 +16,14 @@ namespace ProjectHotel_UAS_PAD {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport_Yearly : ReportClass {
+    public class CrystalReport_Facilities : ReportClass {
         
-        public CrystalReport_Yearly() {
+        public CrystalReport_Facilities() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport_Yearly.rpt";
+                return "CrystalReport_Facilities.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProjectHotel_UAS_PAD {
         
         public override string FullResourceName {
             get {
-                return "ProjectHotel_UAS_PAD.CrystalReport_Yearly.rpt";
+                return "ProjectHotel_UAS_PAD.CrystalReport_Facilities.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,7 +98,7 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
             get {
                 return this.ReportDefinition.Sections[6];
             }
@@ -106,17 +106,25 @@ namespace ProjectHotel_UAS_PAD {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_requester {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
-                return this.DataDefinition.ParameterFields[0];
+                return this.ReportDefinition.Sections[7];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[8];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport_Yearly : Component, ICachedReport {
+    public class CachedCrystalReport_Facilities : Component, ICachedReport {
         
-        public CachedCrystalReport_Yearly() {
+        public CachedCrystalReport_Facilities() {
         }
         
         [Browsable(false)]
@@ -153,7 +161,7 @@ namespace ProjectHotel_UAS_PAD {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport_Yearly rpt = new CrystalReport_Yearly();
+            CrystalReport_Facilities rpt = new CrystalReport_Facilities();
             rpt.Site = this.Site;
             return rpt;
         }
